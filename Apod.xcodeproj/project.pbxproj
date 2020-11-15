@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		4B9A13B725601A7500E1A8DF /* ApodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A13B625601A7500E1A8DF /* ApodApp.swift */; };
-		4B9A13B925601A7500E1A8DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A13B825601A7500E1A8DF /* ContentView.swift */; };
+		4B9A13B925601A7500E1A8DF /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A13B825601A7500E1A8DF /* Home.swift */; };
 		4B9A13BB25601A7800E1A8DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B9A13BA25601A7800E1A8DF /* Assets.xcassets */; };
 		4B9A13BE25601A7800E1A8DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B9A13BD25601A7800E1A8DF /* Preview Assets.xcassets */; };
 		4B9A13C025601A7800E1A8DF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A13BF25601A7800E1A8DF /* Persistence.swift */; };
 		4B9A13C325601A7800E1A8DF /* Apod.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A13C125601A7800E1A8DF /* Apod.xcdatamodeld */; };
+		4B9A13CF25601FE500E1A8DF /* Apod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A13CE25601FE500E1A8DF /* Apod.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4B9A13B325601A7500E1A8DF /* Apod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Apod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B9A13B625601A7500E1A8DF /* ApodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodApp.swift; sourceTree = "<group>"; };
-		4B9A13B825601A7500E1A8DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4B9A13B825601A7500E1A8DF /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		4B9A13BA25601A7800E1A8DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B9A13BD25601A7800E1A8DF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4B9A13BF25601A7800E1A8DF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4B9A13C225601A7800E1A8DF /* Apod.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Apod.xcdatamodel; sourceTree = "<group>"; };
 		4B9A13C425601A7800E1A8DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B9A13CE25601FE500E1A8DF /* Apod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apod.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				4B9A13B625601A7500E1A8DF /* ApodApp.swift */,
-				4B9A13B825601A7500E1A8DF /* ContentView.swift */,
+				4B9A13B825601A7500E1A8DF /* Home.swift */,
+				4B9A13CD25601F8700E1A8DF /* Entities */,
 				4B9A13BA25601A7800E1A8DF /* Assets.xcassets */,
 				4B9A13BF25601A7800E1A8DF /* Persistence.swift */,
 				4B9A13C425601A7800E1A8DF /* Info.plist */,
@@ -73,6 +76,14 @@
 				4B9A13BD25601A7800E1A8DF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4B9A13CD25601F8700E1A8DF /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				4B9A13CE25601FE500E1A8DF /* Apod.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,7 +157,8 @@
 			files = (
 				4B9A13C025601A7800E1A8DF /* Persistence.swift in Sources */,
 				4B9A13C325601A7800E1A8DF /* Apod.xcdatamodeld in Sources */,
-				4B9A13B925601A7500E1A8DF /* ContentView.swift in Sources */,
+				4B9A13CF25601FE500E1A8DF /* Apod.swift in Sources */,
+				4B9A13B925601A7500E1A8DF /* Home.swift in Sources */,
 				4B9A13B725601A7500E1A8DF /* ApodApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
