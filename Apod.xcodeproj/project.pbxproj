@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B0F79D9256DBC4000A58E07 /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F79D8256DBC4000A58E07 /* RemoteDataSource.swift */; };
+		4B0F79DD256DC35F00A58E07 /* ApodRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F79DC256DC35F00A58E07 /* ApodRepository.swift */; };
 		4B27EE90256D5639006E2D5A /* ApodFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27EE8F256D5639006E2D5A /* ApodFetcher.swift */; };
 		4B33B1D4256BF3C9005A8F31 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33B1D3256BF3C9005A8F31 /* HomeInteractor.swift */; };
 		4B33B1DE256BF961005A8F31 /* ApodsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33B1DD256BF961005A8F31 /* ApodsResponse.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B0F79D8256DBC4000A58E07 /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
+		4B0F79DC256DC35F00A58E07 /* ApodRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodRepository.swift; sourceTree = "<group>"; };
 		4B27EE8F256D5639006E2D5A /* ApodFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodFetcher.swift; sourceTree = "<group>"; };
 		4B33B1D3256BF3C9005A8F31 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		4B33B1DD256BF961005A8F31 /* ApodsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodsResponse.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 		4B33B1CF256BF366005A8F31 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				4B0F79DC256DC35F00A58E07 /* ApodRepository.swift */,
 				4B33B1D8256BF489005A8F31 /* Remote */,
 				4B33B1D7256BF483005A8F31 /* Local */,
 			);
@@ -125,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				4B33B1DC256BF94A005A8F31 /* Response */,
+				4B0F79D8256DBC4000A58E07 /* RemoteDataSource.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -267,7 +273,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B33B1DE256BF961005A8F31 /* ApodsResponse.swift in Sources */,
+				4B0F79D9256DBC4000A58E07 /* RemoteDataSource.swift in Sources */,
 				4BEEE4EB2562BBB900AD852A /* ApodInteractor.swift in Sources */,
+				4B0F79DD256DC35F00A58E07 /* ApodRepository.swift in Sources */,
 				4B27EE90256D5639006E2D5A /* ApodFetcher.swift in Sources */,
 				4B9A13C025601A7800E1A8DF /* Persistence.swift in Sources */,
 				4B9A13C325601A7800E1A8DF /* Apod.xcdatamodeld in Sources */,
