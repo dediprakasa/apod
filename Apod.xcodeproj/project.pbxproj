@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B27EE90256D5639006E2D5A /* ApodFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27EE8F256D5639006E2D5A /* ApodFetcher.swift */; };
 		4B33B1D4256BF3C9005A8F31 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33B1D3256BF3C9005A8F31 /* HomeInteractor.swift */; };
 		4B33B1DE256BF961005A8F31 /* ApodsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33B1DD256BF961005A8F31 /* ApodsResponse.swift */; };
 		4B33B1E3256BFB7E005A8F31 /* ApodMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33B1E2256BFB7E005A8F31 /* ApodMapper.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B27EE8F256D5639006E2D5A /* ApodFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodFetcher.swift; sourceTree = "<group>"; };
 		4B33B1D3256BF3C9005A8F31 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		4B33B1DD256BF961005A8F31 /* ApodsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodsResponse.swift; sourceTree = "<group>"; };
 		4B33B1E2256BFB7E005A8F31 /* ApodMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodMapper.swift; sourceTree = "<group>"; };
@@ -47,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B27EE8E256D5626006E2D5A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4B27EE8F256D5639006E2D5A /* ApodFetcher.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		4B33B1CC256BF333005A8F31 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +140,7 @@
 		4B33B1E1256BFB5D005A8F31 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4B27EE8E256D5626006E2D5A /* Network */,
 				4B33B1E2256BFB7E005A8F31 /* ApodMapper.swift */,
 			);
 			path = Utils;
@@ -257,6 +268,7 @@
 			files = (
 				4B33B1DE256BF961005A8F31 /* ApodsResponse.swift in Sources */,
 				4BEEE4EB2562BBB900AD852A /* ApodInteractor.swift in Sources */,
+				4B27EE90256D5639006E2D5A /* ApodFetcher.swift in Sources */,
 				4B9A13C025601A7800E1A8DF /* Persistence.swift in Sources */,
 				4B9A13C325601A7800E1A8DF /* Apod.xcdatamodeld in Sources */,
 				4B9A13CF25601FE500E1A8DF /* Apod.swift in Sources */,
