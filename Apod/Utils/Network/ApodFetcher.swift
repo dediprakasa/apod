@@ -12,9 +12,6 @@ protocol ApodFetcherProtocol {
     
     func createRangedApodsComponents(from startDate: String, to endDate: String) ->URLComponents
 //    func getRangedApods(from startDate: String, to endDate: String) -> AnyPublisher<[ApodResponse], Error>
-    
-    
-    
 }
 
 class ApodFetcher: ApodFetcherProtocol {
