@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol ApodRepositoryProtocol {
-    func getRangedApods(from startDate: String, to endDate: String) -> AnyPublisher<[ApodResponse], Error>
+    func getRangedApods(from startDate: String, to endDate: String) -> AnyPublisher<[Apod], Error>
 }
 
 class ApodRepository {
@@ -26,9 +26,11 @@ class ApodRepository {
     }
 }
 
-//extension ApodRepository: ApodRepositoryProtocol {
-//    func getRangedApods(from startDate: String, to endDate: String) -> AnyPublisher<[ApodResponse], Error> {
-//
-//    }
-//
-//}
+extension ApodRepository: ApodRepositoryProtocol {
+    func getRangedApods(from startDate: String, to endDate: String) -> AnyPublisher<[Apod], Error> {
+        return self.remote.getRangedApods(from: startDate, to: endDate)
+            .map { ApodMapper.mapToDomains(from: $0 )}
+            .eraseToAnyPublisher()
+    }
+
+}

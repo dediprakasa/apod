@@ -12,14 +12,14 @@ struct ApodsResponse: Decodable {
 }
 
 struct ApodResponse: Decodable {
-    let apodSite: String
-    let copyright: String
-    let date: String
-    let itemDescription: String
-    let hdurl: String
-    let mediaType: String
-    let title: String
-    let url: String
+    let apodSite: String?
+    let copyright: String?
+    let date: String?
+    let itemDescription: String?
+    let hdurl: String?
+    let mediaType: String?
+    let title: String?
+    let url: String?
     
     private enum CodingKeys: String, CodingKey {
         case apodSite = "apod_site"

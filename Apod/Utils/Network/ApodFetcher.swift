@@ -10,51 +10,21 @@ import Combine
 
 protocol ApodFetcherProtocol {
     
-    func getRangedApods(from startDate: String, to endDate: String) -> AnyPublisher<[ApodResponse], Error>
+    func createRangedApodsComponents(from startDate: String, to endDate: String) ->URLComponents
+//    func getRangedApods(from startDate: String, to endDate: String) -> AnyPublisher<[ApodResponse], Error>
     
-    
-}
-
-class ApodFetcher {
-    
-    private let session:  URLSession
-    
-    init(session: URLSession = .shared) {
-        self.session = session
-    }
-}
-
-extension ApodFetcher: ApodRepositoryProtocol {
-    func getRangedApods(from startDate: String, to endDate: String) -> AnyPublisher<[ApodResponse], Error> {
-        let components = createRangedApodsComponents(from: startDate, to: endDate)
-        guard let url = components.url else {
-            //TODO
-            let error = ApodError.network(description: "URL not found")
-            return Fail(error: error).eraseToAnyPublisher()
-        }
-        
-        return session.dataTaskPublisher(for: url)
-            .mapError { error in
-                ApodError.network(description: "Something went wrong")
-            }
-            .flatMap(maxPublishers: .max(1)) { pair in
-                //TODO
-                return Just([ApodResponse]())
-            }
-            .eraseToAnyPublisher()
-        
-    }
     
     
 }
 
-private extension ApodFetcher {
+class ApodFetcher: ApodFetcherProtocol {
     
     struct ApodAPI {
         static let scheme = "https"
         static let host   = "apodapi.herokuapp.com"
-        static let path   = "api"
+        static let path   = "/api"
     }
+    
     
     func createRangedApodsComponents(from startDate: String, to endDate: String) ->URLComponents {
         var components = URLComponents()
@@ -69,9 +39,9 @@ private extension ApodFetcher {
         
         return components
     }
-    
-    enum ApodError: Error {
-      case parsing(description: String)
-      case network(description: String)
-    }
+}
+
+enum ApodError: Error {
+  case parsing(description: String)
+  case network(description: String)
 }

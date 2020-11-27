@@ -14,6 +14,7 @@ protocol RemoteDataSourceProtocol {
 
 class RemoteDataSource {
     
+    private let session = URLSession(configuration: .default)
     private var apodFetcher: ApodFetcherProtocol
     var startDate: String? = ""
     var endDate: String? = ""
@@ -27,9 +28,28 @@ class RemoteDataSource {
     }
 }
 
-// TODO
-//extension RemoteDataSource: RemoteDataSourceProtocol {
-//    func getRangedApods(from startDate: String, to endDate: String) -> AnyPublisher<[ApodResponse], Error> {
-//
-//    }
-  
+extension RemoteDataSource: RemoteDataSourceProtocol {
+    func getRangedApods(from startDate: String, to endDate: String) -> AnyPublisher<[ApodResponse], Error> {
+        let components = apodFetcher.createRangedApodsComponents(from: startDate, to: endDate)
+        print(components.url, "!!!!!!")
+        guard let url = components.url else {
+            //TODO
+            print("haaaaah")
+            let error = ApodError.network(description: "URL not found")
+            return Fail(error: error).eraseToAnyPublisher()
+        }
+        
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .secondsSince1970
+        print(url, "<<<<<<")
+        return session.dataTaskPublisher(for: url)
+            .mapError { error -> Error in
+                ApodError.network(description: "Something went wrong")
+            }
+            .map { $0.data }
+            .decode(type: [ApodResponse].self, decoder: decoder)
+            .eraseToAnyPublisher()
+        
+            
+    }
+}
