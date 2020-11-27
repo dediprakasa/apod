@@ -31,7 +31,6 @@ class RemoteDataSource {
 extension RemoteDataSource: RemoteDataSourceProtocol {
     func getRangedApods(from startDate: String, to endDate: String) -> AnyPublisher<[ApodResponse], Error> {
         let components = apodFetcher.createRangedApodsComponents(from: startDate, to: endDate)
-        print(components.url, "!!!!!!")
         guard let url = components.url else {
             //TODO
             print("haaaaah")
@@ -41,7 +40,6 @@ extension RemoteDataSource: RemoteDataSourceProtocol {
         
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .secondsSince1970
-        print(url, "<<<<<<")
         return session.dataTaskPublisher(for: url)
             .mapError { error -> Error in
                 ApodError.network(description: "Something went wrong")
