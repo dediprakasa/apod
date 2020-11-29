@@ -11,35 +11,24 @@ import Combine
 
 struct Home: View {
 
-    var remote = RemoteDataSource(apodFetcher: ApodFetcher())
+    @ObservedObject var presenter: HomePresenter
+//    var remote = RemoteDataSource()
     @State private var disposables = Set<AnyCancellable>()
+    @State var teks = ""
     
     
     var body: some View {
-        Text("Hello")
+        Text("Halo")
             .onAppear(perform: {
-                print("=====")
-                DispatchQueue.main.async {
-                    self.remote.getRangedApods(from: "2020-10-01", to: "2020-11-10")
-                        .print("1111")
-                        .sink { _ in
-                            
-                        } receiveValue: { response in
-                            print(response, "!!!!")
-                        }
-                        .store(in: &disposables)
-
-                }
-                
-                    
-
+                print("Opened")
             })
     }
 }
 
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Home().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    @ObservedObject var presenter: HomePresenter
+//    static var previews: some View {
+//        Home(presenter: presenter).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//    }
+//}

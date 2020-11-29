@@ -12,20 +12,14 @@ protocol RemoteDataSourceProtocol {
     func getRangedApods(from startDate: String, to endDate: String) -> AnyPublisher<[ApodResponse], Error>
 }
 
-class RemoteDataSource {
+class RemoteDataSource: NSObject {
     
     private let session = URLSession(configuration: .default)
-    private var apodFetcher: ApodFetcherProtocol
-    var startDate: String? = ""
-    var endDate: String? = ""
+    private var apodFetcher: ApodFetcherProtocol = ApodFetcher()
     
-    init(apodFetcher: ApodFetcherProtocol) {
-        self.apodFetcher = apodFetcher
-    }
+    private override init() { }
     
-    static let sharedInstance: (ApodFetcherProtocol) -> RemoteDataSource = { fetcher in
-        return RemoteDataSource(apodFetcher: fetcher)
-    }
+    static let sharedInstance: RemoteDataSource = RemoteDataSource()
 }
 
 extension RemoteDataSource: RemoteDataSourceProtocol {
