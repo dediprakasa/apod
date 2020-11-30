@@ -10,18 +10,11 @@ import SwiftUI
 @main
 struct ApodApp: App {
     let persistenceController = PersistenceController.shared
-
-    let remoteDataSource: RemoteDataSource = RemoteDataSource.sharedInstance
-    private func getApodRepository() -> ApodRepositoryProtocol { ApodRepository.sharedInstance(remoteDataSource)
-    }
-    private func getHomeUseCase() -> HomeUseCase {
-        return HomeInteractor(repository: getApodRepository())
-    }
-    private func getHomePresenter() -> HomePresenter { return HomePresenter(homeUseCase: getHomeUseCase())
-    }
+    let appContainer = AppContainer()
+    
     var body: some Scene {
         WindowGroup {
-            Home(presenter: getHomePresenter())
+            Home(presenter: appContainer.homePresenter)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

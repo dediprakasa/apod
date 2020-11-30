@@ -25,6 +25,7 @@
 		4B9A13C025601A7800E1A8DF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A13BF25601A7800E1A8DF /* Persistence.swift */; };
 		4B9A13C325601A7800E1A8DF /* Apod.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A13C125601A7800E1A8DF /* Apod.xcdatamodeld */; };
 		4B9A13CF25601FE500E1A8DF /* Apod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A13CE25601FE500E1A8DF /* Apod.swift */; };
+		4BA445822575361900688AA8 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA445812575361900688AA8 /* AppContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		4B9A13C225601A7800E1A8DF /* Apod.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Apod.xcdatamodel; sourceTree = "<group>"; };
 		4B9A13C425601A7800E1A8DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B9A13CE25601FE500E1A8DF /* Apod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apod.swift; sourceTree = "<group>"; };
+		4BA445812575361900688AA8 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				4B9A13B625601A7500E1A8DF /* ApodApp.swift */,
+				4BA445812575361900688AA8 /* AppContainer.swift */,
 				4B9A13B825601A7500E1A8DF /* Home.swift */,
 				4B33B1CE256BF34A005A8F31 /* Module */,
 				4B33B1CC256BF333005A8F31 /* Core */,
@@ -286,6 +289,7 @@
 			files = (
 				4B33B1DE256BF961005A8F31 /* ApodsResponse.swift in Sources */,
 				4B0F79D9256DBC4000A58E07 /* RemoteDataSource.swift in Sources */,
+				4BA445822575361900688AA8 /* AppContainer.swift in Sources */,
 				4B0F79DD256DC35F00A58E07 /* ApodRepository.swift in Sources */,
 				4B27EE90256D5639006E2D5A /* ApodFetcher.swift in Sources */,
 				4B9A13C025601A7800E1A8DF /* Persistence.swift in Sources */,
