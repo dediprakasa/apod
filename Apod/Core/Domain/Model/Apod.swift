@@ -11,7 +11,7 @@ struct Apod: Equatable, Identifiable {
     var id: String {
         return apodSite
     }
-    
+
     let apodSite: String
     let copyright: String
     let date: String

@@ -9,20 +9,19 @@ import SwiftUI
 import Combine
 
 class HomePresenter: ObservableObject {
-    
+
     private var cancellables: Set<AnyCancellable> = []
     private let router = HomeRouter()
     private let homeUseCase: HomeUseCase
-    
+
     @Published var apods = [Apod]()
     @Published var errorMessage = ""
     @Published var loadingState = false
-    
-    
+
     init(homeUseCase: HomeUseCase) {
         self.homeUseCase = homeUseCase
     }
-    
+
     func getRangedApods() {
         loadingState = true
         homeUseCase.getWeeklyApod(from: "2020-10-10", to: "2020-10-17")
@@ -38,7 +37,7 @@ class HomePresenter: ObservableObject {
                 self.apods = apods
             }.store(in: &cancellables)
     }
-    
+
     func linkBuilder<Content: View>(for apod: Apod, @ViewBuilder content: () -> Content) -> some View {
         NavigationLink(
             destination: router.makeDetailView(for: apod),
@@ -46,7 +45,6 @@ class HomePresenter: ObservableObject {
                 /*@START_MENU_TOKEN@*/Text("Navigate")/*@END_MENU_TOKEN@*/
             })
     }
-    
 }
 //
 //struct HomePresenter_Previews: PreviewProvider {

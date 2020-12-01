@@ -20,7 +20,7 @@ struct ApodResponse: Decodable {
     let mediaType: String?
     let title: String?
     let url: String?
-    
+
     private enum CodingKeys: String, CodingKey {
         case apodSite = "apod_site"
         case copyright

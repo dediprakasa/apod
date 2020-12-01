@@ -12,16 +12,15 @@ protocol DetailUseCase {
 }
 
 class DetailInteractor: DetailUseCase {
+
     private let apod: Apod
-    
+
     init(apod: Apod) {
         self.apod = apod
     }
-    
+
     func getApod() -> Apod {
         return apod
 //        return Apod(apodSite: "", copyright: "", date: "", itemDescription: "", hdurl: "", mediaType: "", title: "", url: "")
     }
-    
-    
 }

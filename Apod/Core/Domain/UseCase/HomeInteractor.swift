@@ -13,16 +13,14 @@ protocol HomeUseCase {
 }
 
 class HomeInteractor: HomeUseCase {
-    
+
     private let repository: ApodRepositoryProtocol
-    
+
     required init(repository: ApodRepositoryProtocol) {
         self.repository = repository
     }
-    
-    func getWeeklyApod(from startDate: String, to endDate: String) -> AnyPublisher<[Apod], Error>{
+
+    func getWeeklyApod(from startDate: String, to endDate: String) -> AnyPublisher<[Apod], Error> {
         return repository.getRangedApods(from: startDate, to: endDate)
     }
-    
-    
 }

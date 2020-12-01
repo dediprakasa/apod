@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct DetailView: View {
-    
+
     @ObservedObject var presenter: DetailPresenter
-    
+
     var body: some View {
         Text("Detail, World!")
     }

@@ -13,17 +13,16 @@ protocol ApodRepositoryProtocol {
 }
 
 class ApodRepository: ApodRepositoryProtocol {
- 
-    
+
     let remote: RemoteDataSourceProtocol
     private init(remote: RemoteDataSourceProtocol) {
         self.remote = remote
     }
-    
+
     static let sharedInstance: (RemoteDataSource) -> ApodRepository = { remoteRepo in
         return ApodRepository(remote: remoteRepo)
     }
-    
+
     func getRangedApods(from startDate: String, to endDate: String) -> AnyPublisher<[Apod], Error> {
         return self.remote.getRangedApods(from: startDate, to: endDate)
             .map { ApodMapper.mapToDomains(from: $0 )}

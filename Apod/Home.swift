@@ -15,8 +15,7 @@ struct Home: View {
 //    var remote = RemoteDataSource()
     @State private var disposables = Set<AnyCancellable>()
     @State var teks = ""
-    
-    
+
     var body: some View {
         Text("Halo")
             .onAppear(perform: {
