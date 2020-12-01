@@ -8,10 +8,8 @@
 import Foundation
 
 struct Apod: Equatable, Identifiable {
-    var id: String {
-        return apodSite
-    }
-
+    var id: UUID
+    
     let apodSite: String
     let copyright: String
     let date: String

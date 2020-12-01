@@ -13,6 +13,7 @@ final class ApodMapper {
 
       return apodResponse.map { apod in
         return Apod(
+            id: UUID(),
             apodSite: apod.apodSite ?? "",
             copyright: apod.copyright ?? "",
             date: apod.date ?? "",
