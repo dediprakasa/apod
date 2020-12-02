@@ -18,26 +18,22 @@ struct Home: View {
 
     var body: some View {
         ZStack {
-            Image("image_sample")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .blur(radius: 2)
-                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 10)
-                .frame(width: 200, height: 200, alignment: .center)
-            
-            Text("")
-                .frame(width: 200, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .background(Color.clear)
-                .blur(radius: /*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
-                .clipShape(Rectangle())
-                .onAppear(perform: {
-                    print("Opened")
-                })
-            
-            Text("aasaa")
+            if self.presenter.loadingState {
+                VStack {
+                    Text("Loading boss")
+                }
+            } else {
+                List {
+                    ForEach(presenter.apods, id: \.id) { apod in
+                        ApodCell(apod: apod)
+                            .frame(height: 280)
+                    }
+                }
+            }
         }
-            
-        
+        .onAppear(perform: {
+            self.presenter.getRangedApods()
+        })
     }
 }
 

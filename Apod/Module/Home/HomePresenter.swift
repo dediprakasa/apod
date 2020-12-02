@@ -14,7 +14,7 @@ class HomePresenter: ObservableObject {
     private let router = HomeRouter()
     private let homeUseCase: HomeUseCase
 
-    @Published var apods = [Apod]()
+    @Published var apods: [Apod] = []
     @Published var errorMessage = ""
     @Published var loadingState = false
 
@@ -30,10 +30,12 @@ class HomePresenter: ObservableObject {
                 switch promise {
                 case .failure:
                     self.errorMessage = String(describing: promise)
+                    print(self.errorMessage)
                 case .finished:
                     self.loadingState = false
                 }
             } receiveValue: { apods in
+                print(apods)
                 self.apods = apods
             }.store(in: &cancellables)
     }
