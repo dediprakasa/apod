@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,7 @@
 		4B33B1D4256BF3C9005A8F31 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33B1D3256BF3C9005A8F31 /* HomeInteractor.swift */; };
 		4B33B1DE256BF961005A8F31 /* ApodsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33B1DD256BF961005A8F31 /* ApodsResponse.swift */; };
 		4B33B1E3256BFB7E005A8F31 /* ApodMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33B1E2256BFB7E005A8F31 /* ApodMapper.swift */; };
+		4B5C6902257851D300106DFC /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4B5C6901257851D300106DFC /* SDWebImageSwiftUI */; };
 		4B9A13B725601A7500E1A8DF /* ApodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A13B625601A7500E1A8DF /* ApodApp.swift */; };
 		4B9A13B925601A7500E1A8DF /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A13B825601A7500E1A8DF /* Home.swift */; };
 		4B9A13BB25601A7800E1A8DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B9A13BA25601A7800E1A8DF /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B5C6902257851D300106DFC /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,8 +132,8 @@
 		4B33B1D2256BF39F005A8F31 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				4B33B1D3256BF3C9005A8F31 /* HomeInteractor.swift */,
 				4B18093A25739D6E005BEE75 /* DetailInteractor.swift */,
+				4B33B1D3256BF3C9005A8F31 /* HomeInteractor.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -246,6 +248,9 @@
 			dependencies = (
 			);
 			name = Apod;
+			packageProductDependencies = (
+				4B5C6901257851D300106DFC /* SDWebImageSwiftUI */,
+			);
 			productName = Apod;
 			productReference = 4B9A13B325601A7500E1A8DF /* Apod.app */;
 			productType = "com.apple.product-type.application";
@@ -273,6 +278,9 @@
 				Base,
 			);
 			mainGroup = 4B9A13AA25601A7500E1A8DF;
+			packageReferences = (
+				4B5C6900257851D300106DFC /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 4B9A13B425601A7500E1A8DF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -525,6 +533,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4B5C6900257851D300106DFC /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4B5C6901257851D300106DFC /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B5C6900257851D300106DFC /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		4B9A13C125601A7800E1A8DF /* Apod.xcdatamodeld */ = {

@@ -7,18 +7,24 @@
 
 import SwiftUI
 import Combine
+import SDWebImageSwiftUI
 
 struct ApodCell: View {
-    
+
     var apod: Apod
 
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .bottomLeading) {
-                Image("image_sample")
+                WebImage(url: URL(string: apod.hdurl))
                     .resizable()
+                    .placeholder(Image("placeholder"))
+                    .indicator(.activity)
+                    .transition(.fade(duration: 0.5))
                     .aspectRatio(contentMode: .fill)
                     .frame(width: geometry.size.width, height: geometry.size.height)
+                
+
 
                 ZStack {
                     BlurView()
