@@ -24,6 +24,12 @@ struct AppView: View {
                     Image(systemName: "heart.fill")
                     Text("Favorite")
                 }
+
+            Search()
+                .tabItem {
+                    Image(systemName: "search")
+                    Text("Search")
+                }
         }
     }
 }
