@@ -41,7 +41,7 @@ struct Home_Previews: PreviewProvider {
     @ObservedObject var presenter: HomePresenter
 //    var remote = RemoteDataSource()
     @State private var disposables = Set<AnyCancellable>()
-    @State var teks = ""
+
     static var previews: some View {
         Home(presenter: AppContainer().homePresenter)
     }

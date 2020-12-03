@@ -10,11 +10,10 @@ import SwiftUI
 @main
 struct ApodApp: App {
     let persistenceController = PersistenceController.shared
-    let appContainer = AppContainer()
 
     var body: some Scene {
         WindowGroup {
-            Home(presenter: appContainer.homePresenter)
+            AppView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
