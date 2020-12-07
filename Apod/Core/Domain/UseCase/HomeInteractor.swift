@@ -21,6 +21,6 @@ class HomeInteractor: HomeUseCase {
     }
 
     func getWeeklyApod(from startDate: String, to endDate: String) -> AnyPublisher<[Apod], Error> {
-        return repository.getRangedApods(from: startDate, to: endDate)
+        return repository.getWeeklyApods(from: startDate, to: endDate)
     }
 }

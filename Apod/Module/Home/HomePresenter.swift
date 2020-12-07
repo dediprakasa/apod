@@ -35,8 +35,9 @@ class HomePresenter: ObservableObject {
                     self.loadingState = false
                 }
             } receiveValue: { apods in
-                print(apods)
-                self.apods = apods
+                DispatchQueue.main.async {
+                    self.apods = apods
+                }
             }.store(in: &cancellables)
     }
 

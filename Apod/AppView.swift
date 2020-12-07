@@ -27,7 +27,7 @@ struct AppView: View {
 
             Search()
                 .tabItem {
-                    Image(systemName: "search")
+                    Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
         }

@@ -25,8 +25,14 @@ struct Home: View {
             } else {
                 List {
                     ForEach(presenter.apods, id: \.id) { apod in
-                        ApodCell(apod: apod)
-                            .frame(height: 280)
+                        VStack {
+                            ApodCell(apod: apod)
+                                .frame(height: 280)
+                            Text(apod.date)
+                            Text(apod.id.uuidString)
+                            
+                        }
+                        
                     }
                 }
             }
