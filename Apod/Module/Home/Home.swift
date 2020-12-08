@@ -16,6 +16,13 @@ struct Home: View {
     @State private var disposables = Set<AnyCancellable>()
     @State var teks = ""
 
+    @FetchRequest(entity: ApodEntity.entity(), sortDescriptors: [])
+    var tes: FetchedResults<ApodEntity> {
+        didSet {
+            print(tes.count)
+        }
+    }
+
     var body: some View {
         ZStack {
             if self.presenter.loadingState {
@@ -23,16 +30,17 @@ struct Home: View {
                     Text("Loading boss")
                 }
             } else {
-                List {
-                    ForEach(presenter.apods, id: \.id) { apod in
-                        VStack {
-                            ApodCell(apod: apod)
-                                .frame(height: 280)
-                            Text(apod.date)
-                            Text(apod.id.uuidString)
-                            
+                VStack {
+                    Text("Pictures of The Week")
+                    List {
+                        ForEach(presenter.apods, id: \.id) { apod in
+                            VStack {
+                                ApodCell(apod: apod)
+                                    .frame(height: 280)
+                                Text(apod.date)
+                                Text(apod.id.uuidString)
+                            }
                         }
-                        
                     }
                 }
             }

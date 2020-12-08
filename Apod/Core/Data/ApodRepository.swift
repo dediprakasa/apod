@@ -26,23 +26,19 @@ class ApodRepository: ApodRepositoryProtocol {
     }
 
     func getWeeklyApods(from startDate: String, to endDate: String) -> AnyPublisher<[Apod], Error> {
-        
+
         return self.locale.getApods()
             .flatMap { result -> AnyPublisher<[Apod], Error> in
                 if result.isEmpty {
                     return self.remote.getRangedApods(from: startDate, to: endDate)
                         .map { ApodMapper.mapApodResponsesToEntities(from: $0 )}
                         .flatMap { self.locale.addWeeklyApods(from: $0) }
-                        .filter { $0 }
-                        .flatMap { _ in self.locale.getApods()
-                            .map { ApodMapper.mapApodEntitiesToDomains(from: $0 )}
-                        }
+                        .map { ApodMapper.mapApodEntitiesToDomains(from: $0 )}
                         .eraseToAnyPublisher()
                 } else {
                     return self.locale.getApods()
                         .map { ApodMapper.mapApodEntitiesToDomains(from: $0 )}
                         .eraseToAnyPublisher()
-                    
                 }
             }
             .eraseToAnyPublisher()

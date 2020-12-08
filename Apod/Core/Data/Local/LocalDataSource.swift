@@ -11,41 +11,56 @@ import CoreData
 
 protocol LocalDataSourceProtocol {
 
-    func addWeeklyApods(from apods: [ApodEntity]) -> AnyPublisher<Bool, Error>
+    func addWeeklyApods(from apods: [ApodEntity]) -> AnyPublisher<[ApodEntity], Error>
     func getApods() -> AnyPublisher<[ApodEntity], Error>
 }
 
 class LocalDataSource: NSObject {
     static let sharedInstance = LocalDataSource()
     private override init() { }
+    let container = PersistenceController.shared.container
     let managedObjectContext = PersistenceController.shared.container.viewContext
 }
 
 extension LocalDataSource: LocalDataSourceProtocol {
-    func addWeeklyApods(from apods: [ApodEntity]) -> AnyPublisher<Bool, Error> {
-        let apodEntity = ApodEntity(context: self.managedObjectContext)
-        return Future<Bool, Error> { completion in
-            self.managedObjectContext.perform {
-                for apod in apods {
+    private func batchInsertRequest(with apods: [ApodEntity]) -> NSBatchInsertRequest {
+        var index = 0
+        let total = apods.count
+        let batchInsert = NSBatchInsertRequest(entity: ApodEntity.entity()) { (managedObject: NSManagedObject) -> Bool in
+            guard index < total else { return true }
+            if let apod = managedObject as? ApodEntity {
+                let data = apods[index]
+                apod.id = data.id
+                apod.apodSite = data.apodSite
+                apod.copyright = data.copyright
+                apod.date = data.date
+                apod.itemDescription = data.itemDescription
+                apod.hdurl = data.hdurl
+                apod.mediaType = data.mediaType
+                apod.title = data.title
+                apod.url = data.url
+            }
 
-                        apodEntity.id = apod.id
-                        apodEntity.apodSite = apod.apodSite
-                        apodEntity.copyright = apod.copyright
-                        apodEntity.date = apod.date
-                        apodEntity.itemDescription = apod.itemDescription
-                        apodEntity.hdurl = apod.hdurl
-                        apodEntity.mediaType = apod.mediaType
-                        apodEntity.title = apod.title
-                        apodEntity.url = apod.url
+            index += 1
+            return false
+        }
+        return batchInsert
+    }
 
-                        do {
-                            try self.managedObjectContext.save()
-                        } catch {
-                            completion(.failure(error))
-                        }
+    func addWeeklyApods(from apods: [ApodEntity]) -> AnyPublisher<[ApodEntity], Error> {
+
+        return Future<[ApodEntity], Error> { completion in
+
+            guard !apods.isEmpty else { return }
+
+            self.container.performBackgroundTask { context in
+                let batchInsert = self.batchInsertRequest(with: apods)
+                do {
+                    try context.execute(batchInsert)
+                    completion(.success(apods))
+                } catch {
+                    completion(.failure(error))
                 }
-                print("number of saved: \(apods.count)")
-                completion(.success(true))
             }
         }
         .eraseToAnyPublisher()
@@ -53,12 +68,12 @@ extension LocalDataSource: LocalDataSourceProtocol {
 
     func getApods() -> AnyPublisher<[ApodEntity], Error> {
         let fetchRequest = NSFetchRequest<ApodEntity>(entityName: "ApodEntity")
-        return Future<[ApodEntity], Error> { completion in
+        return Future<[ApodEntity], Error> { [self] completion in
             var apodEntities = [ApodEntity]()
-            self.managedObjectContext.perform {
+            let moc = container.viewContext
+            moc.perform {
                 do {
-                    apodEntities = try self.managedObjectContext.fetch(fetchRequest)
-                    print("number of fetched: \(apodEntities.count)")
+                    apodEntities = try moc.fetch(fetchRequest)
                     completion(.success(apodEntities))
                 } catch let error as NSError {
                   print("Could not fetch. \(error), \(error.userInfo)")
