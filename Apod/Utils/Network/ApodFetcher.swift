@@ -30,7 +30,8 @@ class ApodFetcher: ApodFetcherProtocol {
 
         components.queryItems = [
             URLQueryItem(name: "start_date", value: startDate),
-            URLQueryItem(name: "end_date", value: endDate)
+            URLQueryItem(name: "end_date", value: endDate),
+            URLQueryItem(name: "thumbs", value: "true")
         ]
 
         return components
