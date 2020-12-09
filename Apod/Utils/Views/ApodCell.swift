@@ -23,12 +23,9 @@ struct ApodCell: View {
                     .transition(.fade(duration: 0.5))
                     .aspectRatio(contentMode: .fill)
                     .frame(width: geometry.size.width, height: geometry.size.height)
-                
-
+                    .overlay(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .center, endPoint: .bottom))
 
                 ZStack {
-                    BlurView()
-                        .frame(width: geometry.size.width, height: 54)
 
                     Text(self.apod.title)
                         .font(.system(size: 20))
@@ -37,6 +34,8 @@ struct ApodCell: View {
                         .foregroundColor(.white)
                         .padding(EdgeInsets(top: 2, leading: 16, bottom: 4, trailing: 16))
                         .frame(width: geometry.size.width, alignment: .leading)
+                        
+                    
                 }
 
             }
