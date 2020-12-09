@@ -38,7 +38,6 @@ struct Home: View {
                                 ApodCell(apod: apod)
                                     .frame(height: 280)
                                 Text(apod.date)
-                                Text(apod.id.uuidString)
                             }
                         }
                     }

@@ -17,6 +17,22 @@ class HomePresenter: ObservableObject {
     @Published var apods: [Apod] = []
     @Published var errorMessage = ""
     @Published var loadingState = false
+    
+    private var startDate: String {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        return formatter.string(from: date)
+    }
+    
+    private var endDate: String {
+        let date = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date()) ?? Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        return formatter.string(from: date)
+    }
 
     init(homeUseCase: HomeUseCase) {
         self.homeUseCase = homeUseCase
@@ -24,7 +40,7 @@ class HomePresenter: ObservableObject {
 
     func getRangedApods() {
         loadingState = true
-        homeUseCase.getWeeklyApod(from: "2020-10-10", to: "2020-10-17")
+        homeUseCase.getWeeklyApod(from: startDate, to: endDate)
             .receive(on: RunLoop.main)
             .sink { promise in
                 switch promise {
