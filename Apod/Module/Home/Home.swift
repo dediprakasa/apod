@@ -12,7 +12,6 @@ import Combine
 struct Home: View {
 
     @ObservedObject var presenter: HomePresenter
-//    var remote = RemoteDataSource()
     @State private var disposables = Set<AnyCancellable>()
     @State var teks = ""
 
@@ -30,17 +29,16 @@ struct Home: View {
                     Text("Loading boss")
                 }
             } else {
-                VStack {
-                    Text("Pictures of The Week")
+                NavigationView {
                     List {
                         ForEach(presenter.apods, id: \.id) { apod in
-                            VStack {
+                            self.presenter.linkBuilder(for: apod) {
                                 ApodCell(apod: apod)
                                     .frame(height: 280)
-                                Text(apod.date)
                             }
                         }
                     }
+                    .navigationBarTitle("Pictures of The Week", displayMode: .automatic)
                 }
             }
         }

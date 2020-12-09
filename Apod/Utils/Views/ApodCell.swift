@@ -19,7 +19,7 @@ struct ApodCell: View {
                 WebImage(url: URL(string: apod.hdurl))
                     .resizable()
                     .placeholder(Image("placeholder"))
-                    .indicator(.activity)
+                    .indicator(Indicator.progress)
                     .transition(.fade(duration: 0.5))
                     .aspectRatio(contentMode: .fill)
                     .frame(width: geometry.size.width, height: geometry.size.height)
@@ -34,47 +34,11 @@ struct ApodCell: View {
                         .foregroundColor(.white)
                         .padding(EdgeInsets(top: 2, leading: 16, bottom: 4, trailing: 16))
                         .frame(width: geometry.size.width, alignment: .leading)
-                        
-                    
                 }
-
             }
             .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
         }
     }
-}
-
-//struct ApodCell_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ApodCell(apod: )
-//            .frame(height: 200)
-//    }
-//}
-
-struct BlurView: UIViewRepresentable {
-
-    func makeUIView(context: UIViewRepresentableContext<BlurView>) -> UIView {
-
-        let view = UIView()
-        view.backgroundColor = .clear
-
-        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-        let blurView = UIVisualEffectView(effect: blurEffect)
-
-        blurView.translatesAutoresizingMaskIntoConstraints = false
-        view.insertSubview(blurView, at: 0)
-
-        NSLayoutConstraint.activate([
-            blurView.heightAnchor.constraint(equalTo: view.heightAnchor),
-            blurView.widthAnchor.constraint(equalTo: view.widthAnchor)
-        ])
-        return view
-    }
-
-    func updateUIView(
-      _ uiView: UIView,
-      context: UIViewRepresentableContext<BlurView>
-    ) {}
 }
 
 struct ApodCell_Previews: PreviewProvider {

@@ -13,8 +13,10 @@ struct ApodApp: App {
 
     var body: some Scene {
         WindowGroup {
-            AppView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//            NavigationView {
+                AppView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//            }
         }
     }
 }

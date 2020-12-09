@@ -17,20 +17,20 @@ class HomePresenter: ObservableObject {
     @Published var apods: [Apod] = []
     @Published var errorMessage = ""
     @Published var loadingState = false
-    
+
     private var startDate: String {
+        let date = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date()) ?? Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        return formatter.string(from: date)
+    }
+
+    private var endDate: String {
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        
-        return formatter.string(from: date)
-    }
-    
-    private var endDate: String {
-        let date = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date()) ?? Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        
+
         return formatter.string(from: date)
     }
 
@@ -59,15 +59,8 @@ class HomePresenter: ObservableObject {
 
     func linkBuilder<Content: View>(for apod: Apod, @ViewBuilder content: () -> Content) -> some View {
         NavigationLink(
-            destination: router.makeDetailView(for: apod),
-            label: {
-                /*@START_MENU_TOKEN@*/Text("Navigate")/*@END_MENU_TOKEN@*/
-            })
+            destination: router.makeDetailView(for: apod)) {
+            content()
+        }
     }
 }
-//
-//struct HomePresenter_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Text("Hello")
-//    }
-//}
