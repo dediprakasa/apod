@@ -10,6 +10,7 @@ import Combine
 
 protocol ApodRepositoryProtocol {
     func getWeeklyApods(from startDate: String, to endDate: String) -> AnyPublisher<[Apod], Error>
+    func getApod(onDate date: String) -> AnyPublisher<[Apod], Error>
 }
 
 class ApodRepository: ApodRepositoryProtocol {
@@ -41,6 +42,13 @@ class ApodRepository: ApodRepositoryProtocol {
                         .eraseToAnyPublisher()
                 }
             }
+            .eraseToAnyPublisher()
+    }
+
+    func getApod(onDate date: String) -> AnyPublisher<[Apod], Error> {
+
+        return self.remote.getApod(onDate: date)
+            .map { ApodMapper.mapApodResponsesToDomains(from: [$0])}
             .eraseToAnyPublisher()
     }
 }

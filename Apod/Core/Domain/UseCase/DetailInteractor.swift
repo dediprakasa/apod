@@ -6,21 +6,21 @@
 //
 
 import Foundation
+import Combine
 
 protocol DetailUseCase {
-    func getApod() -> Apod
+    func getApod(onDate date: String) -> AnyPublisher<[Apod], Error>
 }
 
 class DetailInteractor: DetailUseCase {
 
-    private let apod: Apod
+    private let repository: ApodRepositoryProtocol
 
-    init(apod: Apod) {
-        self.apod = apod
+    init(repository: ApodRepository) {
+        self.repository = repository
     }
 
-    func getApod() -> Apod {
-        return apod
-//        return Apod(apodSite: "", copyright: "", date: "", itemDescription: "", hdurl: "", mediaType: "", title: "", url: "")
+    func getApod(onDate date: String) -> AnyPublisher<[Apod], Error> {
+        return repository.getApod(onDate: date)
     }
 }

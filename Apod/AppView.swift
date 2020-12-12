@@ -9,11 +9,9 @@ import SwiftUI
 
 struct AppView: View {
 
-    let appContainer = AppContainer()
-
     var body: some View {
         TabView {
-            Home(presenter: appContainer.homePresenter)
+            Home(presenter: AppContainer().homePresenter)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")

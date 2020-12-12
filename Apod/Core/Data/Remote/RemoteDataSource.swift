@@ -10,6 +10,7 @@ import Combine
 
 protocol RemoteDataSourceProtocol {
     func getRangedApods(from startDate: String, to endDate: String) -> AnyPublisher<[ApodResponse], Error>
+    func getApod(onDate date: String) -> AnyPublisher<ApodResponse, Error>
 }
 
 class RemoteDataSource: NSObject {
@@ -39,6 +40,23 @@ extension RemoteDataSource: RemoteDataSourceProtocol {
             .map { $0.data }
             .decode(type: [ApodResponse].self, decoder: decoder)
             .eraseToAnyPublisher()
+    }
 
+    func getApod(onDate date: String) -> AnyPublisher<ApodResponse, Error> {
+        let components = apodFetcher.createSingleApodComponents(onDate: date)
+        guard let url = components.url else {
+            let error = ApodError.network(description: "URL not found")
+            return Fail(error: error).eraseToAnyPublisher()
+        }
+
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .secondsSince1970
+        return session.dataTaskPublisher(for: url)
+            .mapError { _ -> Error in
+                ApodError.network(description: "Something went wrong")
+            }
+            .map(\.data)
+            .decode(type: ApodResponse.self, decoder: decoder)
+            .eraseToAnyPublisher()
     }
 }
