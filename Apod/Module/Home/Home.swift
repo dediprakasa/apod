@@ -13,7 +13,6 @@ struct Home: View {
 
     @ObservedObject var presenter: HomePresenter
     @State private var disposables = Set<AnyCancellable>()
-    @State var teks = ""
 
     @FetchRequest(entity: ApodEntity.entity(), sortDescriptors: [])
     var tes: FetchedResults<ApodEntity> {
@@ -45,15 +44,5 @@ struct Home: View {
         .onAppear(perform: {
             self.presenter.getRangedApods()
         })
-    }
-}
-
-struct Home_Previews: PreviewProvider {
-    @ObservedObject var presenter: HomePresenter
-//    var remote = RemoteDataSource()
-    @State private var disposables = Set<AnyCancellable>()
-
-    static var previews: some View {
-        Home(presenter: AppContainer().homePresenter)
     }
 }

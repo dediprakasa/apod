@@ -11,7 +11,7 @@ class HomeRouter {
 
     func makeDetailView(for apod: Apod) -> some View {
         let presenter = AppContainer().detailPresenter
-        presenter.setDate(date: apod.date)
+        presenter.setApod(apod: apod)
         return DetailView(presenter: presenter)
     }
 }
