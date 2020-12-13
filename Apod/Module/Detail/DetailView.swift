@@ -38,5 +38,9 @@ struct DetailView: View {
         .onAppear(perform: {
             self.presenter.getApod()
         })
+        .navigationBarTitle(self.presenter.apod.date, displayMode: .inline)
+        .navigationBarItems(trailing:
+            Image(systemName: "bookmark")
+        )
     }
 }
