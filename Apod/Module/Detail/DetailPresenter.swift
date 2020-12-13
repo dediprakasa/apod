@@ -13,13 +13,14 @@ class DetailPresenter: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     private let detailUseCase: DetailUseCase
 
-    @Published var apod: Apod?
+    @Published var apod: Apod = Apod(id: UUID(), apodSite: "", copyright: "", date: "", itemDescription: "No Descrption", hdurl: "", mediaType: "", title: "", url: "")
     @Published var errorMessage = ""
     @Published var loadingState = false
     var date: String?
 
     init(detailUseCase: DetailUseCase) {
         self.detailUseCase = detailUseCase
+        getApod()
     }
 
     func setDate(date: String) {
@@ -27,7 +28,6 @@ class DetailPresenter: ObservableObject {
     }
 
     func getApod() {
-        print(apod)
         detailUseCase.getApod(onDate: date ?? "")
             .receive(on: RunLoop.main)
             .sink { promise in
