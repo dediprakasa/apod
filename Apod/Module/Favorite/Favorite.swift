@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct Favorite: View {
+
+    @FetchRequest(entity: FavoriteEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \FavoriteEntity.date, ascending: false)])
+    var favs: FetchedResults<FavoriteEntity>
+
     var body: some View {
-        Text("Favorit")
+        VStack {
+            ForEach(favs) { fav in
+                Text(fav.title ?? "aa" as String)
+            }
+        }
     }
 }
 
