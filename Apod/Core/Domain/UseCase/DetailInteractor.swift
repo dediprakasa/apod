@@ -10,6 +10,7 @@ import Combine
 
 protocol DetailUseCase {
     func getApod(onDate date: String) -> AnyPublisher<[Apod], Error>
+    func updateFavorite(apod: Apod) -> AnyPublisher<Bool, Error>
 }
 
 class DetailInteractor: DetailUseCase {
@@ -22,5 +23,9 @@ class DetailInteractor: DetailUseCase {
 
     func getApod(onDate date: String) -> AnyPublisher<[Apod], Error> {
         return repository.getApod(onDate: date)
+    }
+
+    func updateFavorite(apod: Apod) -> AnyPublisher<Bool, Error> {
+        return repository.updateFavorite(apod: apod)
     }
 }

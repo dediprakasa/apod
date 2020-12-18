@@ -33,4 +33,15 @@ class DetailPresenter: ObservableObject {
     func setApod(apod: Apod) {
         self.apod = apod
     }
+    
+    func updateFavorite() {
+        detailUseCase.updateFavorite(apod: apod)
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { _ in
+                
+            }, receiveValue: { result in
+                print(result, "<<<<")
+            })
+            .store(in: &cancellables)
+    }
 }

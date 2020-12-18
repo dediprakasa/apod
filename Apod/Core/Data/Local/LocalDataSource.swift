@@ -68,7 +68,7 @@ extension LocalDataSource: LocalDataSourceProtocol {
     }
 
     func getApods() -> AnyPublisher<[WeeklyApods], Error> {
-        let fetchRequest = NSFetchRequest<WeeklyApods>(entityName: "ApodEntity")
+        let fetchRequest = NSFetchRequest<WeeklyApods>(entityName: "WeeklyApods")
         return Future<[WeeklyApods], Error> { [self] completion in
             var apodEntities = [WeeklyApods]()
             let moc = container.viewContext
@@ -87,7 +87,7 @@ extension LocalDataSource: LocalDataSourceProtocol {
 
     func updateFavorite(apod: Apod) -> AnyPublisher<Bool, Error> {
         let fetchRequest = NSFetchRequest<FavoriteEntity>(entityName: "FavoriteEntity")
-        fetchRequest.predicate = NSPredicate(format: "apod.date == %@", apod.date)
+        fetchRequest.predicate = NSPredicate(format: "date == %@", apod.date)
         return Future<Bool, Error> { [self] completion in
             var favorites = [FavoriteEntity]()
             let moc = container.viewContext

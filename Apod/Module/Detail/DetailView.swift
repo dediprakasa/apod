@@ -38,6 +38,7 @@ struct DetailView: View {
         .navigationBarTitle(self.presenter.apod.date, displayMode: .inline)
         .navigationBarItems(trailing:
             Image(systemName: "bookmark")
+            .onTapGesture { self.presenter.updateFavorite()}
         )
     }
 }
