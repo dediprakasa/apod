@@ -11,8 +11,9 @@ import CoreData
 
 protocol LocalDataSourceProtocol {
 
-    func addWeeklyApods(from apods: [ApodEntity]) -> AnyPublisher<[ApodEntity], Error>
-    func getApods() -> AnyPublisher<[ApodEntity], Error>
+    func addWeeklyApods(from apods: [WeeklyApods]) -> AnyPublisher<[WeeklyApods], Error>
+    func getApods() -> AnyPublisher<[WeeklyApods], Error>
+    func updateFavorite(apod: Apod) -> AnyPublisher<Bool, Error>
 }
 
 class LocalDataSource: NSObject {
@@ -23,12 +24,12 @@ class LocalDataSource: NSObject {
 }
 
 extension LocalDataSource: LocalDataSourceProtocol {
-    private func batchInsertRequest(with apods: [ApodEntity]) -> NSBatchInsertRequest {
+    private func batchInsertRequest(with apods: [WeeklyApods]) -> NSBatchInsertRequest {
         var index = 0
         let total = apods.count
-        let batchInsert = NSBatchInsertRequest(entity: ApodEntity.entity()) { (managedObject: NSManagedObject) -> Bool in
+        let batchInsert = NSBatchInsertRequest(entity: WeeklyApods.entity()) { (managedObject: NSManagedObject) -> Bool in
             guard index < total else { return true }
-            if let apod = managedObject as? ApodEntity {
+            if let apod = managedObject as? WeeklyApods {
                 let data = apods[index]
                 apod.id = data.id
                 apod.apodSite = data.apodSite
@@ -47,9 +48,9 @@ extension LocalDataSource: LocalDataSourceProtocol {
         return batchInsert
     }
 
-    func addWeeklyApods(from apods: [ApodEntity]) -> AnyPublisher<[ApodEntity], Error> {
+    func addWeeklyApods(from apods: [WeeklyApods]) -> AnyPublisher<[WeeklyApods], Error> {
 
-        return Future<[ApodEntity], Error> { completion in
+        return Future<[WeeklyApods], Error> { completion in
 
             guard !apods.isEmpty else { return }
 
@@ -66,10 +67,10 @@ extension LocalDataSource: LocalDataSourceProtocol {
         .eraseToAnyPublisher()
     }
 
-    func getApods() -> AnyPublisher<[ApodEntity], Error> {
-        let fetchRequest = NSFetchRequest<ApodEntity>(entityName: "ApodEntity")
-        return Future<[ApodEntity], Error> { [self] completion in
-            var apodEntities = [ApodEntity]()
+    func getApods() -> AnyPublisher<[WeeklyApods], Error> {
+        let fetchRequest = NSFetchRequest<WeeklyApods>(entityName: "ApodEntity")
+        return Future<[WeeklyApods], Error> { [self] completion in
+            var apodEntities = [WeeklyApods]()
             let moc = container.viewContext
             moc.perform {
                 do {
@@ -83,8 +84,46 @@ extension LocalDataSource: LocalDataSourceProtocol {
         }
         .eraseToAnyPublisher()
     }
-    
-//    func updateFavoriteApods() -> AnyPublisher<Bool, Error> {
-//        
-//    }
+
+    func updateFavorite(apod: Apod) -> AnyPublisher<Bool, Error> {
+        let fetchRequest = NSFetchRequest<FavoriteEntity>(entityName: "FavoriteEntity")
+        fetchRequest.predicate = NSPredicate(format: "apod.date == %@", apod.date)
+        return Future<Bool, Error> { [self] completion in
+            var favorites = [FavoriteEntity]()
+            let moc = container.viewContext
+            do {
+                favorites = try moc.fetch(fetchRequest)
+                if favorites.count != 0 {
+                    moc.delete(favorites[0])
+                    completion(.success(true))
+                } else {
+                    let newFavorite = FavoriteEntity(context: moc)
+                    newFavorite.id = apod.id
+                    newFavorite.apodSite = apod.apodSite
+                    newFavorite.copyright = apod.copyright
+                    newFavorite.date = apod.date
+                    newFavorite.itemDescription = apod.itemDescription
+                    newFavorite.hdurl = apod.hdurl
+                    newFavorite.mediaType = apod.mediaType
+                    newFavorite.title = apod.title
+                    newFavorite.url = apod.url
+
+                    do {
+                        try moc.save()
+                        completion(.success(true))
+                    } catch {
+                        completion(.failure(LocalError.somethingWentWrong))
+                    }
+                }
+            } catch {
+                completion(.failure(LocalError.somethingWentWrong))
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+}
+
+enum LocalError: Error {
+    case notFound
+    case somethingWentWrong
 }

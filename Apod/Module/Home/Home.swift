@@ -14,8 +14,8 @@ struct Home: View {
     @ObservedObject var presenter: HomePresenter
     @State private var disposables = Set<AnyCancellable>()
 
-    @FetchRequest(entity: ApodEntity.entity(), sortDescriptors: [])
-    var tes: FetchedResults<ApodEntity> {
+    @FetchRequest(entity: WeeklyApods.entity(), sortDescriptors: [])
+    var tes: FetchedResults<WeeklyApods> {
         didSet {
             print(tes.count)
         }
