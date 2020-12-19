@@ -12,6 +12,7 @@ protocol ApodRepositoryProtocol {
     func getWeeklyApods(from startDate: String, to endDate: String) -> AnyPublisher<[Apod], Error>
     func getApod(onDate date: String) -> AnyPublisher<[Apod], Error>
     func updateFavorite(apod: Apod) -> AnyPublisher<Bool, Error>
+    func checkFavorite(apod: Apod) -> AnyPublisher<Bool, Error>
 }
 
 class ApodRepository: ApodRepositoryProtocol {
@@ -52,10 +53,16 @@ class ApodRepository: ApodRepositoryProtocol {
             .map { ApodMapper.mapApodResponsesToDomains(from: [$0])}
             .eraseToAnyPublisher()
     }
-    
+
     func updateFavorite(apod: Apod) -> AnyPublisher<Bool, Error> {
-        
+
         return self.locale.updateFavorite(apod: apod)
+            .eraseToAnyPublisher()
+    }
+    
+    func checkFavorite(apod: Apod) -> AnyPublisher<Bool, Error> {
+        
+        return self.locale.checkFavorite(apod: apod)
             .eraseToAnyPublisher()
     }
 }

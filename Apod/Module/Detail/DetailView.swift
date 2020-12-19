@@ -37,8 +37,11 @@ struct DetailView: View {
         }
         .navigationBarTitle(self.presenter.apod.date, displayMode: .inline)
         .navigationBarItems(trailing:
-            Image(systemName: "bookmark")
+            Image(systemName: self.presenter.isFavorite ? "bookmark.fill" : "bookmark")
             .onTapGesture { self.presenter.updateFavorite()}
         )
+        .onAppear(perform: {
+            self.presenter.checkFavorite()
+        })
     }
 }

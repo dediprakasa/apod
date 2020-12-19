@@ -25,6 +25,7 @@ class DetailPresenter: ObservableObject {
         url: "")
     @Published var errorMessage = ""
     @Published var loadingState = false
+    @Published var isFavorite = false
 
     init(detailUseCase: DetailUseCase) {
         self.detailUseCase = detailUseCase
@@ -40,6 +41,19 @@ class DetailPresenter: ObservableObject {
             .sink(receiveCompletion: { _ in
 
             }, receiveValue: { result in
+                self.isFavorite = result
+                print(result, "<<<<")
+            })
+            .store(in: &cancellables)
+    }
+    
+    func checkFavorite() {
+        detailUseCase.checkFavorite(apod: apod)
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { _ in
+
+            }, receiveValue: { result in
+                self.isFavorite = result
                 print(result, "<<<<")
             })
             .store(in: &cancellables)

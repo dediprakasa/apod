@@ -14,6 +14,7 @@ protocol LocalDataSourceProtocol {
     func addWeeklyApods(from apods: [WeeklyApods]) -> AnyPublisher<[WeeklyApods], Error>
     func getApods() -> AnyPublisher<[WeeklyApods], Error>
     func updateFavorite(apod: Apod) -> AnyPublisher<Bool, Error>
+    func checkFavorite(apod: Apod) -> AnyPublisher<Bool, Error>
 }
 
 class LocalDataSource: NSObject {
@@ -95,7 +96,7 @@ extension LocalDataSource: LocalDataSourceProtocol {
                 favorites = try moc.fetch(fetchRequest)
                 if favorites.count != 0 {
                     moc.delete(favorites[0])
-                    completion(.success(true))
+                    completion(.success(false))
                 } else {
                     let newFavorite = FavoriteEntity(context: moc)
                     newFavorite.id = apod.id
@@ -114,6 +115,26 @@ extension LocalDataSource: LocalDataSourceProtocol {
                     } catch {
                         completion(.failure(LocalError.somethingWentWrong))
                     }
+                }
+            } catch {
+                completion(.failure(LocalError.somethingWentWrong))
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func checkFavorite(apod: Apod) -> AnyPublisher<Bool, Error> {
+        let fetchRequest = NSFetchRequest<FavoriteEntity>(entityName: "FavoriteEntity")
+        fetchRequest.predicate = NSPredicate(format: "date == %@", apod.date)
+        return Future<Bool, Error> { [self] completion in
+            var favorites = [FavoriteEntity]()
+            let moc = container.viewContext
+            do {
+                favorites = try moc.fetch(fetchRequest)
+                if favorites.count != 0 {
+                    completion(.success(true))
+                } else {
+                    completion(.success(false))
                 }
             } catch {
                 completion(.failure(LocalError.somethingWentWrong))
