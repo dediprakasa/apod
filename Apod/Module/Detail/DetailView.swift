@@ -28,6 +28,8 @@ struct DetailView: View {
                     .font(.title)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
+                
+                
 
                 Text(presenter.apod.itemDescription)
                     .padding(.horizontal)
@@ -40,8 +42,6 @@ struct DetailView: View {
             Image(systemName: self.presenter.isFavorite ? "bookmark.fill" : "bookmark")
             .onTapGesture { self.presenter.updateFavorite()}
         )
-        .onAppear(perform: {
-            self.presenter.checkFavorite()
-        })
+        
     }
 }

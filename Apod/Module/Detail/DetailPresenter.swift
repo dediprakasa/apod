@@ -8,21 +8,25 @@
 import SwiftUI
 import Combine
 
-class DetailPresenter: ObservableObject {
+final class DetailPresenter: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
-    private let detailUseCase: DetailUseCase
+    private var detailUseCase: DetailUseCase
 
     @Published var apod: Apod = Apod(
         id: UUID(),
         apodSite: "",
         copyright: "",
-        date: "",
+        date: "-",
         itemDescription: "No Descrption",
         hdurl: "",
         mediaType: "",
         title: "",
-        url: "")
+        url: "") {
+        didSet {
+            self.checkFavorite()
+        }
+    }
     @Published var errorMessage = ""
     @Published var loadingState = false
     @Published var isFavorite = false
@@ -42,11 +46,10 @@ class DetailPresenter: ObservableObject {
 
             }, receiveValue: { result in
                 self.isFavorite = result
-                print(result, "<<<<")
             })
             .store(in: &cancellables)
     }
-    
+
     func checkFavorite() {
         detailUseCase.checkFavorite(apod: apod)
             .receive(on: RunLoop.main)
@@ -54,7 +57,6 @@ class DetailPresenter: ObservableObject {
 
             }, receiveValue: { result in
                 self.isFavorite = result
-                print(result, "<<<<")
             })
             .store(in: &cancellables)
     }
