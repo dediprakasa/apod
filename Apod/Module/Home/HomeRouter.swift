@@ -10,7 +10,7 @@ import SwiftUI
 class HomeRouter {
 
     func makeDetailView(for apod: Apod) -> some View {
-        let presenter = AppContainer().detailPresenter
+        let presenter = AppContainer.shared.detailPresenter
         presenter.setApod(apod: apod)
         return DetailView(presenter: presenter)
     }

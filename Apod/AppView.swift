@@ -11,7 +11,7 @@ struct AppView: View {
 
     var body: some View {
         TabView {
-            Home(presenter: AppContainer().homePresenter)
+            Home(presenter: AppContainer.shared.homePresenter)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
