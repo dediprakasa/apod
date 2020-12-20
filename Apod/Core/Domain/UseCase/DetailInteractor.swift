@@ -31,7 +31,7 @@ class DetailInteractor: DetailUseCase {
     }
     
     func checkFavorite(apod: Apod) -> AnyPublisher<Bool, Error> {
-        return repository.checkFavorite(apod: apod).eraseToAnyPublisher()
+        return repository.checkFavorite(apod: apod)
     }
     
 }

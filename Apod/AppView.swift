@@ -17,7 +17,7 @@ struct AppView: View {
                     Text("Home")
                 }
 
-            Favorite()
+            Favorite(presenter: AppContainer.shared.favoritePresenter)
                 .tabItem {
                     Image(systemName: "heart.fill")
                     Text("Favorite")

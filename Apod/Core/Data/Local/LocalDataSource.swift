@@ -15,6 +15,7 @@ protocol LocalDataSourceProtocol {
     func getApods() -> AnyPublisher<[WeeklyApods], Error>
     func updateFavorite(apod: Apod) -> AnyPublisher<Bool, Error>
     func checkFavorite(apod: Apod) -> AnyPublisher<Bool, Error>
+    func getFavorites() -> AnyPublisher<[FavoriteEntity], Error>
 }
 
 class LocalDataSource: NSObject {
@@ -136,6 +137,21 @@ extension LocalDataSource: LocalDataSourceProtocol {
                 } else {
                     completion(.success(false))
                 }
+            } catch {
+                completion(.failure(LocalError.somethingWentWrong))
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func getFavorites() -> AnyPublisher<[FavoriteEntity], Error> {
+        let fetchRequest = NSFetchRequest<FavoriteEntity>(entityName: "FavoriteEntity")
+        return Future<[FavoriteEntity], Error> { [self] completion in
+            var favorites = [FavoriteEntity]()
+            let moc = container.viewContext
+            do {
+                favorites = try moc.fetch(fetchRequest)
+                completion(.success(favorites))
             } catch {
                 completion(.failure(LocalError.somethingWentWrong))
             }

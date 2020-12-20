@@ -9,14 +9,13 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct Favorite: View {
-
-    @FetchRequest(entity: FavoriteEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \FavoriteEntity.date, ascending: false)])
-    var favs: FetchedResults<FavoriteEntity>
+    
+    @ObservedObject var presenter: FavoritePresenter
 
     var body: some View {
         VStack {
             List {
-                ForEach(favs) { apod in
+                ForEach(self.presenter.favorites) { apod in
                     HStack {
                         WebImage(url: URL(string: apod.hdurl ?? ""))
                             .resizable()
@@ -33,11 +32,8 @@ struct Favorite: View {
                 }
             }
         }
-    }
-}
-
-struct Favorite_Previews: PreviewProvider {
-    static var previews: some View {
-        Favorite()
+        .onAppear(perform: {
+            self.presenter.getFavorites()
+        })
     }
 }

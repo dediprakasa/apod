@@ -6,12 +6,27 @@
 //
 
 import SwiftUI
+import Combine
 
 class FavoritePresenter: ObservableObject {
     
-    @Published var favorites: [Favorite] = []
+    private var cancellables: Set<AnyCancellable> = []
+    private var favoriteUseCase: FavoriteUseCase
+
+    @Published var favorites: [FavoriteEntity] = []
+    
+    init(favoriteUseCase: FavoriteUseCase) {
+        self.favoriteUseCase = favoriteUseCase
+    }
  
-    func getFavorite() {
-        
+    func getFavorites() {
+        favoriteUseCase.getFavorites()
+            .sink(receiveCompletion: { _ in
+                
+            }, receiveValue: { favorites in
+                self.favorites = favorites
+            })
+            .store(in: &cancellables)
+
     }
 }
