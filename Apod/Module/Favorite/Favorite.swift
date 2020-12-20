@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct Favorite: View {
 
@@ -14,8 +15,22 @@ struct Favorite: View {
 
     var body: some View {
         VStack {
-            ForEach(favs) { fav in
-                Text(fav.title ?? "aa" as String)
+            List {
+                ForEach(favs) { apod in
+                    HStack {
+                        WebImage(url: URL(string: apod.hdurl ?? ""))
+                            .resizable()
+                            .placeholder(Image("placeholder"))
+                            .indicator(Indicator.progress)
+                            .transition(.fade(duration: 0.5))
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 80, height: 80)
+                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+
+                        Text(apod.title ?? "")
+                    }
+                    
+                }
             }
         }
     }
