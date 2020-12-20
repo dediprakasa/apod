@@ -40,5 +40,8 @@ struct DetailView: View {
             Image(systemName: self.presenter.isFavorite ? "bookmark.fill" : "bookmark")
             .onTapGesture { self.presenter.updateFavorite()}
         )
+        .onAppear {
+            print(self.presenter.apod.date, "!!!!")
+        }
     }
 }

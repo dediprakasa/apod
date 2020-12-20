@@ -11,13 +11,13 @@ struct AppView: View {
 
     var body: some View {
         TabView {
-            Home(presenter: AppContainer.shared.homePresenter)
+            Home(presenter: AppContainer().homePresenter)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
 
-            Favorite(presenter: AppContainer.shared.favoritePresenter)
+            Favorite(presenter: AppContainer().favoritePresenter)
                 .tabItem {
                     Image(systemName: "heart.fill")
                     Text("Favorite")

@@ -10,8 +10,9 @@ import SwiftUI
 class HomeRouter {
 
     func makeDetailView(for apod: Apod) -> some View {
-        let presenter = AppContainer.shared.detailPresenter
+        let presenter = AppContainer().detailPresenter
         presenter.setApod(apod: apod)
+        print(apod.date, "<<<")
         return DetailView(presenter: presenter)
     }
 }
