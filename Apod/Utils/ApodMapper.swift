@@ -58,4 +58,17 @@ final class ApodMapper {
             return apodEntity
         }
     }
+    
+    static func mapFavoriteEntityToApod(from favorite: FavoriteEntity) -> Apod {
+        return Apod(
+            id: favorite.id ?? UUID(),
+            apodSite: favorite.apodSite ?? "",
+            copyright: favorite.copyright ?? "",
+            date: favorite.date ?? "",
+            itemDescription: favorite.itemDescription ?? "",
+            hdurl: favorite.hdurl ?? "",
+            mediaType: favorite.mediaType ?? "",
+            title: favorite.title ?? "",
+            url: favorite.url ?? "")
+    }
 }
