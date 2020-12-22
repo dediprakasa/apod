@@ -33,6 +33,7 @@
 		4BA445822575361900688AA8 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA445812575361900688AA8 /* AppContainer.swift */; };
 		4BB3DA80258F22E900981F23 /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB3DA7F258F22E900981F23 /* FavoritePresenter.swift */; };
 		4BB3DA84258F23F100981F23 /* FavoriteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB3DA83258F23F100981F23 /* FavoriteInteractor.swift */; };
+		4BEC3DB02591FED800DEEFE5 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEC3DAF2591FED800DEEFE5 /* LoadingView.swift */; };
 		4BF3B8D12576FE1000A5309A /* ApodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF3B8D02576FE1000A5309A /* ApodCell.swift */; };
 		4BFE420E2579A85200CD8A28 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE420D2579A85200CD8A28 /* Search.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		4BA445812575361900688AA8 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		4BB3DA7F258F22E900981F23 /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
 		4BB3DA83258F23F100981F23 /* FavoriteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteInteractor.swift; sourceTree = "<group>"; };
+		4BEC3DAF2591FED800DEEFE5 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		4BF3B8D02576FE1000A5309A /* ApodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodCell.swift; sourceTree = "<group>"; };
 		4BFE420D2579A85200CD8A28 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				4BF3B8D02576FE1000A5309A /* ApodCell.swift */,
+				4BEC3DAF2591FED800DEEFE5 /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				4B2F0F42257BDF4F000344CC /* LocalDataSource.swift in Sources */,
 				4B9A13CF25601FE500E1A8DF /* Apod.swift in Sources */,
 				4B96701425792515001D0DD5 /* AppView.swift in Sources */,
+				4BEC3DB02591FED800DEEFE5 /* LoadingView.swift in Sources */,
 				4B18093525738DA6005BEE75 /* DetailPresenter.swift in Sources */,
 				4B18093825739D30005BEE75 /* DetailView.swift in Sources */,
 				4B33B1E3256BFB7E005A8F31 /* ApodMapper.swift in Sources */,
