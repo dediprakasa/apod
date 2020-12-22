@@ -58,11 +58,11 @@ class ApodRepository: ApodRepositoryProtocol {
     func updateFavorite(apod: Apod) -> AnyPublisher<Bool, Error> {
         return self.locale.updateFavorite(apod: apod)
     }
-    
+
     func checkFavorite(apod: Apod) -> AnyPublisher<Bool, Error> {
         return self.locale.checkFavorite(apod: apod)
     }
-    
+
     func getFavorites() -> AnyPublisher<[FavoriteEntity], Error> {
         return self.locale.getFavorites()
     }

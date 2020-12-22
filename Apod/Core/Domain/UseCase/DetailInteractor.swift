@@ -29,9 +29,8 @@ class DetailInteractor: DetailUseCase {
     func updateFavorite(apod: Apod) -> AnyPublisher<Bool, Error> {
         return repository.updateFavorite(apod: apod)
     }
-    
+
     func checkFavorite(apod: Apod) -> AnyPublisher<Bool, Error> {
         return repository.checkFavorite(apod: apod)
     }
-    
 }

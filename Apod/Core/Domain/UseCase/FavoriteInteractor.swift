@@ -15,14 +15,12 @@ protocol FavoriteUseCase {
 class FavoriteInteractor: FavoriteUseCase {
 
     private let repository: ApodRepositoryProtocol
-    
+
     init(repository: ApodRepository) {
         self.repository = repository
     }
-    
+
     func getFavorites() -> AnyPublisher<[FavoriteEntity], Error> {
         return repository.getFavorites()
     }
-    
-    
 }

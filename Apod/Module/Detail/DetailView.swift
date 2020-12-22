@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct DetailView: View {
 
     @ObservedObject var presenter: DetailPresenter
-    var favoritePresenter: FavoritePresenter? = nil
+    var favoritePresenter: FavoritePresenter?
 
     var body: some View {
         ScrollView(.vertical) {

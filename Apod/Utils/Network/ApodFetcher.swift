@@ -42,7 +42,7 @@ class ApodFetcher: ApodFetcherProtocol {
         components.scheme = ApodAPI.scheme
         components.host   = ApodAPI.host
         components.path   = ApodAPI.path
-        
+
         components.queryItems = [
             URLQueryItem(name: "date", value: date)
         ]
