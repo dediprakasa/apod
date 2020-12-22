@@ -25,7 +25,7 @@ struct Home: View {
         ZStack {
             if self.presenter.loadingState {
                 VStack {
-                    Text("Loading boss")
+                    LoadingView()
                 }
             } else {
                 NavigationView {
