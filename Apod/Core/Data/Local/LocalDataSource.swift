@@ -109,21 +109,18 @@ extension LocalDataSource: LocalDataSourceProtocol {
                     newFavorite.mediaType = apod.mediaType
                     newFavorite.title = apod.title
                     newFavorite.url = apod.url
-
-                    do {
-                        try moc.save()
-                        completion(.success(true))
-                    } catch {
-                        completion(.failure(LocalError.somethingWentWrong))
-                    }
                 }
+
+                try moc.save()
+                completion(.success(true))
+
             } catch {
                 completion(.failure(LocalError.somethingWentWrong))
             }
         }
         .eraseToAnyPublisher()
     }
-    
+
     func checkFavorite(apod: Apod) -> AnyPublisher<Bool, Error> {
         let fetchRequest = NSFetchRequest<FavoriteEntity>(entityName: "FavoriteEntity")
         fetchRequest.predicate = NSPredicate(format: "date == %@", apod.date)
@@ -143,7 +140,7 @@ extension LocalDataSource: LocalDataSourceProtocol {
         }
         .eraseToAnyPublisher()
     }
-    
+
     func getFavorites() -> AnyPublisher<[FavoriteEntity], Error> {
         let fetchRequest = NSFetchRequest<FavoriteEntity>(entityName: "FavoriteEntity")
         return Future<[FavoriteEntity], Error> { [self] completion in
