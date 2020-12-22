@@ -11,6 +11,7 @@ import SDWebImageSwiftUI
 struct DetailView: View {
 
     @ObservedObject var presenter: DetailPresenter
+    var favoritePresenter: FavoritePresenter? = nil
 
     var body: some View {
         ScrollView(.vertical) {
@@ -41,7 +42,8 @@ struct DetailView: View {
             .onTapGesture { self.presenter.updateFavorite()}
         )
         .onDisappear {
-            print("======")
+            guard let favoritePresenter = favoritePresenter else { return }
+            favoritePresenter.getFavorites()
         }
     }
 }

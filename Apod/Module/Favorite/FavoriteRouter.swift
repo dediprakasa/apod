@@ -8,11 +8,11 @@
 import SwiftUI
 
 class FavoriteRouter {
-    func makeDetailView(for favorite: FavoriteEntity) -> some View {
+    func makeDetailView(for favorite: FavoriteEntity, withFavoritePresenter favoritePresenter: FavoritePresenter) -> some View {
         let presenter = AppContainer().detailPresenter
         let apod = ApodMapper.mapFavoriteEntityToApod(from: favorite)
         presenter.setApod(apod: apod)
 
-        return DetailView(presenter: presenter)
+        return DetailView(presenter: presenter, favoritePresenter: favoritePresenter)
     }
 }

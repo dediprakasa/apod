@@ -37,8 +37,5 @@ struct Favorite: View {
         .onAppear(perform: {
             self.presenter.getFavorites()
         })
-        .onDisappear {
-            print("+++++++")
-        }
     }
 }

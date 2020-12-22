@@ -27,12 +27,11 @@ class FavoritePresenter: ObservableObject {
                 self.favorites = favorites
             })
             .store(in: &cancellables)
-
     }
 
     func linkBuilder<Content: View>(for apod: FavoriteEntity, @ViewBuilder content: () -> Content) -> some View {
         NavigationLink(
-            destination: router.makeDetailView(for: apod)) {
+            destination: router.makeDetailView(for: apod, withFavoritePresenter: self)) {
             content()
         }
     }

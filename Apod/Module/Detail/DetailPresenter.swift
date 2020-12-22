@@ -12,6 +12,7 @@ class DetailPresenter: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
     private var detailUseCase: DetailUseCase
+    var favPresenter = AppContainer().favoritePresenter
 
     @Published var apod: Apod = Apod(
         id: UUID(),
