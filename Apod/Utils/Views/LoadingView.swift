@@ -11,7 +11,8 @@ struct LoadingView: View {
     var body: some View {
         VStack(spacing: 30) {
             Image("loading")
-                .frame(width: 100, height: 100, alignment: .center)
+                .resizable()
+                .frame(width: 150, height: 150, alignment: .center)
             Text("Loading...")
                 .font(.title)
                 .bold()

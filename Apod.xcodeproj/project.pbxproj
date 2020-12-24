@@ -36,7 +36,7 @@
 		4BEC3DB02591FED800DEEFE5 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEC3DAF2591FED800DEEFE5 /* LoadingView.swift */; };
 		4BEC3DB32592012200DEEFE5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEC3DB22592012200DEEFE5 /* EmptyView.swift */; };
 		4BF3B8D12576FE1000A5309A /* ApodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF3B8D02576FE1000A5309A /* ApodCell.swift */; };
-		4BFE420E2579A85200CD8A28 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE420D2579A85200CD8A28 /* Search.swift */; };
+		4BFE420E2579A85200CD8A28 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE420D2579A85200CD8A28 /* Profile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,7 +70,7 @@
 		4BEC3DAF2591FED800DEEFE5 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		4BEC3DB22592012200DEEFE5 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		4BF3B8D02576FE1000A5309A /* ApodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodCell.swift; sourceTree = "<group>"; };
-		4BFE420D2579A85200CD8A28 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		4BFE420D2579A85200CD8A28 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 		4B33B1CE256BF34A005A8F31 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				4BFE420C2579A83D00CD8A28 /* Search */,
+				4BFE420C2579A83D00CD8A28 /* Profile */,
 				4B9670162579260C001D0DD5 /* Favorite */,
 				4B18093325738D81005BEE75 /* Detail */,
 				4BDB33B2257156FA00F56410 /* Home */,
@@ -266,12 +266,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		4BFE420C2579A83D00CD8A28 /* Search */ = {
+		4BFE420C2579A83D00CD8A28 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				4BFE420D2579A85200CD8A28 /* Search.swift */,
+				4BFE420D2579A85200CD8A28 /* Profile.swift */,
 			);
-			path = Search;
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,7 +376,7 @@
 				4B0F79DD256DC35F00A58E07 /* ApodRepository.swift in Sources */,
 				4B27EE90256D5639006E2D5A /* ApodFetcher.swift in Sources */,
 				4B9A13C025601A7800E1A8DF /* Persistence.swift in Sources */,
-				4BFE420E2579A85200CD8A28 /* Search.swift in Sources */,
+				4BFE420E2579A85200CD8A28 /* Profile.swift in Sources */,
 				4B9A13C325601A7800E1A8DF /* ApodEntity.xcdatamodeld in Sources */,
 				4B2F0F42257BDF4F000344CC /* LocalDataSource.swift in Sources */,
 				4B9A13CF25601FE500E1A8DF /* Apod.swift in Sources */,

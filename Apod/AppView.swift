@@ -23,7 +23,7 @@ struct AppView: View {
                     Text("Favorite")
                 }
 
-            Search()
+            Profile()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("Search")

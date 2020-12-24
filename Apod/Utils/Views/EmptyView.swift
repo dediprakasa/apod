@@ -11,7 +11,9 @@ struct EmptyView: View {
     var body: some View {
         VStack(spacing: 30) {
             Image("empty")
-                .frame(width: 100, height: 100, alignment: .center)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 150, height: 150, alignment: .center)
             Text("You have no favorite yet")
                 .font(.title)
                 .bold()
