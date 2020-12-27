@@ -17,7 +17,10 @@ class AppContainer {
     private lazy var detailInteractor = DetailInteractor(repository: repository)
     private lazy var favoriteInteractor = FavoriteInteractor(repository: repository)
 
-    lazy var homePresenter = HomePresenter(homeUseCase: homeInteractor)
+    private lazy var homeRouter = HomeRouter()
+    private lazy var favoriteRouter = FavoriteRouter()
+
+    lazy var homePresenter = HomePresenter(useCase: homeInteractor, router: homeRouter)
     lazy var detailPresenter = DetailPresenter(detailUseCase: detailInteractor)
-    lazy var favoritePresenter = FavoritePresenter(favoriteUseCase: favoriteInteractor)
+    lazy var favoritePresenter = FavoritePresenter(useCase: favoriteInteractor, router: favoriteRouter)
 }

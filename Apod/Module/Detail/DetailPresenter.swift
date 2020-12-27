@@ -12,18 +12,9 @@ class DetailPresenter: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
     private var detailUseCase: DetailUseCase
-    var favPresenter = AppContainer().favoritePresenter
+    var favPresenter: FavoritePresenter?
 
-    @Published var apod: Apod = Apod(
-        id: UUID(),
-        apodSite: "",
-        copyright: "",
-        date: "-",
-        itemDescription: "No Descrption",
-        hdurl: "",
-        mediaType: "",
-        title: "",
-        url: "") {
+    @Published var apod: Apod? {
         didSet {
             self.checkFavorite()
         }
@@ -41,6 +32,8 @@ class DetailPresenter: ObservableObject {
     }
 
     func updateFavorite() {
+        guard let apod = apod else { return }
+
         detailUseCase.updateFavorite(apod: apod)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { _ in
@@ -52,6 +45,8 @@ class DetailPresenter: ObservableObject {
     }
 
     func checkFavorite() {
+        guard let apod = apod else { return }
+
         detailUseCase.checkFavorite(apod: apod)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { _ in

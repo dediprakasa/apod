@@ -13,7 +13,7 @@ protocol ApodRepositoryProtocol {
     func getApod(onDate date: String) -> AnyPublisher<[Apod], Error>
     func updateFavorite(apod: Apod) -> AnyPublisher<Bool, Error>
     func checkFavorite(apod: Apod) -> AnyPublisher<Bool, Error>
-    func getFavorites() -> AnyPublisher<[FavoriteEntity], Error>
+    func getFavorites() -> AnyPublisher<[Apod], Error>
 }
 
 class ApodRepository: ApodRepositoryProtocol {
@@ -63,7 +63,13 @@ class ApodRepository: ApodRepositoryProtocol {
         return self.locale.checkFavorite(apod: apod)
     }
 
-    func getFavorites() -> AnyPublisher<[FavoriteEntity], Error> {
+    func getFavorites() -> AnyPublisher<[Apod], Error> {
         return self.locale.getFavorites()
+            .map { favs in
+                favs.map { fav in
+                    ApodMapper.mapFavoriteEntityToApod(from: fav)
+                }
+            }
+            .eraseToAnyPublisher()
     }
 }

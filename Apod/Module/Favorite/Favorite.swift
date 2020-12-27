@@ -21,7 +21,7 @@ struct Favorite: View {
                     ForEach(self.presenter.favorites) { apod in
                         self.presenter.linkBuilder(for: apod) {
                             HStack {
-                                WebImage(url: URL(string: apod.hdurl ?? ""))
+                                WebImage(url: URL(string: apod.hdurl))
                                     .resizable()
                                     .placeholder(Image("placeholder"))
                                     .indicator(Indicator.progress)
@@ -30,7 +30,7 @@ struct Favorite: View {
                                     .frame(width: 80, height: 80)
                                     .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
 
-                                Text(apod.title ?? "")
+                                Text(apod.title)
                             }
                         }
                     }

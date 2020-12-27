@@ -8,6 +8,7 @@
 import Foundation
 
 struct Apod: Equatable, Identifiable {
+    // swiftlint:disable:next variable_name
     var id: UUID
 
     let apodSite: String

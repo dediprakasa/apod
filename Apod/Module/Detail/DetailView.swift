@@ -16,7 +16,7 @@ struct DetailView: View {
     var body: some View {
         ScrollView(.vertical) {
             VStack {
-                WebImage(url: URL(string: presenter.apod.hdurl))
+                WebImage(url: URL(string: presenter.apod?.hdurl ?? ""))
                     .resizable()
                     .placeholder(Image("placeholder"))
                     .indicator(Indicator.progress)
@@ -25,18 +25,18 @@ struct DetailView: View {
                     .frame(height: 300, alignment: .center)
                     .frame(maxWidth: .infinity)
 
-                Text(presenter.apod.title)
+                Text(presenter.apod?.title ?? "Unknown")
                     .font(.title)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
 
-                Text(presenter.apod.itemDescription)
+                Text(presenter.apod?.itemDescription ?? "")
                     .padding(.horizontal)
 
                 Spacer()
             }
         }
-        .navigationBarTitle(self.presenter.apod.date, displayMode: .inline)
+        .navigationBarTitle(self.presenter.apod?.date ?? "", displayMode: .inline)
         .navigationBarItems(trailing:
             Image(systemName: self.presenter.isFavorite ? "bookmark.fill" : "bookmark")
             .onTapGesture { self.presenter.updateFavorite()}

@@ -11,13 +11,14 @@ import Combine
 class FavoritePresenter: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
-    private let router = FavoriteRouter()
+    private let router: FavoriteRouter
     private var favoriteUseCase: FavoriteUseCase
 
-    @Published var favorites: [FavoriteEntity] = []
+    @Published var favorites: [Apod] = []
 
-    init(favoriteUseCase: FavoriteUseCase) {
-        self.favoriteUseCase = favoriteUseCase
+    init(useCase: FavoriteUseCase, router: FavoriteRouter) {
+        self.favoriteUseCase = useCase
+        self.router = router
     }
 
     func getFavorites() {
@@ -29,7 +30,7 @@ class FavoritePresenter: ObservableObject {
             .store(in: &cancellables)
     }
 
-    func linkBuilder<Content: View>(for apod: FavoriteEntity, @ViewBuilder content: () -> Content) -> some View {
+    func linkBuilder<Content: View>(for apod: Apod, @ViewBuilder content: () -> Content) -> some View {
         NavigationLink(
             destination: router.makeDetailView(for: apod, withFavoritePresenter: self)) {
             content()

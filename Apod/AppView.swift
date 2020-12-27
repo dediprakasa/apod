@@ -25,8 +25,8 @@ struct AppView: View {
 
             Profile()
                 .tabItem {
-                    Image(systemName: "magnifyingglass")
-                    Text("Search")
+                    Image(systemName: "person.fill")
+                    Text("Profile")
                 }
         }
     }

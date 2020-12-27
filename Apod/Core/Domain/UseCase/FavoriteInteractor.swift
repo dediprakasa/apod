@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol FavoriteUseCase {
-    func getFavorites() -> AnyPublisher<[FavoriteEntity], Error>
+    func getFavorites() -> AnyPublisher<[Apod], Error>
 }
 
 class FavoriteInteractor: FavoriteUseCase {
@@ -20,7 +20,7 @@ class FavoriteInteractor: FavoriteUseCase {
         self.repository = repository
     }
 
-    func getFavorites() -> AnyPublisher<[FavoriteEntity], Error> {
+    func getFavorites() -> AnyPublisher<[Apod], Error> {
         return repository.getFavorites()
     }
 }
