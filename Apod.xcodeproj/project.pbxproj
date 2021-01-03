@@ -21,7 +21,7 @@
 		4B33B1E3256BFB7E005A8F31 /* ApodMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33B1E2256BFB7E005A8F31 /* ApodMapper.swift */; };
 		4B3B451D25901E910065099B /* FavoriteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B451C25901E910065099B /* FavoriteRouter.swift */; };
 		4B5C6902257851D300106DFC /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4B5C6901257851D300106DFC /* SDWebImageSwiftUI */; };
-		4B94369625A1A3EE00D55D6E /* ApodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B94369525A1A3EE00D55D6E /* ApodTests.swift */; };
+		4B87321925A1AF8800658B89 /* ApodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B87321825A1AF8800658B89 /* ApodTests.swift */; };
 		4B967011257924FC001D0DD5 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B967010257924FC001D0DD5 /* Favorite.swift */; };
 		4B96701425792515001D0DD5 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96701325792515001D0DD5 /* AppView.swift */; };
 		4B9A13B725601A7500E1A8DF /* ApodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A13B625601A7500E1A8DF /* ApodApp.swift */; };
@@ -40,6 +40,16 @@
 		4BFE420E2579A85200CD8A28 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE420D2579A85200CD8A28 /* Profile.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4B87321B25A1AF8800658B89 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B9A13AB25601A7500E1A8DF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B9A13B225601A7500E1A8DF;
+			remoteInfo = Apod;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		4B0F79D8256DBC4000A58E07 /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
 		4B0F79DC256DC35F00A58E07 /* ApodRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodRepository.swift; sourceTree = "<group>"; };
@@ -54,7 +64,10 @@
 		4B33B1DD256BF961005A8F31 /* ApodsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodsResponse.swift; sourceTree = "<group>"; };
 		4B33B1E2256BFB7E005A8F31 /* ApodMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodMapper.swift; sourceTree = "<group>"; };
 		4B3B451C25901E910065099B /* FavoriteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRouter.swift; sourceTree = "<group>"; };
-		4B94369525A1A3EE00D55D6E /* ApodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodTests.swift; sourceTree = "<group>"; };
+		4B87321625A1AF8800658B89 /* ApodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B87321825A1AF8800658B89 /* ApodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodTests.swift; sourceTree = "<group>"; };
+		4B87321A25A1AF8800658B89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B87322225A1B00000658B89 /* Apod.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Apod.xctestplan; sourceTree = "<group>"; };
 		4B967010257924FC001D0DD5 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		4B96701325792515001D0DD5 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		4B9A13B325601A7500E1A8DF /* Apod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Apod.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +89,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4B87321325A1AF8800658B89 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4B9A13B025601A7500E1A8DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -196,12 +216,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		4B94369825A1A43A00D55D6E /* ApodTest */ = {
+		4B87321725A1AF8800658B89 /* ApodTests */ = {
 			isa = PBXGroup;
 			children = (
-				4B94369525A1A3EE00D55D6E /* ApodTests.swift */,
+				4B87322225A1B00000658B89 /* Apod.xctestplan */,
+				4B87321825A1AF8800658B89 /* ApodTests.swift */,
+				4B87321A25A1AF8800658B89 /* Info.plist */,
 			);
-			path = ApodTest;
+			path = ApodTests;
 			sourceTree = "<group>";
 		};
 		4B9670162579260C001D0DD5 /* Favorite */ = {
@@ -217,8 +239,8 @@
 		4B9A13AA25601A7500E1A8DF = {
 			isa = PBXGroup;
 			children = (
-				4B94369825A1A43A00D55D6E /* ApodTest */,
 				4B9A13B525601A7500E1A8DF /* Apod */,
+				4B87321725A1AF8800658B89 /* ApodTests */,
 				4B9A13B425601A7500E1A8DF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -227,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				4B9A13B325601A7500E1A8DF /* Apod.app */,
+				4B87321625A1AF8800658B89 /* ApodTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -288,6 +311,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4B87321525A1AF8800658B89 /* ApodTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B87321F25A1AF8800658B89 /* Build configuration list for PBXNativeTarget "ApodTests" */;
+			buildPhases = (
+				4B87321225A1AF8800658B89 /* Sources */,
+				4B87321325A1AF8800658B89 /* Frameworks */,
+				4B87321425A1AF8800658B89 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B87321C25A1AF8800658B89 /* PBXTargetDependency */,
+			);
+			name = ApodTests;
+			productName = ApodTests;
+			productReference = 4B87321625A1AF8800658B89 /* ApodTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4B9A13B225601A7500E1A8DF /* Apod */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4B9A13C725601A7800E1A8DF /* Build configuration list for PBXNativeTarget "Apod" */;
@@ -318,6 +359,10 @@
 				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					4B87321525A1AF8800658B89 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = 4B9A13B225601A7500E1A8DF;
+					};
 					4B9A13B225601A7500E1A8DF = {
 						CreatedOnToolsVersion = 12.0.1;
 					};
@@ -340,11 +385,19 @@
 			projectRoot = "";
 			targets = (
 				4B9A13B225601A7500E1A8DF /* Apod */,
+				4B87321525A1AF8800658B89 /* ApodTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4B87321425A1AF8800658B89 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4B9A13B125601A7500E1A8DF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -377,12 +430,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4B87321225A1AF8800658B89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B87321925A1AF8800658B89 /* ApodTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4B9A13AF25601A7500E1A8DF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4B33B1DE256BF961005A8F31 /* ApodsResponse.swift in Sources */,
-				4B94369625A1A3EE00D55D6E /* ApodTests.swift in Sources */,
 				4B0F79D9256DBC4000A58E07 /* RemoteDataSource.swift in Sources */,
 				4BA445822575361900688AA8 /* AppContainer.swift in Sources */,
 				4B0F79DD256DC35F00A58E07 /* ApodRepository.swift in Sources */,
@@ -414,7 +474,55 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4B87321C25A1AF8800658B89 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B9A13B225601A7500E1A8DF /* Apod */;
+			targetProxy = 4B87321B25A1AF8800658B89 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		4B87321D25A1AF8800658B89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W4KGN5KBY5;
+				INFOPLIST_FILE = ApodTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.deltadirac.ApodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Apod.app/Apod";
+			};
+			name = Debug;
+		};
+		4B87321E25A1AF8800658B89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W4KGN5KBY5;
+				INFOPLIST_FILE = ApodTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.deltadirac.ApodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Apod.app/Apod";
+			};
+			name = Release;
+		};
 		4B9A13C525601A7800E1A8DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -578,6 +686,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4B87321F25A1AF8800658B89 /* Build configuration list for PBXNativeTarget "ApodTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B87321D25A1AF8800658B89 /* Debug */,
+				4B87321E25A1AF8800658B89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4B9A13AE25601A7500E1A8DF /* Build configuration list for PBXProject "Apod" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

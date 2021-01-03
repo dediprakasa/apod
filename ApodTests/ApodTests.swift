@@ -1,12 +1,11 @@
 //
 //  ApodTests.swift
-//  Apod
+//  ApodTests
 //
 //  Created by Dedi Prakasa on 1/3/21.
 //
 
 import XCTest
-@testable import Apod
 
 class ApodTests: XCTestCase {
 
@@ -25,7 +24,7 @@ class ApodTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }
