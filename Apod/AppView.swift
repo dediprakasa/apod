@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct AppView: View {
+    @EnvironmentObject var homePresenter: HomePresenter
+    @EnvironmentObject var favoritePresenter: FavoritePresenter
 
     var body: some View {
         TabView {
-            Home(presenter: AppContainer().homePresenter)
+            Home(presenter: homePresenter)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
 
-            Favorite(presenter: AppContainer().favoritePresenter)
+            Favorite(presenter: favoritePresenter)
                 .tabItem {
                     Image(systemName: "heart.fill")
                     Text("Favorite")
