@@ -1,6 +1,6 @@
 language: swift
 osx_image: xcode12
-xcode_workspace: Apod.xcworkspace
+xcode_project: Apod.xcodeproj
 xcode_scheme: Apod
 podfile: Podfile
 xcode_destination: platform=iOS Simulator,OS=14.0,name=iPhone 11 Pro
