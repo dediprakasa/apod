@@ -68,6 +68,7 @@
 		4B87321825A1AF8800658B89 /* ApodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodTests.swift; sourceTree = "<group>"; };
 		4B87321A25A1AF8800658B89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B87322225A1B00000658B89 /* Apod.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Apod.xctestplan; sourceTree = "<group>"; };
+		4B87322725A351DD00658B89 /* Core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Core; path = Modules/Core; sourceTree = "<group>"; };
 		4B967010257924FC001D0DD5 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		4B96701325792515001D0DD5 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		4B9A13B325601A7500E1A8DF /* Apod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Apod.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,6 +240,7 @@
 		4B9A13AA25601A7500E1A8DF = {
 			isa = PBXGroup;
 			children = (
+				4B87322725A351DD00658B89 /* Core */,
 				4B9A13B525601A7500E1A8DF /* Apod */,
 				4B87321725A1AF8800658B89 /* ApodTests */,
 				4B9A13B425601A7500E1A8DF /* Products */,
