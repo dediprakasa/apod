@@ -64,6 +64,7 @@
 		4B33B1DD256BF961005A8F31 /* ApodsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodsResponse.swift; sourceTree = "<group>"; };
 		4B33B1E2256BFB7E005A8F31 /* ApodMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodMapper.swift; sourceTree = "<group>"; };
 		4B3B451C25901E910065099B /* FavoriteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRouter.swift; sourceTree = "<group>"; };
+		4B5B495925A8B7CD00A05BF4 /* Weekly */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Weekly; path = Modules/Weekly; sourceTree = "<group>"; };
 		4B87321625A1AF8800658B89 /* ApodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B87321825A1AF8800658B89 /* ApodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodTests.swift; sourceTree = "<group>"; };
 		4B87321A25A1AF8800658B89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -240,6 +241,7 @@
 		4B9A13AA25601A7500E1A8DF = {
 			isa = PBXGroup;
 			children = (
+				4B5B495925A8B7CD00A05BF4 /* Weekly */,
 				4B87322725A351DD00658B89 /* Core */,
 				4B9A13B525601A7500E1A8DF /* Apod */,
 				4B87321725A1AF8800658B89 /* ApodTests */,
