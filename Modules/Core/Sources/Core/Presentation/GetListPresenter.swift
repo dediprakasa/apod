@@ -10,19 +10,19 @@ import Combine
 
 public class GetListPresenter<Request, Response, Interactor: UseCase>: ObservableObject
 where Interactor.Request == Request, Interactor.Response == [Response] {
-    
+
     private var cancellables = Set<AnyCancellable>()
     private let _useCase: Interactor
-    
+
     @Published public var list = [Response]()
     @Published public var errorMessage = ""
     @Published public var isLoading = false
     @Published public var isError = false
-    
+
     public init(useCase: Interactor) {
         _useCase = useCase
     }
-    
+
     public func getList(request: Request?) {
         isLoading = true
         _useCase.execute(request: request)
