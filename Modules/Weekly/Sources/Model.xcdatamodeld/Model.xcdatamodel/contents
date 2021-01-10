@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ApodEntity" representedClassName="ApodEntity" syncable="YES" codeGenerationType="class">
+    <entity name="ApodModuleEntity" representedClassName="ApodModuleEntity" syncable="YES">
         <attribute name="apodSite" optional="YES" attributeType="String"/>
         <attribute name="copyright" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="String"/>
@@ -12,6 +12,6 @@
         <attribute name="url" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="ApodEntity" positionX="-63" positionY="-18" width="128" height="178"/>
+        <element name="ApodModuleEntity" positionX="-63" positionY="-18" width="128" height="178"/>
     </elements>
 </model>

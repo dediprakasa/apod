@@ -23,7 +23,7 @@
         <attribute name="url" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="WeeklyApods" positionX="-63" positionY="-18" width="128" height="178"/>
         <element name="FavoriteEntity" positionX="-63" positionY="54" width="128" height="178"/>
+        <element name="WeeklyApods" positionX="-63" positionY="-18" width="128" height="178"/>
     </elements>
 </model>
