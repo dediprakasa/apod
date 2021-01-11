@@ -11,6 +11,7 @@ import CoreData
 import Combine
 
 public struct GetWeeklyLocaleDataSource: LocaleDataSource {
+    
     public typealias Request = Any
     public typealias Response = ApodModuleEntity
     private let _container: NSPersistentContainer
@@ -18,11 +19,54 @@ public struct GetWeeklyLocaleDataSource: LocaleDataSource {
     public init(container: NSPersistentContainer) {
         _container = container
     }
+    
+    public func list(request: Any?) -> AnyPublisher<[ApodModuleEntity], Error> {
+        let fetchRequest = NSFetchRequest<ApodModuleEntity>(entityName: "ApodModuleEntity")
+        return Future<[ApodModuleEntity], Error> { [self] completion in
+            var apodEntities = [ApodModuleEntity]()
+            let moc = _container.viewContext
+            moc.perform {
+                do {
+                    apodEntities = try moc.fetch(fetchRequest)
+                    completion(.success(apodEntities))
+                } catch let error as NSError {
+                  print("Could not fetch. \(error), \(error.userInfo)")
+                  completion(.failure(error))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+
+    public func add(entities: [ApodModuleEntity]) -> AnyPublisher<[ApodModuleEntity], Error> {
+        return Future<[ApodModuleEntity], Error> { completion in
+            guard !entities.isEmpty else { return }
+            _container.performBackgroundTask { context in
+                let batchInsert = self.batchInsertRequest(with: entities)
+                do {
+                    try context.execute(batchInsert)
+                    completion(.success(entities))
+                } catch {
+                    completion(.failure(error))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+
+    public func get(id: String) -> AnyPublisher<ApodModuleEntity, Error> {
+        fatalError()
+    }
+
+    public func update(id: Int, entity: ApodModuleEntity) -> AnyPublisher<Bool, Error> {
+        fatalError()
+    }
 
     private func batchInsertRequest(with apods: [ApodModuleEntity]) -> NSBatchInsertRequest {
         var index = 0
         let total = apods.count
-        let batchInsert = NSBatchInsertRequest(entity: ApodModuleEntity.entity()) { (managedObject: NSManagedObject) -> Bool in
+        let batchInsert = NSBatchInsertRequest(entity: ApodModuleEntity.entity()) { (managedObject: NSManagedObject)
+            -> Bool in
             guard index < total else { return true }
             if let apod = managedObject as? ApodModuleEntity {
                 let data = apods[index]
@@ -42,29 +86,12 @@ public struct GetWeeklyLocaleDataSource: LocaleDataSource {
         }
         return batchInsert
     }
-    
-    public func addWeeklyApods(from apods: [ApodModuleEntity]) -> AnyPublisher<[ApodModuleEntity], Error> {
-
-        return Future<[ApodModuleEntity], Error> { completion in
-            guard !apods.isEmpty else { return }
-            _container.performBackgroundTask { context in
-                let batchInsert = self.batchInsertRequest(with: apods)
-                do {
-                    try context.execute(batchInsert)
-                    completion(.success(apods))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-        }
-        .eraseToAnyPublisher()
-    }
 
     public func list() -> AnyPublisher<[ApodModuleEntity], Error> {
         let fetchRequest = NSFetchRequest<ApodModuleEntity>(entityName: "ApodModuleEntity")
         return Future<[ApodModuleEntity], Error> { [self] completion in
             var apodEntities = [ApodModuleEntity]()
-            let moc = container.viewContext
+            let moc = _container.viewContext
             moc.perform {
                 do {
                     apodEntities = try moc.fetch(fetchRequest)

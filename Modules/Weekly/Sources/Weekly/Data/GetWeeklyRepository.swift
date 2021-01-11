@@ -16,14 +16,14 @@ where WeeklyLocaleDataSource.Response == ApodModuleEntity,
     Transformer.Response == [ApodResponse],
     Transformer.Entity == [ApodModuleEntity],
     Transformer.Domain == [ApodDomainModel] {
-    
-    public typealias Request = Any
+
+    public typealias Request = (startDate: String, endDate: String)
     public typealias Response = [ApodDomainModel]
-    
+
     private let _loacaleDataSource: WeeklyLocaleDataSource
     private let _remoteDataSource: RemoteDataSource
     private let _mapper: Transformer
-    
+
     public init(
         localeDataSource: WeeklyLocaleDataSource,
         remoteDataSource: RemoteDataSource,
@@ -33,24 +33,29 @@ where WeeklyLocaleDataSource.Response == ApodModuleEntity,
         _remoteDataSource = remoteDataSource
         _mapper = mapper
     }
-    
-    public func execute(from startDate: String, to endDate: String) -> AnyPublisher<[ApodDomainModel], Error> {
 
-        return _loacaleDataSource.list()
-            .flatMap { result -> AnyPublisher<[ApodModuleEntity], Error> in
+    public func execute(request: (startDate: String, endDate: String)?) -> AnyPublisher<[ApodDomainModel], Error> {
+        return _loacaleDataSource.list(request: nil)
+            .flatMap { result -> AnyPublisher<[ApodDomainModel], Error> in
                 if result.isEmpty {
-                    return _remoteDataSource.execute(from: startDate, to: endDate)
-                        .map { _mapper.mapApodResponsesToEntities(from: $0 )}
-                        .flatMap { _loacaleDataSource.addWeeklyApods(from: $0) }
-                        .map { _mapper.mapApodEntitiesToDomains(from: $0 )}
+                    guard let request = request else {
+                        fatalError()
+                    }
+                    guard let params = (startDate: request.startDate,
+                                        endDate: request.endDate) as? RemoteDataSource.Request else {
+                        fatalError()
+                    }
+                    return _remoteDataSource.execute(request: params)
+                        .map { _mapper.transformResponseToEntity(response: $0 )}
+                        .flatMap { _loacaleDataSource.add(entities: $0) }
+                        .map { _mapper.transformEntityToDomain(entity: $0 )}
                         .eraseToAnyPublisher()
                 } else {
-                    return self.locale.getApods()
-                        .map { _mapper.mapApodEntitiesToDomains(from: $0 )}
+                    return _loacaleDataSource.list(request: nil)
+                        .map { _mapper.transformEntityToDomain(entity: $0 )}
                         .eraseToAnyPublisher()
                 }
             }
             .eraseToAnyPublisher()
     }
 }
-                                  

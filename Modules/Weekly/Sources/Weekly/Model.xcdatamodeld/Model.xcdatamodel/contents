@@ -6,7 +6,7 @@
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="hdurl" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="itemDesription" optional="YES" attributeType="String"/>
+        <attribute name="itemDescription" optional="YES" attributeType="String"/>
         <attribute name="mediaType" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="url" optional="YES" attributeType="String"/>

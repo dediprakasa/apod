@@ -10,19 +10,24 @@ import Core
 import Combine
 
 public struct GetWeeklyRemoteDataSource: DataSource {
-    public typealias Request = Any
+    
+    public typealias Request = (startDate: String, endDate: String)
     public typealias Response = [ApodResponse]
-
+    private let session = URLSession(configuration: .default)
     private let _endpoint: String
 
     private var apodFetcher = ApodFetcher()
-    
+
     public init(endpoint: String) {
         _endpoint = endpoint
     }
 
-    public func getWeeklyApods(from startDate: String, to endDate: String) -> AnyPublisher<[ApodResponse], Error> {
-        let components = apodFetcher.createRangedApodsComponents(from: startDate, to: endDate)
+    public func execute(request: (startDate: String, endDate: String)?) -> AnyPublisher<[ApodResponse], Error> {
+        guard let request = request else {
+            let error = ApodError.network(description: "Request error")
+            return Fail(error: error).eraseToAnyPublisher()
+        }
+        let components = apodFetcher.createRangedApodsComponents(from: request.startDate, to: request.endDate)
         guard let url = components.url else {
             let error = ApodError.network(description: "URL not found")
             return Fail(error: error).eraseToAnyPublisher()

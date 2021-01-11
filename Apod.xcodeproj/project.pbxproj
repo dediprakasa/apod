@@ -20,6 +20,8 @@
 		4B33B1DE256BF961005A8F31 /* ApodsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33B1DD256BF961005A8F31 /* ApodsResponse.swift */; };
 		4B33B1E3256BFB7E005A8F31 /* ApodMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33B1E2256BFB7E005A8F31 /* ApodMapper.swift */; };
 		4B3B451D25901E910065099B /* FavoriteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B451C25901E910065099B /* FavoriteRouter.swift */; };
+		4B3B8CA425ABFB3200C4F73A /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3B8CA325ABFB3200C4F73A /* Core */; };
+		4B3B8CA625ABFB3700C4F73A /* Weekly in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3B8CA525ABFB3700C4F73A /* Weekly */; };
 		4B5C6902257851D300106DFC /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4B5C6901257851D300106DFC /* SDWebImageSwiftUI */; };
 		4B87321925A1AF8800658B89 /* ApodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B87321825A1AF8800658B89 /* ApodTests.swift */; };
 		4B967011257924FC001D0DD5 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B967010257924FC001D0DD5 /* Favorite.swift */; };
@@ -102,7 +104,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B3B8CA625ABFB3700C4F73A /* Weekly in Frameworks */,
 				4B5C6902257851D300106DFC /* SDWebImageSwiftUI in Frameworks */,
+				4B3B8CA425ABFB3200C4F73A /* Core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +222,13 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		4B3B8CA225ABFB3200C4F73A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4B87321725A1AF8800658B89 /* ApodTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +257,7 @@
 				4B9A13B525601A7500E1A8DF /* Apod */,
 				4B87321725A1AF8800658B89 /* ApodTests */,
 				4B9A13B425601A7500E1A8DF /* Products */,
+				4B3B8CA225ABFB3200C4F73A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -349,6 +361,8 @@
 			name = Apod;
 			packageProductDependencies = (
 				4B5C6901257851D300106DFC /* SDWebImageSwiftUI */,
+				4B3B8CA325ABFB3200C4F73A /* Core */,
+				4B3B8CA525ABFB3700C4F73A /* Weekly */,
 			);
 			productName = Apod;
 			productReference = 4B9A13B325601A7500E1A8DF /* Apod.app */;
@@ -731,6 +745,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4B3B8CA325ABFB3200C4F73A /* Core */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Core;
+		};
+		4B3B8CA525ABFB3700C4F73A /* Weekly */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Weekly;
+		};
 		4B5C6901257851D300106DFC /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4B5C6900257851D300106DFC /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;

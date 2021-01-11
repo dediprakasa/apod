@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ApodResponse: Decodable {
+public struct ApodResponse: Decodable {
     let apodSite: String?
     let copyright: String?
     let date: String?

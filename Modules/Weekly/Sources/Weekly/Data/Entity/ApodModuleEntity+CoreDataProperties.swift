@@ -21,7 +21,7 @@ extension ApodModuleEntity {
     @NSManaged public var date: String?
     @NSManaged public var hdurl: String?
     @NSManaged public var id: UUID?
-    @NSManaged public var itemDesription: String?
+    @NSManaged public var itemDescription: String?
     @NSManaged public var mediaType: String?
     @NSManaged public var title: String?
     @NSManaged public var url: String?
