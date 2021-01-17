@@ -6,21 +6,48 @@
 //
 
 import SwiftUI
+import Core
+import Weekly
 
 @main
 struct ApodApp: App {
+    
+    lazy var weeklyUseCase: Interactor<
+        (startDate: String, endDate: String),
+        [ApodDomainModel],
+        GetWeeklyRepository<
+            GetWeeklyLocaleDataSource,
+            GetWeeklyRemoteDataSource,
+            ApodTransformer
+        >> = AppContainer().provideWeekly()
 
-    @StateObject var homePresenter = AppContainer().homePresenter
+    @StateObject var homePresenter = GetListPresenter<
+        (startDate: String, endDate: String),
+        ApodDomainModel,
+        Interactor<
+            (startDate: String, endDate: String),
+            [ApodDomainModel],
+            GetWeeklyRepository<
+            GetWeeklyLocaleDataSource,
+            GetWeeklyRemoteDataSource,
+            ApodTransformer
+            >
+        >>(useCase: AppContainer().provideWeekly())
     @StateObject var favoritePresenter = AppContainer().favoritePresenter
 
-    let persistenceController = PersistenceController.shared
+    let persistenceController: Database = {
+        let db = Database.shared
+        db.prepareDatabase()
+        return db
+    }()
 
     var body: some Scene {
         WindowGroup {
                 AppView()
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .environment(\.managedObjectContext, persistenceController.context)
                     .environmentObject(homePresenter)
                     .environmentObject(favoritePresenter)
+                    .environmentObject(persistenceController)
         }
     }
 }
