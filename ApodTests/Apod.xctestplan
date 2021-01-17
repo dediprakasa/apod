@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "015256D1-F7B9-40A3-B389-FC00C8E7A229",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Apod.xcodeproj",
+        "identifier" : "4B87321525A1AF8800658B89",
+        "name" : "ApodTests"
+      }
+    }
+  ],
+  "version" : 1
+}
