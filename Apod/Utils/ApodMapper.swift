@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Weekly
 
 final class ApodMapper {
 
@@ -25,7 +26,7 @@ final class ApodMapper {
       }
     }
 
-    static func mapApodEntitiesToDomains(from apodResponse: [WeeklyApods]) -> [Apod] {
+    static func mapApodEntitiesToDomains(from apodResponse: [ApodEntityModule]) -> [Apod] {
 
       return apodResponse.map { apod in
         return Apod(
@@ -41,10 +42,10 @@ final class ApodMapper {
       }
     }
 
-    static func mapApodResponsesToEntities(from apodResponse: [ApodResponse]) -> [WeeklyApods] {
+    static func mapApodResponsesToEntities(from apodResponse: [ApodResponse]) -> [ApodEntityModule] {
 
         return apodResponse.map { apod in
-            let apodEntity = WeeklyApods(context: PersistenceController.shared.container.viewContext)
+            let apodEntity = ApodEntityModule(context: Database.shared.context)
             apodEntity.id = UUID()
             apodEntity.apodSite = apod.apodSite ?? ""
             apodEntity.copyright = apod.copyright ?? ""

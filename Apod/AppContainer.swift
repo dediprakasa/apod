@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import Core
+import Weekly
+import CoreData
 
 class AppContainer {
+    
+//    @Environment(\.managedObjectContext) var context
 
     private let remoteDataSource = RemoteDataSource.sharedInstance
     private let localeDataSource = LocalDataSource.sharedInstance
@@ -23,4 +28,18 @@ class AppContainer {
     lazy var homePresenter = HomePresenter(useCase: homeInteractor, router: homeRouter)
     lazy var detailPresenter = DetailPresenter(detailUseCase: detailInteractor)
     lazy var favoritePresenter = FavoritePresenter(useCase: favoriteInteractor, router: favoriteRouter)
+
+    func provideWeekly<U: UseCase>() -> U where U.Request == (startDate: String, endDate: String), U.Response == [ApodDomainModel] {
+        let locale = GetWeeklyLocaleDataSource(context: Database.shared.context)
+         let remote = GetWeeklyRemoteDataSource()
+        let mapper = ApodTransformer(context: Database.shared.context)
+    
+         let repository = GetWeeklyRepository(localeDataSource: locale, remoteDataSource: remote, mapper: mapper)
+
+        guard let interactor = Interactor(repository: repository) as? U else {
+            fatalError()
+        }
+
+        return interactor
+    }
 }

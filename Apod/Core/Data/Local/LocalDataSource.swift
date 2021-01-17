@@ -8,11 +8,12 @@
 import Foundation
 import Combine
 import CoreData
+import Weekly
 
 protocol LocalDataSourceProtocol {
 
-    func addWeeklyApods(from apods: [WeeklyApods]) -> AnyPublisher<[WeeklyApods], Error>
-    func getApods() -> AnyPublisher<[WeeklyApods], Error>
+    func addWeeklyApods(from apods: [ApodEntityModule]) -> AnyPublisher<[ApodEntityModule], Error>
+    func getApods() -> AnyPublisher<[ApodEntityModule], Error>
     func updateFavorite(apod: Apod) -> AnyPublisher<Bool, Error>
     func checkFavorite(apod: Apod) -> AnyPublisher<Bool, Error>
     func getFavorites() -> AnyPublisher<[FavoriteEntity], Error>
@@ -21,17 +22,17 @@ protocol LocalDataSourceProtocol {
 class LocalDataSource: NSObject {
     static let sharedInstance = LocalDataSource()
     private override init() { }
-    let container = PersistenceController.shared.container
-    let managedObjectContext = PersistenceController.shared.container.viewContext
+    let container = Database.shared.persistentContainer
+    let managedObjectContext = Database.shared.context
 }
 
 extension LocalDataSource: LocalDataSourceProtocol {
-    private func batchInsertRequest(with apods: [WeeklyApods]) -> NSBatchInsertRequest {
+    private func batchInsertRequest(with apods: [ApodEntityModule]) -> NSBatchInsertRequest {
         var index = 0
         let total = apods.count
-        let batchInsert = NSBatchInsertRequest(entity: WeeklyApods.entity()) { (managedObject: NSManagedObject) -> Bool in
+        let batchInsert = NSBatchInsertRequest(entity: ApodEntityModule.entity()) { (managedObject: NSManagedObject) -> Bool in
             guard index < total else { return true }
-            if let apod = managedObject as? WeeklyApods {
+            if let apod = managedObject as? ApodEntityModule {
                 let data = apods[index]
                 apod.id = data.id
                 apod.apodSite = data.apodSite
@@ -50,13 +51,13 @@ extension LocalDataSource: LocalDataSourceProtocol {
         return batchInsert
     }
 
-    func addWeeklyApods(from apods: [WeeklyApods]) -> AnyPublisher<[WeeklyApods], Error> {
+    func addWeeklyApods(from apods: [ApodEntityModule]) -> AnyPublisher<[ApodEntityModule], Error> {
 
-        return Future<[WeeklyApods], Error> { completion in
+        return Future<[ApodEntityModule], Error> { completion in
 
-            guard !apods.isEmpty else { return }
+            guard !apods.isEmpty, let container = self.container else { return }
 
-            self.container.performBackgroundTask { context in
+            container.performBackgroundTask { context in
                 let batchInsert = self.batchInsertRequest(with: apods)
                 do {
                     try context.execute(batchInsert)
@@ -69,10 +70,11 @@ extension LocalDataSource: LocalDataSourceProtocol {
         .eraseToAnyPublisher()
     }
 
-    func getApods() -> AnyPublisher<[WeeklyApods], Error> {
-        let fetchRequest = NSFetchRequest<WeeklyApods>(entityName: "WeeklyApods")
-        return Future<[WeeklyApods], Error> { [self] completion in
-            var apodEntities = [WeeklyApods]()
+    func getApods() -> AnyPublisher<[ApodEntityModule], Error> {
+        let fetchRequest = NSFetchRequest<ApodEntityModule>(entityName: "ApodEntityModule")
+        return Future<[ApodEntityModule], Error> { [self] completion in
+            var apodEntities = [ApodEntityModule]()
+            guard let container = self.container else { return }
             let moc = container.viewContext
             moc.perform {
                 do {
@@ -92,6 +94,7 @@ extension LocalDataSource: LocalDataSourceProtocol {
         fetchRequest.predicate = NSPredicate(format: "date == %@", apod.date)
         return Future<Bool, Error> { [self] completion in
             var favorites = [FavoriteEntity]()
+            guard let container = self.container else { return }
             let moc = container.viewContext
             do {
                 favorites = try moc.fetch(fetchRequest)
@@ -126,6 +129,7 @@ extension LocalDataSource: LocalDataSourceProtocol {
         fetchRequest.predicate = NSPredicate(format: "date == %@", apod.date)
         return Future<Bool, Error> { [self] completion in
             var favorites = [FavoriteEntity]()
+            guard let container = self.container else { return }
             let moc = container.viewContext
             do {
                 favorites = try moc.fetch(fetchRequest)
@@ -145,6 +149,7 @@ extension LocalDataSource: LocalDataSourceProtocol {
         let fetchRequest = NSFetchRequest<FavoriteEntity>(entityName: "FavoriteEntity")
         return Future<[FavoriteEntity], Error> { [self] completion in
             var favorites = [FavoriteEntity]()
+            guard let container = self.container else { return }
             let moc = container.viewContext
             do {
                 favorites = try moc.fetch(fetchRequest)

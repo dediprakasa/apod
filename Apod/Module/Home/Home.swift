@@ -8,14 +8,28 @@
 import SwiftUI
 import CoreData
 import Combine
+import Weekly
+import Core
 
 struct Home: View {
 
-    @ObservedObject var presenter: HomePresenter
+    @ObservedObject var presenter: GetListPresenter<
+        (startDate: String, endDate: String),
+        ApodDomainModel,
+        Interactor<
+            (startDate: String, endDate: String),
+            [ApodDomainModel],
+            GetWeeklyRepository<
+            GetWeeklyLocaleDataSource,
+            GetWeeklyRemoteDataSource,
+            ApodTransformer
+            >
+        >>
     @State private var disposables = Set<AnyCancellable>()
+//    @EnvironmentObject var db: Database
 
-    @FetchRequest(entity: WeeklyApods.entity(), sortDescriptors: [])
-    var tes: FetchedResults<WeeklyApods> {
+    @FetchRequest(entity: ApodEntityModule.entity(), sortDescriptors: [])
+    var tes: FetchedResults<ApodEntityModule> {
         didSet {
             print(tes.count)
         }
@@ -23,18 +37,19 @@ struct Home: View {
 
     var body: some View {
         ZStack {
-            if self.presenter.loadingState {
+            if self.presenter.isLoading {
                 VStack {
                     LoadingView()
                 }
             } else {
                 NavigationView {
                     List {
-                        ForEach(presenter.apods, id: \.id) { apod in
-                            self.presenter.linkBuilder(for: apod) {
+                        ForEach(self.presenter.list, id: \.id) { apod in
+                            linkBuilder(for: apod) {
                                 ApodCell(apod: apod)
                                     .frame(height: 280)
                             }
+                            
                         }
                     }
                     .navigationBarTitle("Pictures of The Week", displayMode: .automatic)
@@ -42,7 +57,14 @@ struct Home: View {
             }
         }
         .onAppear(perform: {
-            self.presenter.getRangedApods()
+            self.presenter.execute(request: nil)
         })
+    }
+    
+    func linkBuilder<Content: View>(for apod: ApodDomainModel, @ViewBuilder content: () -> Content) -> some View {
+        NavigationLink(
+            destination: HomeRouter.makeDetailView(for: apod)) {
+            content()
+        }
     }
 }

@@ -58,10 +58,10 @@ class HomePresenter: ObservableObject {
             }.store(in: &cancellables)
     }
 
-    func linkBuilder<Content: View>(for apod: Apod, @ViewBuilder content: () -> Content) -> some View {
-        NavigationLink(
-            destination: router.makeDetailView(for: apod)) {
-            content()
-        }
-    }
+//    func linkBuilder<Content: View>(for apod: Apod, @ViewBuilder content: () -> Content) -> some View {
+//        NavigationLink(
+//            destination: router.makeDetailView(for: apod)) {
+//            content()
+//        }
+//    }
 }

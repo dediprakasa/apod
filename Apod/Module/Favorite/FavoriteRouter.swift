@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Weekly
 
 class FavoriteRouter {
-    func makeDetailView(for apod: Apod, withFavoritePresenter favoritePresenter: FavoritePresenter) -> some View {
+    func makeDetailView(for apod: ApodDomainModel, withFavoritePresenter favoritePresenter: FavoritePresenter) -> some View {
         let presenter = AppContainer().detailPresenter
         presenter.setApod(apod: apod)
 
