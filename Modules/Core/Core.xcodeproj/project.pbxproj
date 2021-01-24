@@ -12,6 +12,7 @@
 		4B0D418F25BD6D8000A6D043 /* LocaleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D418E25BD6D8000A6D043 /* LocaleDataSource.swift */; };
 		4B0D419325BD6F0900A6D043 /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D419225BD6F0900A6D043 /* RemoteDataSource.swift */; };
 		4B0D419725BD701D00A6D043 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D419625BD701D00A6D043 /* UseCase.swift */; };
+		4B0D419A25BD707C00A6D043 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D419925BD707C00A6D043 /* Interactor.swift */; };
 		4B597D9325BBFC50000277F6 /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B597D9125BBFC50000277F6 /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -21,6 +22,7 @@
 		4B0D418E25BD6D8000A6D043 /* LocaleDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDataSource.swift; sourceTree = "<group>"; };
 		4B0D419225BD6F0900A6D043 /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
 		4B0D419625BD701D00A6D043 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
+		4B0D419925BD707C00A6D043 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		4B597D8E25BBFC50000277F6 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B597D9125BBFC50000277F6 /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		4B597D9225BBFC50000277F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				4B0D419625BD701D00A6D043 /* UseCase.swift */,
+				4B0D419925BD707C00A6D043 /* Interactor.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			files = (
 				4B0D418F25BD6D8000A6D043 /* LocaleDataSource.swift in Sources */,
 				4B0D419725BD701D00A6D043 /* UseCase.swift in Sources */,
+				4B0D419A25BD707C00A6D043 /* Interactor.swift in Sources */,
 				4B0D419325BD6F0900A6D043 /* RemoteDataSource.swift in Sources */,
 				4B0D418C25BD6D1200A6D043 /* Repository.swift in Sources */,
 			);
