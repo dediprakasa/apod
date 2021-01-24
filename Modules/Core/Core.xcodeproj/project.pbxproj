@@ -14,6 +14,7 @@
 		4B0D419725BD701D00A6D043 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D419625BD701D00A6D043 /* UseCase.swift */; };
 		4B0D419A25BD707C00A6D043 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D419925BD707C00A6D043 /* Interactor.swift */; };
 		4B0D419D25BD73C900A6D043 /* CustomError+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D419C25BD73C900A6D043 /* CustomError+Ext.swift */; };
+		4B0D41A025BD740300A6D043 /* GetListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D419F25BD740300A6D043 /* GetListPresenter.swift */; };
 		4B597D9325BBFC50000277F6 /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B597D9125BBFC50000277F6 /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		4B0D419625BD701D00A6D043 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		4B0D419925BD707C00A6D043 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		4B0D419C25BD73C900A6D043 /* CustomError+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomError+Ext.swift"; sourceTree = "<group>"; };
+		4B0D419F25BD740300A6D043 /* GetListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetListPresenter.swift; sourceTree = "<group>"; };
 		4B597D8E25BBFC50000277F6 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B597D9125BBFC50000277F6 /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		4B597D9225BBFC50000277F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		4B0D418825BD6CAB00A6D043 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4B0D419F25BD740300A6D043 /* GetListPresenter.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B0D418F25BD6D8000A6D043 /* LocaleDataSource.swift in Sources */,
+				4B0D41A025BD740300A6D043 /* GetListPresenter.swift in Sources */,
 				4B0D419725BD701D00A6D043 /* UseCase.swift in Sources */,
 				4B0D419A25BD707C00A6D043 /* Interactor.swift in Sources */,
 				4B0D419325BD6F0900A6D043 /* RemoteDataSource.swift in Sources */,
