@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import Weekly
 
 class HomeRouter {
 
-    func makeDetailView(for apod: Apod) -> some View {
+    func makeDetailView(for apod: WeeklyDomainModel) -> some View {
         let presenter = AppContainer().detailPresenter
         presenter.setApod(apod: apod)
 

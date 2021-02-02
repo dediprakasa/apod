@@ -26,8 +26,10 @@ struct Home: View {
                 NavigationView {
                     List {
                         ForEach(presenter.list, id: \.id) { apod in
-                            ApodCell(apod: apod)
-                                .frame(height: 280)
+                            linkBuilder(for: apod) {
+                                ApodCell(apod: apod)
+                                    .frame(height: 280)
+                            }
                         }
                     }
                     .navigationBarTitle("Pictures of The Week", displayMode: .automatic)
@@ -40,5 +42,12 @@ struct Home: View {
         .onAppear(perform: {
             self.presenter.getList()
         })
+    }
+    
+    func linkBuilder<Content: View>(for apod: WeeklyDomainModel, @ViewBuilder content: () -> Content) -> some View {
+        NavigationLink(
+            destination: HomeRouter().makeDetailView(for: apod)) {
+            content()
+        }
     }
 }

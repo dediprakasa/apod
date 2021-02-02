@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import Weekly
 
 class FavoritePresenter: ObservableObject {
 
@@ -30,7 +31,7 @@ class FavoritePresenter: ObservableObject {
             .store(in: &cancellables)
     }
 
-    func linkBuilder<Content: View>(for apod: Apod, @ViewBuilder content: () -> Content) -> some View {
+    func linkBuilder<Content: View>(for apod: WeeklyDomainModel, @ViewBuilder content: () -> Content) -> some View {
         NavigationLink(
             destination: router.makeDetailView(for: apod, withFavoritePresenter: self)) {
             content()

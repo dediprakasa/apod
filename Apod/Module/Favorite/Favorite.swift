@@ -19,20 +19,21 @@ struct Favorite: View {
             } else {
                 List {
                     ForEach(self.presenter.favorites) { apod in
-                        self.presenter.linkBuilder(for: apod) {
-                            HStack {
-                                WebImage(url: URL(string: apod.hdurl))
-                                    .resizable()
-                                    .placeholder(Image("placeholder"))
-                                    .indicator(Indicator.progress)
-                                    .transition(.fade(duration: 0.5))
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 80, height: 80)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        HStack {
+                            WebImage(url: URL(string: apod.hdurl))
+                                .resizable()
+                                .placeholder(Image("placeholder"))
+                                .indicator(Indicator.progress)
+                                .transition(.fade(duration: 0.5))
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 80, height: 80)
+                                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
 
-                                Text(apod.title)
-                            }
+                            Text(apod.title)
                         }
+//                        self.presenter.linkBuilder(for: apod) {
+//                            
+//                        }
                     }
                 }
                 .navigationBarTitle("Favorite", displayMode: .inline)

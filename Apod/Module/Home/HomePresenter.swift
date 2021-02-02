@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 
+
 class HomePresenter: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
@@ -57,10 +58,10 @@ class HomePresenter: ObservableObject {
             }.store(in: &cancellables)
     }
 
-    func linkBuilder<Content: View>(for apod: Apod, @ViewBuilder content: () -> Content) -> some View {
-        NavigationLink(
-            destination: router.makeDetailView(for: apod)) {
-            content()
-        }
-    }
+//    func linkBuilder<Content: View>(for apod: WDM, @ViewBuilder content: () -> Content) -> some View {
+//        NavigationLink(
+//            destination: router.makeDetailView(for: apod)) {
+//            content()
+//        }
+//    }
 }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import Weekly
 
 class DetailPresenter: ObservableObject {
 
@@ -14,7 +15,7 @@ class DetailPresenter: ObservableObject {
     private var detailUseCase: DetailUseCase
     var favPresenter: FavoritePresenter?
 
-    @Published var apod: Apod? {
+    @Published var apod: WeeklyDomainModel? {
         didSet {
             self.checkFavorite()
         }
@@ -27,33 +28,33 @@ class DetailPresenter: ObservableObject {
         self.detailUseCase = detailUseCase
     }
 
-    func setApod(apod: Apod) {
+    func setApod(apod: WeeklyDomainModel) {
         self.apod = apod
     }
 
     func updateFavorite() {
         guard let apod = apod else { return }
 
-        detailUseCase.updateFavorite(apod: apod)
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { _ in
-
-            }, receiveValue: { result in
-                self.isFavorite = result
-            })
-            .store(in: &cancellables)
+//        detailUseCase.updateFavorite(apod: apod)
+//            .receive(on: RunLoop.main)
+//            .sink(receiveCompletion: { _ in
+//
+//            }, receiveValue: { result in
+//                self.isFavorite = result
+//            })
+//            .store(in: &cancellables)
     }
 
     func checkFavorite() {
         guard let apod = apod else { return }
 
-        detailUseCase.checkFavorite(apod: apod)
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { _ in
-
-            }, receiveValue: { result in
-                self.isFavorite = result
-            })
-            .store(in: &cancellables)
+//        detailUseCase.checkFavorite(apod: apod)
+//            .receive(on: RunLoop.main)
+//            .sink(receiveCompletion: { _ in
+//
+//            }, receiveValue: { result in
+//                self.isFavorite = result
+//            })
+//            .store(in: &cancellables)
     }
 }
