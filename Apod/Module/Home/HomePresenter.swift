@@ -11,7 +11,7 @@ import Combine
 class HomePresenter: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
-    private let router: HomeRouter
+    private let router = HomeRouter()
     private let homeUseCase: HomeUseCase
 
     @Published var apods: [Apod] = []
@@ -34,9 +34,8 @@ class HomePresenter: ObservableObject {
         return formatter.string(from: date)
     }
 
-    init(useCase: HomeUseCase, router: HomeRouter) {
+    init(useCase: HomeUseCase) {
         self.homeUseCase = useCase
-        self.router = router
     }
 
     func getRangedApods() {

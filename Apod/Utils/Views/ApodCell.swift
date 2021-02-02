@@ -8,10 +8,11 @@
 import SwiftUI
 import Combine
 import SDWebImageSwiftUI
+import Weekly
 
 struct ApodCell: View {
 
-    var apod: Apod
+    var apod: WeeklyDomainModel
 
     var body: some View {
         GeometryReader { geometry in

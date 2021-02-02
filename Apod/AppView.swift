@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import Core
+import Weekly
 
 struct AppView: View {
-    @EnvironmentObject var homePresenter: HomePresenter
+    @EnvironmentObject var homePresenter: GetListPresenter<(startDate: String, endDate: String), WeeklyDomainModel, Interactor<(startDate: String, endDate: String), [WeeklyDomainModel], GetWeeklyRepository<GetWeeklyLocaleDataSource, GetWeeklyRemoteDataSource, WeeklyTransformer>>>
     @EnvironmentObject var favoritePresenter: FavoritePresenter
 
     var body: some View {

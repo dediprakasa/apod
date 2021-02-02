@@ -6,27 +6,17 @@
 //
 
 import CoreData
+import Weekly
+
+class PersistentContainer: NSPersistentContainer { }
 
 class PersistenceController {
     static let shared = PersistenceController()
 
-//    static var preview: PersistenceController = {
-//        let result = PersistenceController(inMemory: true)
-//        let viewContext = result.container.viewContext
-//        for _ in 0..<10 {
-//            let newItem = ApodEntity(context: viewContext)
-//            newItem.timestamp = Date()
-//        }
-//        do {
-//            try viewContext.save()
-//        } catch {
-//            let nsError = error as NSError
-//            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//        }
-//        return result
-//    }()
-
-    let container: NSPersistentContainer
+    var container: NSPersistentContainer
+    var context: NSManagedObjectContext {
+        return container.viewContext
+    }
 
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "ApodEntity")
@@ -39,5 +29,26 @@ class PersistenceController {
                 print("Unresolved error \(error)")
             }
         }
+    }
+
+    func prepareDatabase() {
+        let modelBundles: [Bundle] = [
+            Bundle(for: WeeklyModuleEntity.self)
+        ]
+        PersistenceController.shared.prepare(loadFromBundles: modelBundles)
+    }
+
+    func prepare(loadFromBundles bundles: [Bundle]?) {
+        let model = NSManagedObjectModel.mergedModel(from: bundles)!
+        container = PersistentContainer(name: "Database", managedObjectModel: model)
+        container.loadPersistentStores { _, error in
+            if let error = error {
+                print("Unresolved error \(error)")
+                fatalError()
+            }
+        }
+
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        context.automaticallyMergesChangesFromParent = true
     }
 }

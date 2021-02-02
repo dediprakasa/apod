@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Core
+import Weekly
 
 @main
 struct ApodApp: App {

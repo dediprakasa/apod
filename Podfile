@@ -14,3 +14,8 @@ target 'Core' do
 project './Modules/Core/Core'
  
 end
+
+target 'Weekly' do
+project './Modules/Weekly/Weekly'
+ 
+end

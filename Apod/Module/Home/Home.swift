@@ -8,41 +8,37 @@
 import SwiftUI
 import CoreData
 import Combine
+import Core
+import Weekly
 
 struct Home: View {
 
-    @ObservedObject var presenter: HomePresenter
+    @ObservedObject var presenter: GetListPresenter<(startDate: String, endDate: String), WeeklyDomainModel, Interactor<(startDate: String, endDate: String), [WeeklyDomainModel], GetWeeklyRepository<GetWeeklyLocaleDataSource, GetWeeklyRemoteDataSource, WeeklyTransformer>>>
     @State private var disposables = Set<AnyCancellable>()
-
-    @FetchRequest(entity: WeeklyApods.entity(), sortDescriptors: [])
-    var tes: FetchedResults<WeeklyApods> {
-        didSet {
-            print(tes.count)
-        }
-    }
 
     var body: some View {
         ZStack {
-            if self.presenter.loadingState {
+            if self.presenter.isLoading {
                 VStack {
                     LoadingView()
                 }
             } else {
                 NavigationView {
                     List {
-                        ForEach(presenter.apods, id: \.id) { apod in
-                            self.presenter.linkBuilder(for: apod) {
-                                ApodCell(apod: apod)
-                                    .frame(height: 280)
-                            }
+                        ForEach(presenter.list, id: \.id) { apod in
+                            ApodCell(apod: apod)
+                                .frame(height: 280)
                         }
                     }
                     .navigationBarTitle("Pictures of The Week", displayMode: .automatic)
+                    .navigationBarItems(leading: Button(action: {}) {
+                        Text("Add Update")
+                    })
                 }
             }
         }
         .onAppear(perform: {
-            self.presenter.getRangedApods()
+            self.presenter.getList()
         })
     }
 }

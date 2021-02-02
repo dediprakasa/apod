@@ -14,6 +14,8 @@
 		4B18093525738DA6005BEE75 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B18093425738DA6005BEE75 /* DetailPresenter.swift */; };
 		4B18093825739D30005BEE75 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B18093725739D30005BEE75 /* DetailView.swift */; };
 		4B18093B25739D6E005BEE75 /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B18093A25739D6E005BEE75 /* DetailInteractor.swift */; };
+		4B24BBC425C8C44900FA5E39 /* Weekly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B24BBC325C8C44900FA5E39 /* Weekly.framework */; };
+		4B24BBC525C8C44900FA5E39 /* Weekly.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B24BBC325C8C44900FA5E39 /* Weekly.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4B27EE90256D5639006E2D5A /* ApodFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27EE8F256D5639006E2D5A /* ApodFetcher.swift */; };
 		4B2F0F42257BDF4F000344CC /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F0F41257BDF4F000344CC /* LocalDataSource.swift */; };
 		4B33B1D4256BF3C9005A8F31 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33B1D3256BF3C9005A8F31 /* HomeInteractor.swift */; };
@@ -61,6 +63,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				4B597DA125BBFE76000277F6 /* Core.framework in Embed Frameworks */,
+				4B24BBC525C8C44900FA5E39 /* Weekly.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +80,7 @@
 		4B18093425738DA6005BEE75 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		4B18093725739D30005BEE75 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		4B18093A25739D6E005BEE75 /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
+		4B24BBC325C8C44900FA5E39 /* Weekly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Weekly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B27EE8F256D5639006E2D5A /* ApodFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodFetcher.swift; sourceTree = "<group>"; };
 		4B2F0F41257BDF4F000344CC /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
 		4B33B1D3256BF3C9005A8F31 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B5C6902257851D300106DFC /* SDWebImageSwiftUI in Frameworks */,
+				4B24BBC425C8C44900FA5E39 /* Weekly.framework in Frameworks */,
 				4B597DA025BBFE76000277F6 /* Core.framework in Frameworks */,
 				C7997F611BC48BF89B69B8A7 /* Pods_Apod.framework in Frameworks */,
 			);
@@ -142,6 +147,7 @@
 		2A00B7519374B37425D7A944 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4B24BBC325C8C44900FA5E39 /* Weekly.framework */,
 				4B597D9F25BBFE76000277F6 /* Core.framework */,
 				9AEF893D63A72BA802CC0323 /* Pods_Apod.framework */,
 			);
@@ -724,6 +730,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.deltadirac.Apod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -747,6 +754,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.deltadirac.Apod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
