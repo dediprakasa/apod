@@ -10,7 +10,7 @@ import Core
 import Combine
 import CoreData
 
-public struct ApodDetailLocaleDataSource: LocaleDataSource {
+public struct ApodDetailLocaleDataSource: LocaleDataSource {    
     
     public typealias Request = Any
     public typealias Response = ApodDetailModuleEntity
@@ -65,11 +65,28 @@ public struct ApodDetailLocaleDataSource: LocaleDataSource {
         .eraseToAnyPublisher()
     }
     
-    public func get(id: String) -> AnyPublisher<ApodDetailModuleEntity, Error> {
-        fatalError()
+    public func get(date: String?) -> AnyPublisher<ApodDetailModuleEntity, Error> {
+        guard let date = date else {
+            return Fail(error: LocalError.notFound)
+                .eraseToAnyPublisher()
+        }
+        let fetchRequest = NSFetchRequest<ApodDetailModuleEntity>(entityName: "ApodDetailModuleEntity")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", date)
+        return Future<ApodDetailModuleEntity, Error> {[self] completion in
+            do {
+                let apod = try ctx.fetch(fetchRequest)
+                if apod.count != 0 {
+                    completion(.success(apod[0]))
+                }
+            } catch {
+                completion(.failure(LocalError.somethingWentWrong))
+            }
+        }
+        .eraseToAnyPublisher()
+        
     }
     
-    public func update(apod: Any) -> AnyPublisher<Bool, Error> {
+    public func update(apod: Any?) -> AnyPublisher<Bool, Error> {
         
         return Future<Bool, Error> { [self] completion in
             guard let apod = apod as? ApodDetailDomainModel else {

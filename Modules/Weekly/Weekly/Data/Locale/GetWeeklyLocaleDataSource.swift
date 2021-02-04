@@ -11,6 +11,7 @@ import CoreData
 import Combine
 
 public struct GetWeeklyLocaleDataSource: LocaleDataSource {
+   
     
     public typealias Request = Any
     
@@ -77,11 +78,11 @@ public struct GetWeeklyLocaleDataSource: LocaleDataSource {
         .eraseToAnyPublisher()
     }
     
-    public func get(id: String) -> AnyPublisher<WeeklyModuleEntity, Error> {
+    public func get(date: String?) -> AnyPublisher<WeeklyModuleEntity, Error> {
         fatalError()
     }
     
-    public func update(apod: Any) -> AnyPublisher<Bool, Error> {
+    public func update(apod: Any?) -> AnyPublisher<Bool, Error> {
         fatalError()
     }
 }

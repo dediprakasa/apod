@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		12A89ED43A639F469BFB8804 /* Pods_ApodDetail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60B8460077F20E019EE466DB /* Pods_ApodDetail.framework */; };
 		4BCDF64B25CB6CC300DEB31D /* ApodDetail.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BCDF64925CB6CC300DEB31D /* ApodDetail.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4BCDF65925CB708300DEB31D /* GetGameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF65825CB708300DEB31D /* GetGameRepository.swift */; };
-		4BCDF65C25CB709700DEB31D /* GetFavoritesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF65B25CB709700DEB31D /* GetFavoritesRepository.swift */; };
+		4BCDF65925CB708300DEB31D /* FavoritesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF65825CB708300DEB31D /* FavoritesRepository.swift */; };
+		4BCDF65C25CB709700DEB31D /* DetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF65B25CB709700DEB31D /* DetailRepository.swift */; };
 		4BCDF66025CB710B00DEB31D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF65E25CB710B00DEB31D /* Model.xcdatamodeld */; };
 		4BCDF66425CB719900DEB31D /* ApodDetailModuleEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF66225CB719900DEB31D /* ApodDetailModuleEntity+CoreDataClass.swift */; };
 		4BCDF66525CB719900DEB31D /* ApodDetailModuleEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF66325CB719900DEB31D /* ApodDetailModuleEntity+CoreDataProperties.swift */; };
@@ -22,8 +22,8 @@
 		4BCDF64625CB6CC300DEB31D /* ApodDetail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ApodDetail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BCDF64925CB6CC300DEB31D /* ApodDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApodDetail.h; sourceTree = "<group>"; };
 		4BCDF64A25CB6CC300DEB31D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4BCDF65825CB708300DEB31D /* GetGameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGameRepository.swift; sourceTree = "<group>"; };
-		4BCDF65B25CB709700DEB31D /* GetFavoritesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoritesRepository.swift; sourceTree = "<group>"; };
+		4BCDF65825CB708300DEB31D /* FavoritesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRepository.swift; sourceTree = "<group>"; };
+		4BCDF65B25CB709700DEB31D /* DetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepository.swift; sourceTree = "<group>"; };
 		4BCDF65F25CB710B00DEB31D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		4BCDF66225CB719900DEB31D /* ApodDetailModuleEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApodDetailModuleEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4BCDF66325CB719900DEB31D /* ApodDetailModuleEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApodDetailModuleEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -93,8 +93,8 @@
 				4BCDF65725CB706400DEB31D /* Remote */,
 				4BCDF65625CB706000DEB31D /* Locale */,
 				4BCDF65525CB705900DEB31D /* Entity */,
-				4BCDF65825CB708300DEB31D /* GetGameRepository.swift */,
-				4BCDF65B25CB709700DEB31D /* GetFavoritesRepository.swift */,
+				4BCDF65825CB708300DEB31D /* FavoritesRepository.swift */,
+				4BCDF65B25CB709700DEB31D /* DetailRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -251,8 +251,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BCDF65C25CB709700DEB31D /* GetFavoritesRepository.swift in Sources */,
-				4BCDF65925CB708300DEB31D /* GetGameRepository.swift in Sources */,
+				4BCDF65C25CB709700DEB31D /* DetailRepository.swift in Sources */,
+				4BCDF65925CB708300DEB31D /* FavoritesRepository.swift in Sources */,
 				4BCDF67C25CB962D00DEB31D /* ApodDetailDomainModel.swift in Sources */,
 				4BCDF66025CB710B00DEB31D /* Model.xcdatamodeld in Sources */,
 				4BCDF66425CB719900DEB31D /* ApodDetailModuleEntity+CoreDataClass.swift in Sources */,
