@@ -76,7 +76,6 @@
 			children = (
 				4B24BBAE25C8C15600FA5E39 /* Data */,
 				4B24BBAF25C8C15C00FA5E39 /* Domain */,
-				4B24BBCA25C920EA00FA5E39 /* GetWeeklyRepository.swift */,
 				4B24BB9F25C8C0DB00FA5E39 /* Info.plist */,
 				4B24BB9E25C8C0DB00FA5E39 /* Weekly.h */,
 				4B24BBCE25C93C6000FA5E39 /* WeeklyTransformer.swift */,
@@ -88,6 +87,7 @@
 		4B24BBAE25C8C15600FA5E39 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				4B24BBCA25C920EA00FA5E39 /* GetWeeklyRepository.swift */,
 				4B24BBB025C8C18700FA5E39 /* Entity */,
 				4B24BBB225C8C19B00FA5E39 /* Locale */,
 				4B24BBB325C8C1A100FA5E39 /* Remote */,

@@ -81,7 +81,7 @@ public struct GetWeeklyLocaleDataSource: LocaleDataSource {
         fatalError()
     }
     
-    public func update(id: String) -> AnyPublisher<Bool, Error> {
+    public func update(apod: Any) -> AnyPublisher<Bool, Error> {
         fatalError()
     }
 }

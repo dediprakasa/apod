@@ -5,15 +5,15 @@
       location = "group:Apod.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Modules/Apod/Apod.xcodeproj">
+      location = "group:Modules/ApodDetail/ApodDetail.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Modules/Core/Core.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Pods/Pods.xcodeproj">
+      location = "group:Modules/Weekly/Weekly.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Modules/Weekly/Weekly.xcodeproj">
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

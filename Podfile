@@ -19,3 +19,8 @@ target 'Weekly' do
 project './Modules/Weekly/Weekly'
  
 end
+
+target 'ApodDetail' do
+project './Modules/ApodDetail/ApodDetail'
+ 
+end

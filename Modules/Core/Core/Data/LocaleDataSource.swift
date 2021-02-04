@@ -15,5 +15,5 @@ public protocol LocaleDataSource {
     func list(request: Request?) -> AnyPublisher<[Response], Error>
     func add(entities: [Response]) -> AnyPublisher<[Response], Error>
     func get(id: String) -> AnyPublisher<Response, Error>
-    func update(id: String) -> AnyPublisher<Bool, Error>
+    func update(apod: Any) -> AnyPublisher<Bool, Error>
 }
