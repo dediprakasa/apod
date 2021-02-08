@@ -11,7 +11,8 @@ import Weekly
 class FavoriteRouter {
     func makeDetailView(for apod: WeeklyDomainModel, withFavoritePresenter favoritePresenter: FavoritePresenter) -> some View {
         let presenter = AppContainer().detailPresenter
-        presenter.setApod(apod: apod)
+        let apodDetail = ApodMapper.mapWeeklyToDetail(from: apod)
+        presenter.setApod(apod: apodDetail)
 
         return DetailView(presenter: presenter, favoritePresenter: favoritePresenter)
     }

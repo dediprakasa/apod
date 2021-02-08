@@ -33,9 +33,6 @@ struct Home: View {
                         }
                     }
                     .navigationBarTitle("Pictures of The Week", displayMode: .automatic)
-                    .navigationBarItems(leading: Button(action: {}) {
-                        Text("Add Update")
-                    })
                 }
             }
         }
@@ -43,7 +40,7 @@ struct Home: View {
             self.presenter.getList()
         })
     }
-    
+
     func linkBuilder<Content: View>(for apod: WeeklyDomainModel, @ViewBuilder content: () -> Content) -> some View {
         NavigationLink(
             destination: HomeRouter().makeDetailView(for: apod)) {

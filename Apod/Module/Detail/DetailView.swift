@@ -7,10 +7,34 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Core
+import ApodDetail
 
 struct DetailView: View {
 
-    @ObservedObject var presenter: DetailPresenter
+    @ObservedObject var presenter: ApodDetailPresenter<
+        Interactor
+            <
+            Any,
+            ApodDetailDomainModel,
+            ApodDetailRepository
+                <
+                    ApodDetailLocaleDataSource,
+                    ApodDetailRemoteDataSource,
+                    ApodDetailTransformer
+                >
+            >,
+        Interactor
+            <
+            Any,
+            Bool,
+            UpdateFavoriteRepository
+                <
+                    ApodDetailLocaleDataSource,
+                    ApodDetailRemoteDataSource,
+                    ApodDetailTransformer
+                >
+            >>
     var favoritePresenter: FavoritePresenter?
 
     var body: some View {
@@ -39,11 +63,14 @@ struct DetailView: View {
         .navigationBarTitle(self.presenter.apod?.date ?? "", displayMode: .inline)
         .navigationBarItems(trailing:
             Image(systemName: self.presenter.isFavorite ? "bookmark.fill" : "bookmark")
-            .onTapGesture { self.presenter.updateFavorite()}
+            .onTapGesture {
+                print("-----")
+                self.presenter.updateFavorite()
+            }
         )
         .onDisappear {
-            guard let favoritePresenter = favoritePresenter else { return }
-            favoritePresenter.getFavorites()
+//            guard let favoritePresenter = favoritePresenter else { return }
+//            favoritePresenter.getFavorites()
         }
     }
 }

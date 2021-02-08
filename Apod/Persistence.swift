@@ -7,6 +7,7 @@
 
 import CoreData
 import Weekly
+import ApodDetail
 
 class PersistentContainer: NSPersistentContainer { }
 
@@ -18,13 +19,12 @@ class PersistenceController {
         return container.viewContext
     }
 
-    init(inMemory: Bool = false) {
+    private init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "ApodEntity")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
         container.loadPersistentStores { _, error in
-//            self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
             if let error = error {
                 print("Unresolved error \(error)")
             }
@@ -33,7 +33,8 @@ class PersistenceController {
 
     func prepareDatabase() {
         let modelBundles: [Bundle] = [
-            Bundle(for: WeeklyModuleEntity.self)
+            Bundle(for: WeeklyModuleEntity.self),
+            Bundle(for: ApodDetailModuleEntity.self)
         ]
         PersistenceController.shared.prepare(loadFromBundles: modelBundles)
     }

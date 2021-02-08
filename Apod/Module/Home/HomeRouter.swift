@@ -7,12 +7,14 @@
 
 import SwiftUI
 import Weekly
+import ApodDetail
 
 class HomeRouter {
 
     func makeDetailView(for apod: WeeklyDomainModel) -> some View {
         let presenter = AppContainer().detailPresenter
-        presenter.setApod(apod: apod)
+        let apodDetail = ApodMapper.mapWeeklyToDetail(from: apod)
+        presenter.setApod(apod: apodDetail)
 
         return DetailView(presenter: presenter)
     }

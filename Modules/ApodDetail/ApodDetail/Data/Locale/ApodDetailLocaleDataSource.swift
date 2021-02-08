@@ -11,16 +11,16 @@ import Combine
 import CoreData
 
 public struct ApodDetailLocaleDataSource: LocaleDataSource {    
-    
+
     public typealias Request = Any
     public typealias Response = ApodDetailModuleEntity
-    
+
     private let ctx: NSManagedObjectContext
-    
+
     public init(context: NSManagedObjectContext) {
         ctx = context
     }
-    
+
     public func list(request: Any?) -> AnyPublisher<[ApodDetailModuleEntity], Error> {
         let fetchRequest = NSFetchRequest<ApodDetailModuleEntity>(entityName: "ApodDetailModuleEntity")
         return Future<[ApodDetailModuleEntity], Error> {[self] completion in
@@ -37,13 +37,14 @@ public struct ApodDetailLocaleDataSource: LocaleDataSource {
         }
         .eraseToAnyPublisher()
     }
-    
+
     public func add(entities: [ApodDetailModuleEntity]) -> AnyPublisher<[ApodDetailModuleEntity], Error> {
+        print("ADDDDD")
         return Future<[ApodDetailModuleEntity], Error> { completion in
             guard !entities.isEmpty else { return }
-            
-            guard let apodEntity = NSEntityDescription.entity(forEntityName: "ApodDetailModuleEntity", in: ctx) else { return }
-            
+
+        guard let apodEntity = NSEntityDescription.entity(forEntityName: "ApodDetailModuleEntity", in: ctx) else { return }
+
             let apod = NSManagedObject.init(entity: apodEntity, insertInto: ctx)
             apod.setValue(entities[0].apodSite, forKey: "apodSite")
             apod.setValue(entities[0].copyright, forKey: "copyright")
@@ -54,7 +55,7 @@ public struct ApodDetailLocaleDataSource: LocaleDataSource {
             apod.setValue(entities[0].mediaType, forKey: "mediaType")
             apod.setValue(entities[0].title, forKey: "title")
             apod.setValue(entities[0].url, forKey: "url")
-            
+
             do {
                 try ctx.save()
                 completion(.success(entities))
@@ -64,14 +65,15 @@ public struct ApodDetailLocaleDataSource: LocaleDataSource {
         }
         .eraseToAnyPublisher()
     }
-    
+
     public func get(date: String?) -> AnyPublisher<ApodDetailModuleEntity, Error> {
+        print("GETTTTT")
         guard let date = date else {
             return Fail(error: LocalError.notFound)
                 .eraseToAnyPublisher()
         }
         let fetchRequest = NSFetchRequest<ApodDetailModuleEntity>(entityName: "ApodDetailModuleEntity")
-        fetchRequest.predicate = NSPredicate(format: "id == %@", date)
+        fetchRequest.predicate = NSPredicate(format: "date == %@", date)
         return Future<ApodDetailModuleEntity, Error> {[self] completion in
             do {
                 let apod = try ctx.fetch(fetchRequest)
@@ -83,20 +85,21 @@ public struct ApodDetailLocaleDataSource: LocaleDataSource {
             }
         }
         .eraseToAnyPublisher()
-        
     }
-    
+
     public func update(apod: Any?) -> AnyPublisher<Bool, Error> {
-        
-        return Future<Bool, Error> { [self] completion in
+        print("UPDATETEE")
+        return Future<Bool, Error> { completion in
             guard let apod = apod as? ApodDetailDomainModel else {
+                print("HAAAAAAA")
                 return
             }
             let fetchRequest = NSFetchRequest<ApodDetailModuleEntity>(entityName: "ApodDetailModuleEntity")
-            fetchRequest.predicate = NSPredicate(format: "id == %@", apod.date)
-            var favorites = [ApodDetailModuleEntity]()
+            fetchRequest.predicate = NSPredicate(format: "date == %@", apod.date)
+            print(apod.date, "!!!!!!!!")
+//            var favorites = [ApodDetailModuleEntity]()
             do {
-                favorites = try ctx.fetch(fetchRequest)
+                let favorites = try ctx.fetch(fetchRequest)
                 if favorites.count != 0 {
                     ctx.delete(favorites[0])
                     completion(.success(false))
@@ -117,6 +120,7 @@ public struct ApodDetailLocaleDataSource: LocaleDataSource {
                 completion(.success(true))
 
             } catch {
+                print(error.localizedDescription, "{{{{")
                 completion(.failure(LocalError.somethingWentWrong))
             }
         }

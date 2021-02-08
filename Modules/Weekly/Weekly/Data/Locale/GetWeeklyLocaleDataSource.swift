@@ -11,22 +11,19 @@ import CoreData
 import Combine
 
 public struct GetWeeklyLocaleDataSource: LocaleDataSource {
-   
-    
     public typealias Request = Any
-    
     public typealias Response = WeeklyModuleEntity
-    
+
     private let ctx: NSManagedObjectContext
-    
     public init(context: NSManagedObjectContext) {
         ctx = context
     }
-    
+
     private func batchInsertRequest(with apods: [WeeklyModuleEntity]) -> NSBatchInsertRequest {
         var index = 0
         let total = apods.count
-        let batchInsert = NSBatchInsertRequest(entity: WeeklyModuleEntity.entity()) { (managedObject: NSManagedObject) -> Bool in
+        let batchInsert = NSBatchInsertRequest(entity: WeeklyModuleEntity.entity())
+        { (managedObject: NSManagedObject) -> Bool in
             guard index < total else { return true }
             let data = apods[index]
             if let apod = managedObject as? WeeklyModuleEntity {
@@ -45,7 +42,7 @@ public struct GetWeeklyLocaleDataSource: LocaleDataSource {
         }
         return batchInsert
     }
-    
+
     public func list(request: Any?) -> AnyPublisher<[WeeklyModuleEntity], Error> {
         let fetchRequest = NSFetchRequest<WeeklyModuleEntity>(entityName: "WeeklyModuleEntity")
         return Future<[WeeklyModuleEntity], Error> {[self] completion in

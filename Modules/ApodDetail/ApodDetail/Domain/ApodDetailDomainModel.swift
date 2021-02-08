@@ -19,4 +19,26 @@ public struct ApodDetailDomainModel: Equatable, Identifiable {
     public let mediaType: String
     public let title: String
     public let url: String
+    
+    public init(
+        id: UUID,
+        apodSite: String,
+        copyright: String,
+        date: String,
+        itemDescription: String,
+        hdurl: String,
+        mediaType: String,
+        title: String,
+        url: String
+    ) {
+        self.id = id
+        self.apodSite = apodSite
+        self.copyright = copyright
+        self.date = date
+        self.itemDescription = itemDescription
+        self.hdurl = hdurl
+        self.mediaType = mediaType
+        self.title = title
+        self.url = url
+    }
 }

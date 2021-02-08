@@ -9,26 +9,36 @@
 /* Begin PBXBuildFile section */
 		12A89ED43A639F469BFB8804 /* Pods_ApodDetail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60B8460077F20E019EE466DB /* Pods_ApodDetail.framework */; };
 		4BCDF64B25CB6CC300DEB31D /* ApodDetail.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BCDF64925CB6CC300DEB31D /* ApodDetail.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4BCDF65925CB708300DEB31D /* FavoritesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF65825CB708300DEB31D /* FavoritesRepository.swift */; };
+		4BCDF65925CB708300DEB31D /* UpdateFavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF65825CB708300DEB31D /* UpdateFavoriteRepository.swift */; };
 		4BCDF65C25CB709700DEB31D /* DetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF65B25CB709700DEB31D /* DetailRepository.swift */; };
 		4BCDF66025CB710B00DEB31D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF65E25CB710B00DEB31D /* Model.xcdatamodeld */; };
 		4BCDF66425CB719900DEB31D /* ApodDetailModuleEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF66225CB719900DEB31D /* ApodDetailModuleEntity+CoreDataClass.swift */; };
 		4BCDF66525CB719900DEB31D /* ApodDetailModuleEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF66325CB719900DEB31D /* ApodDetailModuleEntity+CoreDataProperties.swift */; };
 		4BCDF66825CB8A6A00DEB31D /* ApodDetailLocaleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF66725CB8A6A00DEB31D /* ApodDetailLocaleDataSource.swift */; };
 		4BCDF67C25CB962D00DEB31D /* ApodDetailDomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF67B25CB962D00DEB31D /* ApodDetailDomainModel.swift */; };
+		4BCDF6C225CDCAB600DEB31D /* ApodDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF6C125CDCAB600DEB31D /* ApodDetailPresenter.swift */; };
+		4BCDF6D225CDCFC500DEB31D /* ApodDetailRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF6D125CDCFC500DEB31D /* ApodDetailRemoteDataSource.swift */; };
+		4BCDF6D525CDD0C400DEB31D /* ApodDetailTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF6D425CDD0C400DEB31D /* ApodDetailTransformer.swift */; };
+		4BCDF6D925CDD13000DEB31D /* ApodDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF6D825CDD13000DEB31D /* ApodDetailResponse.swift */; };
+		4BFBA3E925D0D47A0047A22F /* ApodDetailError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFBA3E825D0D47A0047A22F /* ApodDetailError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4BCDF64625CB6CC300DEB31D /* ApodDetail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ApodDetail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BCDF64925CB6CC300DEB31D /* ApodDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApodDetail.h; sourceTree = "<group>"; };
 		4BCDF64A25CB6CC300DEB31D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4BCDF65825CB708300DEB31D /* FavoritesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRepository.swift; sourceTree = "<group>"; };
+		4BCDF65825CB708300DEB31D /* UpdateFavoriteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFavoriteRepository.swift; sourceTree = "<group>"; };
 		4BCDF65B25CB709700DEB31D /* DetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepository.swift; sourceTree = "<group>"; };
 		4BCDF65F25CB710B00DEB31D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		4BCDF66225CB719900DEB31D /* ApodDetailModuleEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApodDetailModuleEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4BCDF66325CB719900DEB31D /* ApodDetailModuleEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApodDetailModuleEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4BCDF66725CB8A6A00DEB31D /* ApodDetailLocaleDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDetailLocaleDataSource.swift; sourceTree = "<group>"; };
 		4BCDF67B25CB962D00DEB31D /* ApodDetailDomainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDetailDomainModel.swift; sourceTree = "<group>"; };
+		4BCDF6C125CDCAB600DEB31D /* ApodDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDetailPresenter.swift; sourceTree = "<group>"; };
+		4BCDF6D125CDCFC500DEB31D /* ApodDetailRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDetailRemoteDataSource.swift; sourceTree = "<group>"; };
+		4BCDF6D425CDD0C400DEB31D /* ApodDetailTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDetailTransformer.swift; sourceTree = "<group>"; };
+		4BCDF6D825CDD13000DEB31D /* ApodDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDetailResponse.swift; sourceTree = "<group>"; };
+		4BFBA3E825D0D47A0047A22F /* ApodDetailError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDetailError.swift; sourceTree = "<group>"; };
 		57CB0554BEFB1F9C86380D59 /* Pods-ApodDetail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApodDetail.debug.xcconfig"; path = "Target Support Files/Pods-ApodDetail/Pods-ApodDetail.debug.xcconfig"; sourceTree = "<group>"; };
 		60B8460077F20E019EE466DB /* Pods_ApodDetail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ApodDetail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5EFB2D5BB59FCC171C5639D /* Pods-ApodDetail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApodDetail.release.xcconfig"; path = "Target Support Files/Pods-ApodDetail/Pods-ApodDetail.release.xcconfig"; sourceTree = "<group>"; };
@@ -83,6 +93,8 @@
 				4BCDF65225CB6CEA00DEB31D /* Data */,
 				4BCDF64925CB6CC300DEB31D /* ApodDetail.h */,
 				4BCDF64A25CB6CC300DEB31D /* Info.plist */,
+				4BCDF6D425CDD0C400DEB31D /* ApodDetailTransformer.swift */,
+				4BFBA3E825D0D47A0047A22F /* ApodDetailError.swift */,
 			);
 			path = ApodDetail;
 			sourceTree = "<group>";
@@ -93,7 +105,7 @@
 				4BCDF65725CB706400DEB31D /* Remote */,
 				4BCDF65625CB706000DEB31D /* Locale */,
 				4BCDF65525CB705900DEB31D /* Entity */,
-				4BCDF65825CB708300DEB31D /* FavoritesRepository.swift */,
+				4BCDF65825CB708300DEB31D /* UpdateFavoriteRepository.swift */,
 				4BCDF65B25CB709700DEB31D /* DetailRepository.swift */,
 			);
 			path = Data;
@@ -110,6 +122,7 @@
 		4BCDF65425CB6CF400DEB31D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4BCDF6C125CDCAB600DEB31D /* ApodDetailPresenter.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -134,8 +147,18 @@
 		4BCDF65725CB706400DEB31D /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				4BCDF6D725CDD12300DEB31D /* Response */,
+				4BCDF6D125CDCFC500DEB31D /* ApodDetailRemoteDataSource.swift */,
 			);
 			path = Remote;
+			sourceTree = "<group>";
+		};
+		4BCDF6D725CDD12300DEB31D /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				4BCDF6D825CDD13000DEB31D /* ApodDetailResponse.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 		D1C50212D79F5FD0E4017C9E /* Frameworks */ = {
@@ -252,11 +275,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BCDF65C25CB709700DEB31D /* DetailRepository.swift in Sources */,
-				4BCDF65925CB708300DEB31D /* FavoritesRepository.swift in Sources */,
+				4BCDF65925CB708300DEB31D /* UpdateFavoriteRepository.swift in Sources */,
 				4BCDF67C25CB962D00DEB31D /* ApodDetailDomainModel.swift in Sources */,
+				4BCDF6D225CDCFC500DEB31D /* ApodDetailRemoteDataSource.swift in Sources */,
+				4BCDF6C225CDCAB600DEB31D /* ApodDetailPresenter.swift in Sources */,
+				4BFBA3E925D0D47A0047A22F /* ApodDetailError.swift in Sources */,
 				4BCDF66025CB710B00DEB31D /* Model.xcdatamodeld in Sources */,
 				4BCDF66425CB719900DEB31D /* ApodDetailModuleEntity+CoreDataClass.swift in Sources */,
 				4BCDF66825CB8A6A00DEB31D /* ApodDetailLocaleDataSource.swift in Sources */,
+				4BCDF6D925CDD13000DEB31D /* ApodDetailResponse.swift in Sources */,
+				4BCDF6D525CDD0C400DEB31D /* ApodDetailTransformer.swift in Sources */,
 				4BCDF66525CB719900DEB31D /* ApodDetailModuleEntity+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

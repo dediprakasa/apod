@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Weekly
+import ApodDetail
 
 final class ApodMapper {
 
@@ -70,5 +72,18 @@ final class ApodMapper {
             mediaType: favorite.mediaType ?? "",
             title: favorite.title ?? "",
             url: favorite.url ?? "")
+    }
+    
+    static func mapWeeklyToDetail(from weekly: WeeklyDomainModel) -> ApodDetailDomainModel {
+        return ApodDetailDomainModel(
+            id: weekly.id ?? UUID(),
+            apodSite: weekly.apodSite ?? "",
+            copyright: weekly.copyright ?? "",
+            date: weekly.date ?? "",
+            itemDescription: weekly.itemDescription ?? "",
+            hdurl: weekly.hdurl ?? "",
+            mediaType: weekly.mediaType ?? "",
+            title: weekly.title ?? "",
+            url: weekly.url ?? "")
     }
 }
