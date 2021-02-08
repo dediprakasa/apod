@@ -6,11 +6,24 @@
 //
 
 import SwiftUI
+import Core
+import ApodDetail
 import SDWebImageSwiftUI
 
 struct Favorite: View {
 
-    @ObservedObject var presenter: FavoritePresenter
+    @ObservedObject var presenter: ApodFavoritePresenter<
+        Interactor
+            <
+            Any,
+            [ApodDetailDomainModel],
+            GetFavoriteRepository
+                <
+                    ApodDetailLocaleDataSource,
+                    ApodDetailRemoteDataSource,
+                    ApodDetailTransformer
+                >
+            >>
 
     var body: some View {
         NavigationView {
@@ -31,9 +44,6 @@ struct Favorite: View {
 
                             Text(apod.title)
                         }
-//                        self.presenter.linkBuilder(for: apod) {
-//                            
-//                        }
                     }
                 }
                 .navigationBarTitle("Favorite", displayMode: .inline)

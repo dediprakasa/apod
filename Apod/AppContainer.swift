@@ -33,13 +33,12 @@ class AppContainer {
     lazy var favoritePresenter = FavoritePresenter(useCase: favoriteInteractor, router: favoriteRouter)
 
     func provideWeekly<U: UseCase>() -> U where U.Request == (startDate: String, endDate: String), U.Response == [WeeklyDomainModel] {
-        PersistenceController.shared.prepareDatabase()
-        
+//        PersistenceController.shared.prepareDatabase()
+
         let locale = GetWeeklyLocaleDataSource(context: PersistenceController.shared.context)
         let remote = GetWeeklyRemoteDataSource()
-        
         let mapper = WeeklyTransformer(context: PersistenceController.shared.context)
-        
+
         let repository = GetWeeklyRepository(
             localeDataSource: locale,
             remoteDataSource: remote,
@@ -73,15 +72,28 @@ class AppContainer {
 
         return (Interactor(repository: repository) as? U)!
     }
-    
-    func provideFavorite<U: UseCase>() -> U where U.Request == Any, U.Response == Bool {
-//        PersistenceController.shared.prepareDatabase()
+
+    func provideDetailFavorite<U: UseCase>() -> U where U.Request == Any, U.Response == Bool {
 
         let locale = ApodDetailLocaleDataSource(context: PersistenceController.shared.context)
         let remote = ApodDetailRemoteDataSource()
 
         let mapper = ApodDetailTransformer(context: PersistenceController.shared.context)
         let repository = UpdateFavoriteRepository(
+            localeDataSource: locale,
+            remoteDataSource: remote,
+            mapper: mapper)
+
+        return (Interactor(repository: repository) as? U)!
+    }
+
+    func provideFavorite<U: UseCase>() -> U where U.Request == Any, U.Response == [ApodDetailDomainModel] {
+//        PersistenceController.shared.prepareDatabase()
+        let locale = ApodDetailLocaleDataSource(context: PersistenceController.shared.context)
+        let remote = ApodDetailRemoteDataSource()
+
+        let mapper = ApodDetailTransformer(context: PersistenceController.shared.context)
+        let repository = GetFavoriteRepository(
             localeDataSource: locale,
             remoteDataSource: remote,
             mapper: mapper)
@@ -98,14 +110,26 @@ class AppContainer {
         ApodDetailTransformer>
     > = self.provideDetail()
 
-    lazy var favUseCase: Interactor<
+    lazy var favDetailUseCase: Interactor<
         Any,
         Bool,
         UpdateFavoriteRepository<
         ApodDetailLocaleDataSource,
         ApodDetailRemoteDataSource,
         ApodDetailTransformer>
+    > = self.provideDetailFavorite()
+
+    lazy var favUseCase: Interactor<
+        Any,
+        [ApodDetailDomainModel],
+        GetFavoriteRepository<
+        ApodDetailLocaleDataSource,
+        ApodDetailRemoteDataSource,
+        ApodDetailTransformer>
     > = self.provideFavorite()
 
-    lazy var detailPresenter = ApodDetailPresenter(detailUseCase: apodDetailUseCase, favUseCase: favUseCase)
+    lazy var detailPresenter = ApodDetailPresenter(detailUseCase: apodDetailUseCase, favUseCase: favDetailUseCase)
+
+    lazy var favPresenter = ApodFavoritePresenter(favUseCase: favUseCase)
+
 }

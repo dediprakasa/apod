@@ -1,14 +1,14 @@
 //
-//  GetFavoritesRepository.swift
+//  GetFavoriteRepository.swift
 //  ApodDetail
 //
-//  Created by Dedi Prakasa on 2/4/21.
+//  Created by Dedi Prakasa on 2/8/21.
 //
 
 import Core
 import Combine
 
-public struct ApodDetailRepository<
+public struct GetFavoriteRepository<
     ApodDetailLocaleDataSource: LocaleDataSource,
     RemoteDataSource: DataSource,
     Transformer: Mapper>: Repository
@@ -18,10 +18,9 @@ where
     Transformer.Responses == [ApodDetailResponse],
     Transformer.Entities == [ApodDetailModuleEntity],
     Transformer.Domains == [ApodDetailDomainModel] {
-    
 
     public typealias Request = Any
-    public typealias Response = ApodDetailDomainModel
+    public typealias Response = [ApodDetailDomainModel]
 
     private let localeDataSource: ApodDetailLocaleDataSource
     private let remoteDataSource: RemoteDataSource
@@ -36,19 +35,13 @@ where
         self.remoteDataSource = remoteDataSource
         self.mapper = mapper
     }
-
-    public func execute(request: Any?) -> AnyPublisher<ApodDetailDomainModel, Error> {
-        return Future<ApodDetailDomainModel, Error> { completion in
-            self.localeDataSource.get(date: request as? String)
-                .map { value -> [ApodDetailDomainModel] in
-                    return self.mapper.transformEntityToDomain(entities: [value])
-                }
-                .sink(receiveCompletion: { val in
-                    print(val)
-                }, receiveValue: { value in
-                    completion(.success(value[0]))
-                })
-        }
-        .eraseToAnyPublisher()
+    
+    public func execute(request: Any?) -> AnyPublisher<[ApodDetailDomainModel], Error> {
+        return self.localeDataSource.list(request: nil)
+            .map { value -> [ApodDetailDomainModel] in
+                return self.mapper.transformEntityToDomain(entities: value)
+            }
+            .eraseToAnyPublisher()
     }
 }
+

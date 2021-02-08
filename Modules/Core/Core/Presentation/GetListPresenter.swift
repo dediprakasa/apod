@@ -24,7 +24,7 @@ where Interactor.Request == Request, Interactor.Response == [Response] {
     public init(useCase: Interactor) {
         self.useCase = useCase
     }
-    
+
     private var startDate: String {
         let date = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date()) ?? Date()
         let formatter = DateFormatter()
@@ -40,7 +40,7 @@ where Interactor.Request == Request, Interactor.Response == [Response] {
 
         return formatter.string(from: date)
     }
-    
+
     public func getList() {
         isLoading = true
         useCase.execute(request: (startDate: self.startDate, endDate: self.endDate) as? Request)

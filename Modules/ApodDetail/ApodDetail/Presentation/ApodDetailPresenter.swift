@@ -38,16 +38,12 @@ where ApodUseCase.Request == Any,
     }
 
     public func updateFavorite() {
-        print("+++++++++")
         guard let apod = apod else { return }
-        print(">>>>>>>>>>>")
         favUseCase.execute(request: apod)
             .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { val in
-                print(val, ",<<<")
+            .sink(receiveCompletion: { _ in
             }, receiveValue: { result in
-                self.isFavorite = true
-                print("------", result)
+                self.isFavorite = result
             })
             .store(in: &cancellables)
     }
@@ -60,7 +56,6 @@ where ApodUseCase.Request == Any,
             .sink(receiveCompletion: { _ in
 
             }, receiveValue: { result in
-                print(result, "<<<<<")
                 self.isFavorite = true
             })
             .store(in: &cancellables)

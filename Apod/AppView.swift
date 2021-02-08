@@ -8,10 +8,21 @@
 import SwiftUI
 import Core
 import Weekly
+import ApodDetail
 
 struct AppView: View {
     @EnvironmentObject var homePresenter: GetListPresenter<(startDate: String, endDate: String), WeeklyDomainModel, Interactor<(startDate: String, endDate: String), [WeeklyDomainModel], GetWeeklyRepository<GetWeeklyLocaleDataSource, GetWeeklyRemoteDataSource, WeeklyTransformer>>>
-    @EnvironmentObject var favoritePresenter: FavoritePresenter
+    @EnvironmentObject var favoritePresenter: ApodFavoritePresenter<Interactor
+    <
+    Any,
+    [ApodDetailDomainModel],
+    GetFavoriteRepository
+        <
+            ApodDetailLocaleDataSource,
+            ApodDetailRemoteDataSource,
+            ApodDetailTransformer
+        >
+    >>
 
     var body: some View {
         TabView {

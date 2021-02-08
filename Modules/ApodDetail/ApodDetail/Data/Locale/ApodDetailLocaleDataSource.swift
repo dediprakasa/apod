@@ -10,8 +10,7 @@ import Core
 import Combine
 import CoreData
 
-public struct ApodDetailLocaleDataSource: LocaleDataSource {    
-
+public struct ApodDetailLocaleDataSource: LocaleDataSource {
     public typealias Request = Any
     public typealias Response = ApodDetailModuleEntity
 

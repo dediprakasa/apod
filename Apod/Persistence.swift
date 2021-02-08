@@ -20,7 +20,12 @@ class PersistenceController {
     }
 
     private init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "ApodEntity")
+        let modelBundles: [Bundle] = [
+            Bundle(for: WeeklyModuleEntity.self),
+            Bundle(for: ApodDetailModuleEntity.self)
+        ]
+        let model = NSManagedObjectModel.mergedModel(from: modelBundles)!
+        container = PersistentContainer(name: "Database", managedObjectModel: model)
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
@@ -29,6 +34,8 @@ class PersistenceController {
                 print("Unresolved error \(error)")
             }
         }
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        context.automaticallyMergesChangesFromParent = true
     }
 
     func prepareDatabase() {
@@ -41,7 +48,6 @@ class PersistenceController {
 
     func prepare(loadFromBundles bundles: [Bundle]?) {
         let model = NSManagedObjectModel.mergedModel(from: bundles)!
-        container = PersistentContainer(name: "Database", managedObjectModel: model)
         container.loadPersistentStores { _, error in
             if let error = error {
                 print("Unresolved error \(error)")

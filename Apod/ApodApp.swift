@@ -14,7 +14,7 @@ struct ApodApp: App {
 
     @Environment(\.scenePhase) private var scenePhase
     @StateObject var homePresenter = AppContainer().homePresenter
-    @StateObject var favoritePresenter = AppContainer().favoritePresenter
+    @StateObject var favoritePresenter = AppContainer().favPresenter
 
     let persistenceController = PersistenceController.shared
 
@@ -29,7 +29,7 @@ struct ApodApp: App {
         .onChange(of: scenePhase) { (newScenePhase) in
             switch newScenePhase {
             case .active:
-                PersistenceController.shared.prepareDatabase()
+//                PersistenceController.shared.prepareDatabase()
                 print("scene is now active!")
             case .inactive:
                 print("scene is now inactive!")

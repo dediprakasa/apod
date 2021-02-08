@@ -64,7 +64,6 @@ struct DetailView: View {
         .navigationBarItems(trailing:
             Image(systemName: self.presenter.isFavorite ? "bookmark.fill" : "bookmark")
             .onTapGesture {
-                print("-----")
                 self.presenter.updateFavorite()
             }
         )

@@ -21,6 +21,8 @@
 		4BCDF6D525CDD0C400DEB31D /* ApodDetailTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF6D425CDD0C400DEB31D /* ApodDetailTransformer.swift */; };
 		4BCDF6D925CDD13000DEB31D /* ApodDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCDF6D825CDD13000DEB31D /* ApodDetailResponse.swift */; };
 		4BFBA3E925D0D47A0047A22F /* ApodDetailError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFBA3E825D0D47A0047A22F /* ApodDetailError.swift */; };
+		4BFBA3EC25D170220047A22F /* GetFavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFBA3EB25D170220047A22F /* GetFavoriteRepository.swift */; };
+		4BFBA3EF25D175B00047A22F /* ApodFavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFBA3EE25D175B00047A22F /* ApodFavoritePresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		4BCDF6D425CDD0C400DEB31D /* ApodDetailTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDetailTransformer.swift; sourceTree = "<group>"; };
 		4BCDF6D825CDD13000DEB31D /* ApodDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDetailResponse.swift; sourceTree = "<group>"; };
 		4BFBA3E825D0D47A0047A22F /* ApodDetailError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDetailError.swift; sourceTree = "<group>"; };
+		4BFBA3EB25D170220047A22F /* GetFavoriteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoriteRepository.swift; sourceTree = "<group>"; };
+		4BFBA3EE25D175B00047A22F /* ApodFavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodFavoritePresenter.swift; sourceTree = "<group>"; };
 		57CB0554BEFB1F9C86380D59 /* Pods-ApodDetail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApodDetail.debug.xcconfig"; path = "Target Support Files/Pods-ApodDetail/Pods-ApodDetail.debug.xcconfig"; sourceTree = "<group>"; };
 		60B8460077F20E019EE466DB /* Pods_ApodDetail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ApodDetail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5EFB2D5BB59FCC171C5639D /* Pods-ApodDetail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApodDetail.release.xcconfig"; path = "Target Support Files/Pods-ApodDetail/Pods-ApodDetail.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 				4BCDF65625CB706000DEB31D /* Locale */,
 				4BCDF65525CB705900DEB31D /* Entity */,
 				4BCDF65825CB708300DEB31D /* UpdateFavoriteRepository.swift */,
+				4BFBA3EB25D170220047A22F /* GetFavoriteRepository.swift */,
 				4BCDF65B25CB709700DEB31D /* DetailRepository.swift */,
 			);
 			path = Data;
@@ -123,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				4BCDF6C125CDCAB600DEB31D /* ApodDetailPresenter.swift */,
+				4BFBA3EE25D175B00047A22F /* ApodFavoritePresenter.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -280,10 +286,12 @@
 				4BCDF6D225CDCFC500DEB31D /* ApodDetailRemoteDataSource.swift in Sources */,
 				4BCDF6C225CDCAB600DEB31D /* ApodDetailPresenter.swift in Sources */,
 				4BFBA3E925D0D47A0047A22F /* ApodDetailError.swift in Sources */,
+				4BFBA3EC25D170220047A22F /* GetFavoriteRepository.swift in Sources */,
 				4BCDF66025CB710B00DEB31D /* Model.xcdatamodeld in Sources */,
 				4BCDF66425CB719900DEB31D /* ApodDetailModuleEntity+CoreDataClass.swift in Sources */,
 				4BCDF66825CB8A6A00DEB31D /* ApodDetailLocaleDataSource.swift in Sources */,
 				4BCDF6D925CDD13000DEB31D /* ApodDetailResponse.swift in Sources */,
+				4BFBA3EF25D175B00047A22F /* ApodFavoritePresenter.swift in Sources */,
 				4BCDF6D525CDD0C400DEB31D /* ApodDetailTransformer.swift in Sources */,
 				4BCDF66525CB719900DEB31D /* ApodDetailModuleEntity+CoreDataProperties.swift in Sources */,
 			);
