@@ -25,7 +25,7 @@ public enum DatabaseError: LocalizedError {
 
   case invalidInstance
   case requestFailed
-  
+
     public var errorDescription: String? {
     switch self {
     case .invalidInstance: return "Database can't instance."

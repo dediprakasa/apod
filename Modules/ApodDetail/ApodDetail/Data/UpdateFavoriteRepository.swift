@@ -18,11 +18,6 @@ where
     Transformer.Responses == [ApodDetailResponse],
     Transformer.Entities == [ApodDetailModuleEntity],
     Transformer.Domains == [ApodDetailDomainModel] {
-    
-    public func execute(request: Any?) -> AnyPublisher<Bool, Error> {
-        return self.localeDataSource.update(apod: request)
-            .eraseToAnyPublisher()
-    }
 
     public typealias Request = Any
     public typealias Response = Bool
@@ -41,17 +36,8 @@ where
         self.mapper = mapper
     }
 
-//    public func execute(request: Any?) -> AnyPublisher<Bool, Error> {
-//        return Future<Bool, Error> { completion in
-//            guard let request = request as? ApodDetailDomainModel else {
-//                return
-//            }
-//            self.localeDataSource.update(apod: request)
-//                .sink(receiveCompletion: { _ in
-//                }, receiveValue: { value in
-//                    completion(.success(value))
-//                })
-//        }
-//        .eraseToAnyPublisher()
-//    }
+    public func execute(request: Any?) -> AnyPublisher<Bool, Error> {
+        return self.localeDataSource.update(apod: request)
+            .eraseToAnyPublisher()
+    }
 }

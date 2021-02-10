@@ -16,7 +16,7 @@ struct DetailView: View {
         Interactor
             <
             Any,
-            ApodDetailDomainModel,
+            ApodDetailModuleEntity?,
             ApodDetailRepository
                 <
                     ApodDetailLocaleDataSource,
@@ -35,7 +35,18 @@ struct DetailView: View {
                     ApodDetailTransformer
                 >
             >>
-    var favoritePresenter: FavoritePresenter?
+    var favoritePresenter: ApodFavoritePresenter<
+        Interactor
+            <
+            Any,
+            [ApodDetailDomainModel],
+            GetFavoriteRepository
+                <
+                    ApodDetailLocaleDataSource,
+                    ApodDetailRemoteDataSource,
+                    ApodDetailTransformer
+                >
+            >>?
 
     var body: some View {
         ScrollView(.vertical) {
@@ -68,8 +79,8 @@ struct DetailView: View {
             }
         )
         .onDisappear {
-//            guard let favoritePresenter = favoritePresenter else { return }
-//            favoritePresenter.getFavorites()
+            guard let favoritePresenter = favoritePresenter else { return }
+            favoritePresenter.getFavorites()
         }
     }
 }

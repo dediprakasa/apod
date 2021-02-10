@@ -18,24 +18,24 @@ where
     Transformer.Responses == [WeeklyApodResponse],
     Transformer.Entities == [WeeklyModuleEntity],
     Transformer.Domains == [WeeklyDomainModel] {
-    
+
     public typealias Request = (startDate: String, endDate: String)
     public typealias Response = [WeeklyDomainModel]
-    
+
     private let localeDataSource: WeeklyLocaleDataSource
     private let remoteDataSource: RemoteDataSource
     private let mapper: Transformer
-    
+
     public init(
         localeDataSource: WeeklyLocaleDataSource,
         remoteDataSource: RemoteDataSource,
         mapper: Transformer) {
-        
+
         self.localeDataSource = localeDataSource
         self.remoteDataSource = remoteDataSource
         self.mapper = mapper
     }
-    
+
     public func execute(request: (startDate: String, endDate: String)?) -> AnyPublisher<[WeeklyDomainModel], Error> {
         return self.localeDataSource.list(request: nil)
             .flatMap { result -> AnyPublisher<[WeeklyDomainModel], Error> in

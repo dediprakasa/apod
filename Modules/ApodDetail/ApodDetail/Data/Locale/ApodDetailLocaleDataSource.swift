@@ -11,6 +11,7 @@ import Combine
 import CoreData
 
 public struct ApodDetailLocaleDataSource: LocaleDataSource {
+
     public typealias Request = Any
     public typealias Response = ApodDetailModuleEntity
 
@@ -38,11 +39,12 @@ public struct ApodDetailLocaleDataSource: LocaleDataSource {
     }
 
     public func add(entities: [ApodDetailModuleEntity]) -> AnyPublisher<[ApodDetailModuleEntity], Error> {
-        print("ADDDDD")
-        return Future<[ApodDetailModuleEntity], Error> { completion in
-            guard !entities.isEmpty else { return }
+            return Future<[ApodDetailModuleEntity], Error> { completion in
+                guard !entities.isEmpty else { return }
 
-        guard let apodEntity = NSEntityDescription.entity(forEntityName: "ApodDetailModuleEntity", in: ctx) else { return }
+            guard let apodEntity = NSEntityDescription.entity(forEntityName: "ApodDetailModuleEntity", in: ctx) else {
+                return
+            }
 
             let apod = NSManagedObject.init(entity: apodEntity, insertInto: ctx)
             apod.setValue(entities[0].apodSite, forKey: "apodSite")
@@ -65,19 +67,19 @@ public struct ApodDetailLocaleDataSource: LocaleDataSource {
         .eraseToAnyPublisher()
     }
 
-    public func get(date: String?) -> AnyPublisher<ApodDetailModuleEntity, Error> {
-        print("GETTTTT")
-        guard let date = date else {
-            return Fail(error: LocalError.notFound)
-                .eraseToAnyPublisher()
-        }
-        let fetchRequest = NSFetchRequest<ApodDetailModuleEntity>(entityName: "ApodDetailModuleEntity")
-        fetchRequest.predicate = NSPredicate(format: "date == %@", date)
-        return Future<ApodDetailModuleEntity, Error> {[self] completion in
+    public func get(apod: Any?) -> AnyPublisher<ApodDetailModuleEntity?, Error> {
+        return Future<ApodDetailModuleEntity?, Error> {[self] completion in
+            guard let apod = apod as? ApodDetailDomainModel else {
+                return
+            }
+            let fetchRequest = NSFetchRequest<ApodDetailModuleEntity>(entityName: "ApodDetailModuleEntity")
+            fetchRequest.predicate = NSPredicate(format: "date == %@", apod.date)
             do {
                 let apod = try ctx.fetch(fetchRequest)
                 if apod.count != 0 {
                     completion(.success(apod[0]))
+                } else {
+                    completion(.success(nil))
                 }
             } catch {
                 completion(.failure(LocalError.somethingWentWrong))
@@ -87,16 +89,12 @@ public struct ApodDetailLocaleDataSource: LocaleDataSource {
     }
 
     public func update(apod: Any?) -> AnyPublisher<Bool, Error> {
-        print("UPDATETEE")
         return Future<Bool, Error> { completion in
             guard let apod = apod as? ApodDetailDomainModel else {
-                print("HAAAAAAA")
                 return
             }
             let fetchRequest = NSFetchRequest<ApodDetailModuleEntity>(entityName: "ApodDetailModuleEntity")
             fetchRequest.predicate = NSPredicate(format: "date == %@", apod.date)
-            print(apod.date, "!!!!!!!!")
-//            var favorites = [ApodDetailModuleEntity]()
             do {
                 let favorites = try ctx.fetch(fetchRequest)
                 if favorites.count != 0 {
@@ -119,7 +117,6 @@ public struct ApodDetailLocaleDataSource: LocaleDataSource {
                 completion(.success(true))
 
             } catch {
-                print(error.localizedDescription, "{{{{")
                 completion(.failure(LocalError.somethingWentWrong))
             }
         }

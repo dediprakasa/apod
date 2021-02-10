@@ -33,8 +33,8 @@ class DetailPresenter: ObservableObject {
     }
 
     func updateFavorite() {
-        guard let apod = apod else { return }
-
+//        guard let apod = apod else { return }
+//
 //        detailUseCase.updateFavorite(apod: apod)
 //            .receive(on: RunLoop.main)
 //            .sink(receiveCompletion: { _ in
@@ -46,8 +46,8 @@ class DetailPresenter: ObservableObject {
     }
 
     func checkFavorite() {
-        guard let apod = apod else { return }
-
+//        guard let apod = apod else { return }
+//
 //        detailUseCase.checkFavorite(apod: apod)
 //            .receive(on: RunLoop.main)
 //            .sink(receiveCompletion: { _ in

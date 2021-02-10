@@ -35,7 +35,7 @@ where
         self.remoteDataSource = remoteDataSource
         self.mapper = mapper
     }
-    
+
     public func execute(request: Any?) -> AnyPublisher<[ApodDetailDomainModel], Error> {
         return self.localeDataSource.list(request: nil)
             .map { value -> [ApodDetailDomainModel] in
@@ -44,4 +44,3 @@ where
             .eraseToAnyPublisher()
     }
 }
-

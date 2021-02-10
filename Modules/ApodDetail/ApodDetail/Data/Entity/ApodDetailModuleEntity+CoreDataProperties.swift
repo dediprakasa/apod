@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension ApodDetailModuleEntity {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ApodDetailModuleEntity> {
@@ -28,6 +27,6 @@ extension ApodDetailModuleEntity {
 
 }
 
-extension ApodDetailModuleEntity : Identifiable {
+extension ApodDetailModuleEntity: Identifiable {
 
 }

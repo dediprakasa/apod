@@ -38,24 +38,24 @@ class PersistenceController {
         context.automaticallyMergesChangesFromParent = true
     }
 
-    func prepareDatabase() {
-        let modelBundles: [Bundle] = [
-            Bundle(for: WeeklyModuleEntity.self),
-            Bundle(for: ApodDetailModuleEntity.self)
-        ]
-        PersistenceController.shared.prepare(loadFromBundles: modelBundles)
-    }
+//    func prepareDatabase() {
+//        let modelBundles: [Bundle] = [
+//            Bundle(for: WeeklyModuleEntity.self),
+//            Bundle(for: ApodDetailModuleEntity.self)
+//        ]
+//        PersistenceController.shared.prepare(loadFromBundles: modelBundles)
+//    }
 
-    func prepare(loadFromBundles bundles: [Bundle]?) {
-        let model = NSManagedObjectModel.mergedModel(from: bundles)!
-        container.loadPersistentStores { _, error in
-            if let error = error {
-                print("Unresolved error \(error)")
-                fatalError()
-            }
-        }
-
-        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        context.automaticallyMergesChangesFromParent = true
-    }
+//    func prepare(loadFromBundles bundles: [Bundle]?) {
+//        let model = NSManagedObjectModel.mergedModel(from: bundles)!
+//        container.loadPersistentStores { _, error in
+//            if let error = error {
+//                print("Unresolved error \(error)")
+//                fatalError()
+//            }
+//        }
+//
+//        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+//        context.automaticallyMergesChangesFromParent = true
+//    }
 }

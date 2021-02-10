@@ -19,7 +19,7 @@ public struct ApodDetailDomainModel: Equatable, Identifiable {
     public let mediaType: String
     public let title: String
     public let url: String
-    
+
     public init(
         id: UUID,
         apodSite: String,

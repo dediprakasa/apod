@@ -22,8 +22,8 @@ public struct GetWeeklyLocaleDataSource: LocaleDataSource {
     private func batchInsertRequest(with apods: [WeeklyModuleEntity]) -> NSBatchInsertRequest {
         var index = 0
         let total = apods.count
-        let batchInsert = NSBatchInsertRequest(entity: WeeklyModuleEntity.entity())
-        { (managedObject: NSManagedObject) -> Bool in
+        let batchInsert = NSBatchInsertRequest(
+            entity: WeeklyModuleEntity.entity()) { (managedObject: NSManagedObject) -> Bool in
             guard index < total else { return true }
             let data = apods[index]
             if let apod = managedObject as? WeeklyModuleEntity {
@@ -59,11 +59,10 @@ public struct GetWeeklyLocaleDataSource: LocaleDataSource {
         }
         .eraseToAnyPublisher()
     }
-    
+
     public func add(entities: [WeeklyModuleEntity]) -> AnyPublisher<[WeeklyModuleEntity], Error> {
         return Future<[WeeklyModuleEntity], Error> { completion in
             guard !entities.isEmpty else { return }
-            
             let batchInsert = self.batchInsertRequest(with: entities)
             do {
                 try ctx.execute(batchInsert)
@@ -74,11 +73,11 @@ public struct GetWeeklyLocaleDataSource: LocaleDataSource {
         }
         .eraseToAnyPublisher()
     }
-    
-    public func get(date: String?) -> AnyPublisher<WeeklyModuleEntity, Error> {
+
+    public func get(apod: Any?) -> AnyPublisher<WeeklyModuleEntity?, Error> {
         fatalError()
     }
-    
+
     public func update(apod: Any?) -> AnyPublisher<Bool, Error> {
         fatalError()
     }

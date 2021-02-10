@@ -11,23 +11,18 @@ import CoreData
 
 public struct WeeklyTransformer: Mapper {
     public typealias Responses = [WeeklyApodResponse]
-    
     public typealias Entities = [WeeklyModuleEntity]
-    
     public typealias Domains = [WeeklyDomainModel]
-    
+
     private let ctx: NSManagedObjectContext
-    
+
     public init(context: NSManagedObjectContext) {
         self.ctx = context
     }
-    
-    
-    
+
     public func transformResponseToEntity(responses: [WeeklyApodResponse]) -> [WeeklyModuleEntity] {
         return responses.map { apod in
             let apodEntity = WeeklyModuleEntity(context: ctx)
-            
             apodEntity.id = UUID()
             apodEntity.apodSite = apod.apodSite ?? ""
             apodEntity.copyright = apod.copyright ?? ""
@@ -41,7 +36,7 @@ public struct WeeklyTransformer: Mapper {
             return apodEntity
         }
     }
-    
+
     public func transformEntityToDomain(entities: [WeeklyModuleEntity]) -> [WeeklyDomainModel] {
         return entities.map { apod in
             return WeeklyDomainModel(
@@ -57,6 +52,4 @@ public struct WeeklyTransformer: Mapper {
             )
         }
     }
-    
-    
 }

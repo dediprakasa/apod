@@ -32,17 +32,19 @@ struct Favorite: View {
             } else {
                 List {
                     ForEach(self.presenter.favorites) { apod in
-                        HStack {
-                            WebImage(url: URL(string: apod.hdurl))
-                                .resizable()
-                                .placeholder(Image("placeholder"))
-                                .indicator(Indicator.progress)
-                                .transition(.fade(duration: 0.5))
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 80, height: 80)
-                                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        linkBuilder(for: apod) {
+                            HStack {
+                                WebImage(url: URL(string: apod.hdurl))
+                                    .resizable()
+                                    .placeholder(Image("placeholder"))
+                                    .indicator(Indicator.progress)
+                                    .transition(.fade(duration: 0.5))
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 80, height: 80)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
 
-                            Text(apod.title)
+                                Text(apod.title)
+                            }
                         }
                     }
                 }
@@ -52,5 +54,12 @@ struct Favorite: View {
         .onAppear(perform: {
             self.presenter.getFavorites()
         })
+    }
+
+    func linkBuilder<Content: View>(for apod: ApodDetailDomainModel, @ViewBuilder content: () -> Content) -> some View {
+        NavigationLink(
+            destination: FavoriteRouter().makeDetailView(for: apod, withFavoritePresenter: presenter)) {
+            content()
+        }
     }
 }

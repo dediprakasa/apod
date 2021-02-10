@@ -31,10 +31,10 @@ class FavoritePresenter: ObservableObject {
             .store(in: &cancellables)
     }
 
-    func linkBuilder<Content: View>(for apod: WeeklyDomainModel, @ViewBuilder content: () -> Content) -> some View {
-        NavigationLink(
-            destination: router.makeDetailView(for: apod, withFavoritePresenter: self)) {
-            content()
-        }
-    }
+//    func linkBuilder<Content: View>(for apod: WeeklyDomainModel, @ViewBuilder content: () -> Content) -> some View {
+//        NavigationLink(
+//            destination: router.makeDetailView(for: apod, withFavoritePresenter: self)) {
+//            content()
+//        }
+//    }
 }

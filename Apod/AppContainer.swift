@@ -58,7 +58,7 @@ class AppContainer {
 
     lazy var homePresenter = GetListPresenter(useCase: weeklyUseCase)
 
-    func provideDetail<U: UseCase>() -> U where U.Request == Any, U.Response == ApodDetailDomainModel {
+    func provideDetail<U: UseCase>() -> U where U.Request == Any, U.Response == ApodDetailModuleEntity? {
 //        PersistenceController.shared.prepareDatabase()
 
         let locale = ApodDetailLocaleDataSource(context: PersistenceController.shared.context)
@@ -103,7 +103,7 @@ class AppContainer {
 
     lazy var apodDetailUseCase: Interactor<
         Any,
-        ApodDetailDomainModel,
+        ApodDetailModuleEntity?,
         ApodDetailRepository<
         ApodDetailLocaleDataSource,
         ApodDetailRemoteDataSource,

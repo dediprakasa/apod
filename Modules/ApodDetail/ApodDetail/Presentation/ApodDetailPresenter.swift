@@ -11,7 +11,7 @@ import Core
 
 public class ApodDetailPresenter<ApodUseCase: UseCase, FavUseCase: UseCase>: ObservableObject
 where ApodUseCase.Request == Any,
-      ApodUseCase.Response == ApodDetailDomainModel,
+      ApodUseCase.Response == ApodDetailModuleEntity?,
       FavUseCase.Request == Any,
       FavUseCase.Response == Bool {
 
@@ -21,7 +21,7 @@ where ApodUseCase.Request == Any,
 
     @Published public var apod: ApodDetailDomainModel? {
         didSet {
-//            self.checkFavorite()
+            self.checkFavorite()
         }
     }
     @Published public var errorMessage = ""
@@ -51,12 +51,11 @@ where ApodUseCase.Request == Any,
     public func checkFavorite() {
         guard let apod = apod else { return }
 
-        detailUseCase.execute(request: apod.date)
+        detailUseCase.execute(request: apod)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { _ in
-
             }, receiveValue: { result in
-                self.isFavorite = true
+                self.isFavorite = result != nil
             })
             .store(in: &cancellables)
     }

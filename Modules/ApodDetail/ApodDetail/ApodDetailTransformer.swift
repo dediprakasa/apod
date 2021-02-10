@@ -11,23 +11,19 @@ import CoreData
 
 public struct ApodDetailTransformer: Mapper {
     public typealias Responses = [ApodDetailResponse]
-    
+
     public typealias Entities = [ApodDetailModuleEntity]
-    
     public typealias Domains = [ApodDetailDomainModel]
-    
+
     private let ctx: NSManagedObjectContext
-    
+
     public init(context: NSManagedObjectContext) {
         self.ctx = context
     }
-    
-    
-    
+
     public func transformResponseToEntity(responses: [ApodDetailResponse]) -> [ApodDetailModuleEntity] {
         return responses.map { apod in
             let apodEntity = ApodDetailModuleEntity(context: ctx)
-            
             apodEntity.id = UUID()
             apodEntity.apodSite = apod.apodSite ?? ""
             apodEntity.copyright = apod.copyright ?? ""
@@ -41,7 +37,7 @@ public struct ApodDetailTransformer: Mapper {
             return apodEntity
         }
     }
-    
+
     public func transformEntityToDomain(entities: [ApodDetailModuleEntity]) -> [ApodDetailDomainModel] {
         return entities.map { apod in
             return ApodDetailDomainModel(
@@ -57,6 +53,4 @@ public struct ApodDetailTransformer: Mapper {
             )
         }
     }
-    
-    
 }

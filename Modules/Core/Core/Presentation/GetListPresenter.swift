@@ -13,14 +13,14 @@ public class GetListPresenter<Request, Response, Interactor: UseCase>: Observabl
 where Interactor.Request == Request, Interactor.Response == [Response] {
     
     private var cancellables: Set<AnyCancellable> = []
-    
+
     private let useCase: Interactor
-    
+
     @Published public var list: [Response] = []
     @Published public var errorMessage: String = ""
     @Published public var isLoading: Bool = false
     @Published public var isError: Bool = false
-    
+
     public init(useCase: Interactor) {
         self.useCase = useCase
     }

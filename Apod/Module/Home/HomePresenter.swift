@@ -8,7 +8,6 @@
 import SwiftUI
 import Combine
 
-
 class HomePresenter: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []

@@ -14,4 +14,3 @@ public protocol Repository {
     
     func execute(request: Request?) -> AnyPublisher<Response, Error>
 }
-

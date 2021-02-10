@@ -18,10 +18,8 @@ where
     Transformer.Responses == [ApodDetailResponse],
     Transformer.Entities == [ApodDetailModuleEntity],
     Transformer.Domains == [ApodDetailDomainModel] {
-    
-
     public typealias Request = Any
-    public typealias Response = ApodDetailDomainModel
+    public typealias Response = ApodDetailModuleEntity?
 
     private let localeDataSource: ApodDetailLocaleDataSource
     private let remoteDataSource: RemoteDataSource
@@ -37,18 +35,8 @@ where
         self.mapper = mapper
     }
 
-    public func execute(request: Any?) -> AnyPublisher<ApodDetailDomainModel, Error> {
-        return Future<ApodDetailDomainModel, Error> { completion in
-            self.localeDataSource.get(date: request as? String)
-                .map { value -> [ApodDetailDomainModel] in
-                    return self.mapper.transformEntityToDomain(entities: [value])
-                }
-                .sink(receiveCompletion: { val in
-                    print(val)
-                }, receiveValue: { value in
-                    completion(.success(value[0]))
-                })
-        }
-        .eraseToAnyPublisher()
+    public func execute(request: Any?) -> AnyPublisher<ApodDetailModuleEntity?, Error> {
+        return self.localeDataSource.get(apod: request)
+            .eraseToAnyPublisher()
     }
 }

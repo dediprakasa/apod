@@ -7,12 +7,23 @@
 
 import SwiftUI
 import Weekly
+import Core
+import ApodDetail
 
 class FavoriteRouter {
-    func makeDetailView(for apod: WeeklyDomainModel, withFavoritePresenter favoritePresenter: FavoritePresenter) -> some View {
+    func makeDetailView(for apod: ApodDetailDomainModel, withFavoritePresenter favoritePresenter: ApodFavoritePresenter<Interactor
+                                <
+                                Any,
+                                [ApodDetailDomainModel],
+                                GetFavoriteRepository
+                                    <
+                                        ApodDetailLocaleDataSource,
+                                        ApodDetailRemoteDataSource,
+                                        ApodDetailTransformer
+                                    >
+                                >>) -> some View {
         let presenter = AppContainer().detailPresenter
-        let apodDetail = ApodMapper.mapWeeklyToDetail(from: apod)
-        presenter.setApod(apod: apodDetail)
+        presenter.setApod(apod: apod)
 
         return DetailView(presenter: presenter, favoritePresenter: favoritePresenter)
     }
