@@ -22,9 +22,7 @@
 		4B33B1DE256BF961005A8F31 /* ApodsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33B1DD256BF961005A8F31 /* ApodsResponse.swift */; };
 		4B33B1E3256BFB7E005A8F31 /* ApodMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33B1E2256BFB7E005A8F31 /* ApodMapper.swift */; };
 		4B3B451D25901E910065099B /* FavoriteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B451C25901E910065099B /* FavoriteRouter.swift */; };
-		4B597DA025BBFE76000277F6 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B597D9F25BBFE76000277F6 /* Core.framework */; };
-		4B597DA125BBFE76000277F6 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B597D9F25BBFE76000277F6 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4B5C6902257851D300106DFC /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4B5C6901257851D300106DFC /* SDWebImageSwiftUI */; };
+		4B5C6902257851D300106DFC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4B5C6901257851D300106DFC /* SwiftPackageProductDependency */; };
 		4B87321925A1AF8800658B89 /* ApodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B87321825A1AF8800658B89 /* ApodTests.swift */; };
 		4B967011257924FC001D0DD5 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B967010257924FC001D0DD5 /* Favorite.swift */; };
 		4B96701425792515001D0DD5 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96701325792515001D0DD5 /* AppView.swift */; };
@@ -65,7 +63,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				4BCDF6CF25CDCF5000DEB31D /* ApodDetail.framework in Embed Frameworks */,
-				4B597DA125BBFE76000277F6 /* Core.framework in Embed Frameworks */,
 				4B24BBC525C8C44900FA5E39 /* Weekly.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -130,9 +127,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BCDF6CE25CDCF5000DEB31D /* ApodDetail.framework in Frameworks */,
-				4B5C6902257851D300106DFC /* SDWebImageSwiftUI in Frameworks */,
+				4B5C6902257851D300106DFC /* BuildFile in Frameworks */,
 				4B24BBC425C8C44900FA5E39 /* Weekly.framework in Frameworks */,
-				4B597DA025BBFE76000277F6 /* Core.framework in Frameworks */,
 				C7997F611BC48BF89B69B8A7 /* Pods_Apod.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,6 +390,7 @@
 				4B9A13B125601A7500E1A8DF /* Resources */,
 				4B08267D257685340003CC7A /* ShellScript */,
 				4B597DA225BBFE76000277F6 /* Embed Frameworks */,
+				D599E148F3AA7CEDEB8A9BB3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -401,7 +398,7 @@
 			);
 			name = Apod;
 			packageProductDependencies = (
-				4B5C6901257851D300106DFC /* SDWebImageSwiftUI */,
+				4B5C6901257851D300106DFC /* SwiftPackageProductDependency */,
 			);
 			productName = Apod;
 			productReference = 4B9A13B325601A7500E1A8DF /* Apod.app */;
@@ -435,7 +432,7 @@
 			);
 			mainGroup = 4B9A13AA25601A7500E1A8DF;
 			packageReferences = (
-				4B5C6900257851D300106DFC /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				4B5C6900257851D300106DFC /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 4B9A13B425601A7500E1A8DF /* Products */;
 			projectDirPath = "";
@@ -504,6 +501,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D599E148F3AA7CEDEB8A9BB3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Apod/Pods-Apod-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Apod/Pods-Apod-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Apod/Pods-Apod-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -799,7 +813,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4B5C6900257851D300106DFC /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+		4B5C6900257851D300106DFC /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
 			requirement = {
@@ -810,9 +824,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4B5C6901257851D300106DFC /* SDWebImageSwiftUI */ = {
+		4B5C6901257851D300106DFC /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4B5C6900257851D300106DFC /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			package = 4B5C6900257851D300106DFC /* RemoteSwiftPackageReference */;
 			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */

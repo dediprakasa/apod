@@ -1,0 +1,12 @@
+disabled_rules:
+- trailing_whitespace
+- nesting
+- line_length
+- type_name
+- identifier_name
+- trailing_comma
+- generic_type_name
+
+identifier_name:
+  excluded:
+    - id

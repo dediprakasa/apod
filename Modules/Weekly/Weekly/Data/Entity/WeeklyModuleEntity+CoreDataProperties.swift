@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension WeeklyModuleEntity {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<WeeklyModuleEntity> {

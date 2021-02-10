@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1100"
+   LastUpgradeVersion = "1200"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A8D5EF097DB70BA987754AF4963AE0F7"
-               BuildableName = "Pods_Core.framework"
-               BlueprintName = "Pods-Core"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "4B24BB9A25C8C0DB00FA5E39"
+               BuildableName = "Weekly.framework"
+               BlueprintName = "Weekly"
+               ReferencedContainer = "container:Weekly.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,6 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "4B24BB9A25C8C0DB00FA5E39"
+            BuildableName = "Weekly.framework"
+            BlueprintName = "Weekly"
+            ReferencedContainer = "container:Weekly.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

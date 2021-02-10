@@ -1,3 +1,16 @@
-PODFILE CHECKSUM: 9dcab4ca554af0e956510899105fff12eff71445
+PODS:
+  - Core (1.0.0)
+
+DEPENDENCIES:
+  - Core
+
+SPEC REPOS:
+  https://github.com/dediprakasa/apod-core-podspec:
+    - Core
+
+SPEC CHECKSUMS:
+  Core: 9bb76c4168ced234770efe7858c809b543cc2048
+
+PODFILE CHECKSUM: 4017f9d2b22135396a0e610b99558e13cd10864e
 
 COCOAPODS: 1.9.1

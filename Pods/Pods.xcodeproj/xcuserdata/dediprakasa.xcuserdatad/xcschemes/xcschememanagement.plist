@@ -4,21 +4,21 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-Apod.xcscheme</key>
+		<key>Core.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>Pods-ApodDetail.xcscheme</key>
+		<key>Pods-Apod.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>Pods-Core.xcscheme</key>
+		<key>Pods-ApodDetail.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
