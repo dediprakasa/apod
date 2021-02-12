@@ -10,7 +10,15 @@ import Core
 import Combine
 import CoreData
 
-public struct ApodDetailLocaleDataSource: LocaleDataSource {
+public protocol DetailLocaleDataSource: LocaleDataSource {
+    associatedtype Request
+    associatedtype Response
+    
+    func get(apod: Any?) -> AnyPublisher<Response?, Error>
+    func update(apod: Any?) -> AnyPublisher<Bool, Error>
+}
+
+public struct ApodDetailLocaleDataSource: DetailLocaleDataSource {
 
     public typealias Request = Any
     public typealias Response = ApodDetailModuleEntity
@@ -122,6 +130,7 @@ public struct ApodDetailLocaleDataSource: LocaleDataSource {
         }
         .eraseToAnyPublisher()
     }
+
 }
 
 enum LocalError: Error {

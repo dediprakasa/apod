@@ -73,12 +73,4 @@ public struct GetWeeklyLocaleDataSource: LocaleDataSource {
         }
         .eraseToAnyPublisher()
     }
-
-    public func get(apod: Any?) -> AnyPublisher<WeeklyModuleEntity?, Error> {
-        fatalError()
-    }
-
-    public func update(apod: Any?) -> AnyPublisher<Bool, Error> {
-        fatalError()
-    }
 }

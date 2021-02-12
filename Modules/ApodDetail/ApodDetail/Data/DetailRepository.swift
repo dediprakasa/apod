@@ -9,7 +9,7 @@ import Core
 import Combine
 
 public struct ApodDetailRepository<
-    ApodDetailLocaleDataSource: LocaleDataSource,
+    ApodDetailLocaleDataSource: DetailLocaleDataSource,
     RemoteDataSource: DataSource,
     Transformer: Mapper>: Repository
 where

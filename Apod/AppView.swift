@@ -11,7 +11,15 @@ import Weekly
 import ApodDetail
 
 struct AppView: View {
-    @EnvironmentObject var homePresenter: GetListPresenter<(startDate: String, endDate: String), WeeklyDomainModel, Interactor<(startDate: String, endDate: String), [WeeklyDomainModel], GetWeeklyRepository<GetWeeklyLocaleDataSource, GetWeeklyRemoteDataSource, WeeklyTransformer>>>
+    @EnvironmentObject var homePresenter: WeeklyPresenter<
+        Interactor<
+            (startDate: String, endDate: String),
+            [WeeklyDomainModel],
+            GetWeeklyRepository<
+            GetWeeklyLocaleDataSource,
+            GetWeeklyRemoteDataSource,
+            WeeklyTransformer>>
+        >
     @EnvironmentObject var favoritePresenter: ApodFavoritePresenter<Interactor
     <
     Any,

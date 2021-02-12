@@ -19,6 +19,7 @@
 		4B24BBD325C93CD800FA5E39 /* WeeklyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B24BBD225C93CD800FA5E39 /* WeeklyResponse.swift */; };
 		4B24BBD825C9542B00FA5E39 /* GetWeeklyRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B24BBD725C9542B00FA5E39 /* GetWeeklyRemoteDataSource.swift */; };
 		4B24BBDD25C95A7100FA5E39 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B24BBDC25C95A7100FA5E39 /* Fetcher.swift */; };
+		4BE5B71325D6558C008C7F36 /* WeeklyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE5B71225D6558C008C7F36 /* WeeklyPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		4B24BBD225C93CD800FA5E39 /* WeeklyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyResponse.swift; sourceTree = "<group>"; };
 		4B24BBD725C9542B00FA5E39 /* GetWeeklyRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWeeklyRemoteDataSource.swift; sourceTree = "<group>"; };
 		4B24BBDC25C95A7100FA5E39 /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
+		4BE5B71225D6558C008C7F36 /* WeeklyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyPresenter.swift; sourceTree = "<group>"; };
 		7DF5967E09AF4BF669653E33 /* Pods-Weekly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weekly.release.xcconfig"; path = "Target Support Files/Pods-Weekly/Pods-Weekly.release.xcconfig"; sourceTree = "<group>"; };
 		8C0E8351D3CE6A18F3DF50C1 /* Pods_Weekly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weekly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -74,6 +76,7 @@
 		4B24BB9D25C8C0DB00FA5E39 /* Weekly */ = {
 			isa = PBXGroup;
 			children = (
+				4BE5B71125D65419008C7F36 /* Presentation */,
 				4B24BBAE25C8C15600FA5E39 /* Data */,
 				4B24BBAF25C8C15C00FA5E39 /* Domain */,
 				4B24BB9F25C8C0DB00FA5E39 /* Info.plist */,
@@ -135,6 +138,14 @@
 				4B24BBD225C93CD800FA5E39 /* WeeklyResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		4BE5B71125D65419008C7F36 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				4BE5B71225D6558C008C7F36 /* WeeklyPresenter.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		B64CEE7FDF763102850B3962 /* Frameworks */ = {
@@ -267,6 +278,7 @@
 				4B24BBCF25C93C6000FA5E39 /* WeeklyTransformer.swift in Sources */,
 				4B24BBC825C8C69800FA5E39 /* WeeklyDomainModel.swift in Sources */,
 				4B24BBBD25C8C39C00FA5E39 /* WeeklyModuleEntity+CoreDataClass copy.swift in Sources */,
+				4BE5B71325D6558C008C7F36 /* WeeklyPresenter.swift in Sources */,
 				4B24BBCB25C920EA00FA5E39 /* GetWeeklyRepository.swift in Sources */,
 				4B24BBD325C93CD800FA5E39 /* WeeklyResponse.swift in Sources */,
 			);

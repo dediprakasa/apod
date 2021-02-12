@@ -13,7 +13,15 @@ import Weekly
 
 struct Home: View {
 
-    @ObservedObject var presenter: GetListPresenter<(startDate: String, endDate: String), WeeklyDomainModel, Interactor<(startDate: String, endDate: String), [WeeklyDomainModel], GetWeeklyRepository<GetWeeklyLocaleDataSource, GetWeeklyRemoteDataSource, WeeklyTransformer>>>
+    @ObservedObject var presenter: WeeklyPresenter<
+        Interactor<
+            (startDate: String, endDate: String),
+            [WeeklyDomainModel],
+            GetWeeklyRepository<
+            GetWeeklyLocaleDataSource,
+            GetWeeklyRemoteDataSource,
+            WeeklyTransformer>>
+        >
     @State private var disposables = Set<AnyCancellable>()
 
     var body: some View {
@@ -25,7 +33,7 @@ struct Home: View {
             } else {
                 NavigationView {
                     List {
-                        ForEach(presenter.list, id: \.id) { apod in
+                        ForEach(presenter.apods, id: \.id) { apod in
                             linkBuilder(for: apod) {
                                 ApodCell(apod: apod)
                                     .frame(height: 280)
@@ -37,7 +45,7 @@ struct Home: View {
             }
         }
         .onAppear(perform: {
-            self.presenter.getList()
+            self.presenter.getWeeklyList()
         })
     }
 

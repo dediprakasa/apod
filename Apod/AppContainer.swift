@@ -12,28 +12,7 @@ import ApodDetail
 
 class AppContainer {
 
-    private let remoteDataSource = RemoteDataSource.sharedInstance
-    private let localeDataSource = LocalDataSource.sharedInstance
-
-    private lazy var repository = ApodRepository.sharedInstance(remoteDataSource, localeDataSource)
-    private lazy var homeInteractor = HomeInteractor(repository: repository)
-    private lazy var detailInteractor = DetailInteractor(repository: repository)
-    private lazy var favoriteInteractor = FavoriteInteractor(repository: repository)
-
-    private lazy var homeRouter = HomeRouter()
-    private lazy var favoriteRouter = FavoriteRouter()
-
-    lazy var weeklyLocale = GetWeeklyLocaleDataSource(context: PersistenceController.shared.context)
-    lazy var weeklyRemote = GetWeeklyRemoteDataSource()
-    lazy var weeklyMapper = WeeklyTransformer(context: PersistenceController.shared.context)
-
-    lazy var weeklyRepo = GetWeeklyRepository(localeDataSource: self.weeklyLocale, remoteDataSource: self.weeklyRemote, mapper: self.weeklyMapper)
-
-//    lazy var detailPresenter = DetailPresenter(detailUseCase: detailInteractor)
-    lazy var favoritePresenter = FavoritePresenter(useCase: favoriteInteractor, router: favoriteRouter)
-
     func provideWeekly<U: UseCase>() -> U where U.Request == (startDate: String, endDate: String), U.Response == [WeeklyDomainModel] {
-//        PersistenceController.shared.prepareDatabase()
 
         let locale = GetWeeklyLocaleDataSource(context: PersistenceController.shared.context)
         let remote = GetWeeklyRemoteDataSource()
@@ -56,10 +35,9 @@ class AppContainer {
         WeeklyTransformer>
     > = self.provideWeekly()
 
-    lazy var homePresenter = GetListPresenter(useCase: weeklyUseCase)
+    lazy var homePresenter = WeeklyPresenter(weeklyUseCase: weeklyUseCase)
 
     func provideDetail<U: UseCase>() -> U where U.Request == Any, U.Response == ApodDetailModuleEntity? {
-//        PersistenceController.shared.prepareDatabase()
 
         let locale = ApodDetailLocaleDataSource(context: PersistenceController.shared.context)
         let remote = ApodDetailRemoteDataSource()
@@ -88,7 +66,6 @@ class AppContainer {
     }
 
     func provideFavorite<U: UseCase>() -> U where U.Request == Any, U.Response == [ApodDetailDomainModel] {
-//        PersistenceController.shared.prepareDatabase()
         let locale = ApodDetailLocaleDataSource(context: PersistenceController.shared.context)
         let remote = ApodDetailRemoteDataSource()
 
